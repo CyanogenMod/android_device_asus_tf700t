@@ -7,3 +7,4 @@
 /boot           emmc            /dev/block/mmcblk0p10
 /recovery       emmc            /dev/block/mmcblk0p9
 /data           ext4            /dev/block/mmcblk0p8
+/sdcard		datamedia	/dev/null
