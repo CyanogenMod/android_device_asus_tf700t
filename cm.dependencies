@@ -1,0 +1,8 @@
+[
+ {
+   "repository": "android_kernel_asus_tf700t",
+   "target_path": "kernel/asus/tf700t",
+   "branch": "master"
+ }
+]
+
