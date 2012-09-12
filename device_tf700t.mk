@@ -21,13 +21,6 @@ $(call inherit-product-if-exists, vendor/asus/tf700t/tf700t-vendor.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/asus/tf700t/overlay
 
-# Prebuilt kernel location
-#ifeq ($(TARGET_PREBUILT_KERNEL),)
-#        LOCAL_KERNEL := device/asus/tf700t/kernel
-#else
-#        LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-#endif
-
 # Files needed for boot image
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ramdisk/init.cardhu.rc:root/init.cardhu.rc \
