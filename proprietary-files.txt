@@ -99,7 +99,6 @@ lib/libnvmm.so
 lib/libnvmm_utils.so
 lib/libnvmm_vc1_video.so
 lib/libnvmm_video.so
-lib/libnvmm_vp6_video.so
 lib/libnvmm_writer.so
 lib/libnvodm_dtvtuner.so
 lib/libnvodm_hdmi.so
