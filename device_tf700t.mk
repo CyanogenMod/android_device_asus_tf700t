@@ -114,9 +114,6 @@ $(call inherit-product, frameworks/native/build/tablet-dalvik-heap.mk)
 # Call the vendor to setup propiatory files
 $(call inherit-product-if-exists, vendor/asus/tf700t/tf700t-vendor.mk)
 
-# Copy bcm4329 firmware
-#$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4329/device-bcm.mk)
-
 # Device naming
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 PRODUCT_NAME := full_tf700t
