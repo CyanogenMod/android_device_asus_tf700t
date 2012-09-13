@@ -83,7 +83,7 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 29850022707
 BOARD_FLASH_BLOCK_SIZE := 4096
 TARGET_USERIMAGES_SPARSE_EXT_DISABLED := true
 
-# Try to build the kernel
+# Build kernel from source
 TARGET_KERNEL_SOURCE := kernel/asus/tf700t
 TARGET_KERNEL_CONFIG := cyanogenmod_cardhu_defconfig 
 
