@@ -2,7 +2,6 @@ bin/brcm_patchram_plus
 bin/glgps
 bin/rild
 bin/sensors-config
-bin/surfaceflinger-start.sh
 bin/touch_fw_update
 bin/wifimacwriter
 etc/nvram_4329.txt
