@@ -119,6 +119,7 @@ lib/libnvtestresults.so
 lib/libnvtvmr.so
 lib/libnvwinsys.so
 lib/libnvwsi.so
+lib/libqcom-ril.so
 lib/libstagefrighthw.so
 lib/libsensors.al3010.so  
 lib/libsensors.isl29018.so
