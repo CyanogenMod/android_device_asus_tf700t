@@ -26,9 +26,9 @@ on fs
     mount ext4 /dev/block/mmcblk0p2 /cache wait noatime nosuid nodev data=ordered,delalloc
 
 on post-fs-data
-    mkdir /data/misc/wifi 0777 wifi wifi
-    mkdir /data/misc/wifi/sockets 0777 wifi wifi
-    mkdir /data/misc/dhcp 0777 dhcp dhcp
+    mkdir /data/misc/wifi 0770 wifi wifi
+    mkdir /data/misc/wifi/sockets 0770 wifi wifi
+    mkdir /data/misc/dhcp 0770 dhcp dhcp
     chown dhcp dhcp /data/misc/dhcp
 
     mkdir /data/misc/wminput 0776 system system
@@ -64,7 +64,7 @@ on boot
     chown nfc nfc /dev/pn544
 
 # nvdps
-    chown system system /sys/class/graphics/fb0/device/nvdps
+    chown -R system system /sys/class/graphics
 
 # backlight
     chown system system /sys/class/backlight/pwm-backlight/brightness
@@ -86,14 +86,14 @@ on boot
     chown system system /sys/module/cpu_tegra/parameters/pwr_cap_limit_4
 
 # Sensor
-#    chmod 666 /dev/nvhost-ctrl
-#    chmod 666 /dev/nvhost-display
-#    chmod 666 /dev/nvhost-dsi
-#    chmod 666 /dev/nvhost-gr2d
-#   chmod 666 /dev/nvhost-gr3d
-#    chmod 666 /dev/nvhost-isp
-#    chmod 666 /dev/nvhost-mpe
-#    chmod 666 /dev/nvhost-vi
+    chmod 666 /dev/nvhost-ctrl
+    chmod 666 /dev/nvhost-display
+    chmod 666 /dev/nvhost-dsi
+    chmod 666 /dev/nvhost-gr2d
+    chmod 666 /dev/nvhost-gr3d
+    chmod 666 /dev/nvhost-isp
+    chmod 666 /dev/nvhost-mpe
+    chmod 666 /dev/nvhost-vi
     chown system system /sys/bus/iio/devices/device0/als_ir_mode
     chown system system /sys/bus/iio/devices/device0/proximity_enable
 
