@@ -135,17 +135,19 @@ on boot
     write /data/misc/wminput/connected 0
     chmod 0666 /data/misc/wminput/connected
 
+#GPS
+    mkdir /data/gps
+    chown system system /data/gps
+    chmod 770 /data/gps
+    chown system system /sys/module/cpu_tegra/parameters/gps_start
+    chmod 600 /sys/module/cpu_tegra/parameters/gps_start
+
 # GPS init
     write /sys/class/gpio/export 162
     write /sys/class/gpio/gpio162/value 0
     write /sys/class/gpio/gpio162/direction out
-    chown gps system /sys/class/gpio/gpio162/value
+    chown root system /sys/class/gpio/gpio162/value
     chmod 0664 /sys/class/gpio/gpio162/value
-    mkdir /data/gps
-    chown gps system /data/gps
-    chmod 770 /data/gps
-    chown gps system /dev/ttyHS1
-    chmod 0660 /dev/ttyHS1
 
 # NTFS and exFAT support
     insmod /sbin/tntfs.ko
@@ -264,7 +266,6 @@ service hciattach /system/bin/brcm_patchram_plus --enable_hci --scopcm=0,2,0,0,0
   user root
   group root
   class late_start
-
 
 # Mount usb drives as /usbdrive. Generally usb drives are formatted with FAT
 # filesystem, so we support FAT as of now.
