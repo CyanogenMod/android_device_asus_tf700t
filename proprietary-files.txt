@@ -64,6 +64,7 @@ lib/hw/gralloc.tegra.so
 lib/hw/hwcomposer.tegra.so
 lib/hw/lights.cardhu.so
 lib/hw/sensors.cardhu.so
+lib/libasound.so
 lib/libami.so
 lib/libami_sensor_mw.so
 lib/libardrv_dynamic.so
@@ -74,6 +75,8 @@ lib/libmplmpu.so
 lib/libnvasfparserhal.so
 lib/libnvaviparserhal.so
 lib/libnvavp.so
+lib/libnvcap.so
+lib/libnvcapclk.so
 lib/libnvcontrol_jni.so
 lib/libnvcpud_client.so
 lib/libnvcpud.so
