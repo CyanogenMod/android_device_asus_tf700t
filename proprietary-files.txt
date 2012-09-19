@@ -4,6 +4,7 @@ bin/rild
 bin/sensors-config
 bin/touch_fw_update
 bin/wifimacwriter
+etc/asound.conf
 etc/nvram_4329.txt
 etc/nvram_4330.txt
 etc/nvram_murata.txt
