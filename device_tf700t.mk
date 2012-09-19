@@ -78,6 +78,8 @@ PRODUCT_PACKAGES += \
     make_ext4fs \
     setup_fs \
     audio.a2dp.default \
+    audio.usb.default \
+    libtinyalsa \
     libaudioutils \
     libinvensense_mpl \
     AutoParts_tfp \
