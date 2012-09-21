@@ -6,7 +6,6 @@ on early-init
 
 # for backwards compatibility
     export EXTERNAL_STORAGE /storage/sdcard0
-    export SECONDARY_STORAGE /storage/sdcard1
     mkdir /storage 0550 system sdcard_r
     mkdir /storage/sdcard0 0000 system system
     symlink /storage/sdcard0 /sdcard
@@ -14,9 +13,8 @@ on early-init
 
     # make the pathes for the external media mounts
     mkdir /storage/sdcard1 0000 system system
-    mkdir /storage/sdcard2 0000 system system
-    mkdir /storage/usbdisk0 0000 system system
-    mkdir /storage/usbdisk1 0000 system system
+    mkdir /storage/usbdisk 0000 system system
+    symlink /storage/usbdisk /mnt/usbdisk
 
 on fs
     mount ext4 /dev/block/mmcblk0p1 /system wait rw
