@@ -2,4 +2,4 @@
 # system.prop for tf700t
 #
 ro.carrier=wifi-only
-ro.sf.lcd_density=240
+ro.sf.lcd_density=160
