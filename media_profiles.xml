@@ -106,7 +106,7 @@
 
     <EncoderProfile quality="high" fileFormat="mp4" duration="30">
       <Video codec="h264"
-             bitRate="20000000"
+             bitRate="14000000"
              width="1920"
              height="1080"
              frameRate="30" />
@@ -171,7 +171,7 @@
 
     <EncoderProfile quality="1080p" fileFormat="mp4" duration="30">
       <Video codec="h264"
-             bitRate="20000000"
+             bitRate="14000000"
              width="1920"
              height="1080"
              frameRate="30" />
@@ -326,7 +326,7 @@
 
     <EncoderProfile quality="high" fileFormat="mp4" duration="30">
       <Video codec="h264"
-             bitRate="20000000"
+             bitRate="14000000"
              width="1920"
              height="1080"
              frameRate="30" />
@@ -391,7 +391,7 @@
 
     <EncoderProfile quality="1080p" fileFormat="mp4" duration="30">
       <Video codec="h264"
-             bitRate="20000000"
+             bitRate="14000000"
              width="1920"
              height="1080"
              frameRate="30" />
@@ -546,7 +546,7 @@
 
     <EncoderProfile quality="high" fileFormat="mp4" duration="30">
       <Video codec="h264"
-             bitRate="20000000"
+             bitRate="14000000"
              width="1920"
              height="1080"
              frameRate="30" />
@@ -611,7 +611,7 @@
 
     <EncoderProfile quality="1080p" fileFormat="mp4" duration="30">
       <Video codec="h264"
-             bitRate="20000000"
+             bitRate="14000000"
              width="1920"
              height="1080"
              frameRate="30" />
@@ -766,7 +766,7 @@
 
     <EncoderProfile quality="high" fileFormat="mp4" duration="30">
       <Video codec="h264"
-             bitRate="20000000"
+             bitRate="14000000"
              width="1920"
              height="1080"
              frameRate="30" />
@@ -831,7 +831,7 @@
 
     <EncoderProfile quality="1080p" fileFormat="mp4" duration="30">
       <Video codec="h264"
-             bitRate="20000000"
+             bitRate="14000000"
              width="1920"
              height="1080"
              frameRate="30" />
@@ -985,7 +985,7 @@
 
     <EncoderProfile quality="high" fileFormat="mp4" duration="30">
       <Video codec="h264"
-             bitRate="20000000"
+             bitRate="14000000"
              width="1920"
              height="1080"
              frameRate="30" />
@@ -1050,7 +1050,7 @@
 
     <EncoderProfile quality="1080p" fileFormat="mp4" duration="30">
       <Video codec="h264"
-             bitRate="20000000"
+             bitRate="14000000"
              width="1920"
              height="1080"
              frameRate="30" />
@@ -1215,7 +1215,7 @@
   <AudioEncoderCap name="aac" enabled="true"
       minBitRate="8000" maxBitRate="320000"
       minSampleRate="8000" maxSampleRate="48000"
-      minChannels="1" maxChannels="1" />
+      minChannels="1" maxChannels="2" />
 
   <AudioEncoderCap name="amrwb" enabled="true"
         minBitRate="6600" maxBitRate="23050"
