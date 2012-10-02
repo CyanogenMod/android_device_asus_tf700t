@@ -5,6 +5,7 @@ bin/sensors-config
 bin/touch_fw_update
 bin/wifimacwriter
 etc/asound.conf
+etc/audio_policy.conf
 etc/enctune.conf
 etc/nvram_4329.txt
 etc/nvram_4330.txt
