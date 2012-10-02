@@ -396,7 +396,12 @@ key SLASH {
 key SPACE {
     label, number:                      ' '
     base:                               ' '
-    alt, meta:                          none
-    ctrl:                               fallback LANGUAGE_SWITCH
+    alt, ctrl, meta:                    none
 }
 
+key EUROPE_2 {
+    label, number:                      '\\'
+    base:                               '\\'
+    shift:                              '|'
+    alt, ctrl, meta:                    none
+}
