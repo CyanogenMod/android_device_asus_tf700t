@@ -168,7 +168,7 @@
 
     <bool name="config_sms_capable">false</bool>
 
-    <bool name="config_lidControlsSleep">true</bool>    
+    <!-- <bool name="config_lidControlsSleep">true</bool>-->
 
     <integer name="config_lidOpenRotation">0</integer>
 
