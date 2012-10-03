@@ -71,6 +71,14 @@ lib/hw/lights.cardhu.so
 lib/hw/sensors6050.cardhu.so
 lib/hw/sensors.cardhu.so
 lib/hw/sensors_generic.cardhu.so
+lib/mpu3050/libmllite.so
+lib/mpu3050/libmlplatform.so
+lib/mpu3050/libmplmpu.so
+lib/mpu3050/libsensors.mpl3050.so
+lib/mpu6050/libmllite.so
+lib/mpu6050/libmlplatform.so
+lib/mpu6050/libmplmpu.so
+lib/mpu6050/libsensors.mpl6050.so
 lib/libasound.so
 lib/libaudioavp.so
 lib/libami.so
