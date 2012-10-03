@@ -1,6 +1,8 @@
 bin/brcm_patchram_plus
+bin/bt_firmware_loader.sh
 bin/glgps
 bin/rild
+bin/rm_ts_server
 bin/sensors-config
 bin/touch_fw_update
 bin/wifimacwriter
