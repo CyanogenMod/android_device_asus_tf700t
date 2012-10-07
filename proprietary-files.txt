@@ -10,6 +10,7 @@ etc/asound.conf
 etc/audio_policy.conf
 etc/BtService.sh
 etc/enctune.conf
+etc/nvcamera.conf
 etc/nvram_4329.txt
 etc/nvram_4330.txt
 etc/nvram_ah691.txt
