@@ -50,7 +50,7 @@ on boot
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
 
 # nvdps
-    chown -R system system /sys/class/graphics
+    chown system system /sys/class/graphics/fb0/device/nvdps
 
 # backlight
     chown system system /sys/class/backlight/pwm-backlight/brightness
