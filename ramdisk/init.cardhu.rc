@@ -54,11 +54,6 @@ on boot
     chown bluetooth bluetooth /system/etc/bluetooth
     setprop ro.bt.bdaddr_path "/system/etc/bluetooth/bdaddr"
 
-#NFC
-    setprop ro.nfc.port "I2C"
-    chmod 0660 /dev/pn544
-    chown nfc nfc /dev/pn544
-
 # nvdps
     chown -R system system /sys/class/graphics
 
