@@ -139,20 +139,20 @@ on boot
     mkdir /data/gps
     chown system system /data/gps
     chmod 770 /data/gps
-    chown system system /sys/module/cpu_tegra/parameters/gps_start
-    chmod 600 /sys/module/cpu_tegra/parameters/gps_start
 
 # GPS init
     write /sys/class/gpio/export 162
     write /sys/class/gpio/gpio162/value 0
     write /sys/class/gpio/gpio162/direction out
-    write /sys/module/cpu_tegra/parameters/gps_start 1
     chown root system /sys/class/gpio/gpio162/value
     chmod 0664 /sys/class/gpio/gpio162/value
 
 # NTFS and exFAT support
     insmod /sbin/tntfs.ko
     insmod /sbin/texfat.ko
+
+#insmod cfg80211.ko for cfg80211 and P2P mode.
+    insmod /system/lib/modules/cfg80211.ko
 
 # Touch
     start touch_update
@@ -265,6 +265,7 @@ service hciattach /system/bin/brcm_patchram_plus --enable_hci --scopcm=0,2,0,0,0
   on boot
   service gps-daemon /system/bin/glgps -c /system/etc/gps/gpsconfig.xml
   user root
+  socket gps seqpacket 0666 root root
   group root
   class late_start
 
@@ -354,6 +355,22 @@ on property:ril.testmode=0
     start ril-daemon
 
 # End of testmode patches.
+
+# insmod bcmdhd driver for BCM4330/BCM4334
+on property:wifi.module.type=0
+    insmod /system/lib/modules/bcmdhd.ko
+
+on property:wifi.module.type=2
+    insmod /system/lib/modules/bcmdhd.ko
+
+on property:wifi.module.type=4
+    insmod /system/lib/modules/bcmdhd.ko
+
+on property:wifi.module.type=5
+    insmod /system/lib/modules/bcmdhd_34.ko
+
+on property:wifi.module.type=6
+    insmod /system/lib/modules/bcmdhd_34.ko
 
 #Touch
 service touch_update /system/bin/touch_fw_update --default
