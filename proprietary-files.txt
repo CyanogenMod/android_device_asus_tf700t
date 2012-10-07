@@ -89,6 +89,10 @@ lib/libami.so
 lib/libami_sensor_mw.so
 lib/libardrv_dynamic.so
 lib/libcgdrv.so
+lib/libmllite.so
+lib/libmlplatform.so
+lib/libmplmpu.so
+lib/libsensors.mpl3050.so
 lib/libmllite3050.so
 lib/libmllite6050.so
 lib/libmlplatform3050.so

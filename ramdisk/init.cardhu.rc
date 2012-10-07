@@ -73,16 +73,26 @@ on boot
     chown system system /sys/module/cpu_tegra/parameters/pwr_cap_limit_4
 
 # Sensor
-    chmod 666 /dev/nvhost-ctrl
-    chmod 666 /dev/nvhost-display
-    chmod 666 /dev/nvhost-dsi
-    chmod 666 /dev/nvhost-gr2d
-    chmod 666 /dev/nvhost-gr3d
-    chmod 666 /dev/nvhost-isp
-    chmod 666 /dev/nvhost-mpe
-    chmod 666 /dev/nvhost-vi
     chown system system /sys/bus/iio/devices/device0/als_ir_mode
+    chown system system /sys/bus/iio/devices/device0/als_enable
+    chown system system /sys/bus/iio/devices/device0/als_high_threshold
+    chown system system /sys/bus/iio/devices/device0/als_low_threshold
+
     chown system system /sys/bus/iio/devices/device0/proximity_enable
+    chown system system /sys/bus/iio/devices/device0/proximity_high_threshold
+    chown system system /sys/bus/iio/devices/device0/proximity_low_threshold
+    chown system system /sys/devices/platform/tegra-i2c.2/i2c-2/2-000f/enable
+    chown system system /sys/devices/platform/tegra-i2c.2/i2c-2/2-000f/delay
+    chmod 777 /sys/devices/platform/tegra-i2c.2/i2c-2/2-000f/enable
+    chmod 777 /sys/devices/platform/tegra-i2c.2/i2c-2/2-000f/delay
+
+    # new nodes from linux kernel v3.4
+    chown system system /sys/bus/iio/devices/iio:device0/als_ir_mode
+    chown system system /sys/bus/iio/devices/iio:device0/als_enable
+    chown system system /sys/bus/iio/devices/iio:device0/proximity_enable
+    insmod /system/lib/modules/mpu3050.ko
+    insmod /system/lib/modules/inv_mpu_kxtf9.ko
+    insmod /system/lib/modules/inv_mpu_ak8975.ko
 
 # Power management settings
     chown system system /sys/module/cpu_tegra3/parameters/no_lp
