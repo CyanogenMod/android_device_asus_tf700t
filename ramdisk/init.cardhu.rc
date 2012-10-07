@@ -49,11 +49,6 @@ on boot
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
 
-    # bluetooth MAC address programming
-    chown bluetooth bluetooth ro.bt.bdaddr_path
-    chown bluetooth bluetooth /system/etc/bluetooth
-    setprop ro.bt.bdaddr_path "/system/etc/bluetooth/bdaddr"
-
 # nvdps
     chown -R system system /sys/class/graphics
 
