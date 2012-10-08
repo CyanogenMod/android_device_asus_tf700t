@@ -143,7 +143,7 @@ on boot
    chmod 666 /sys/devices/platform/tegra-i2c.1/i2c-1/1-005a/pause_driver
    chmod 666 /sys/devices/platform/tegra-i2c.1/i2c-1/1-005a/slowscan_enable
 
-#Fuse
+# Fuse
     chmod 444 /sys/firmware/fuse/odm_production_mode
 
 # Default Read Ahead value for sdcards
@@ -154,7 +154,7 @@ on boot
     write /data/misc/wminput/connected 0
     chmod 0666 /data/misc/wminput/connected
 
-#GPS
+# GPS
     mkdir /data/gps
     chown system system /data/gps
     chmod 770 /data/gps
@@ -170,7 +170,7 @@ on boot
     insmod /sbin/tntfs.ko
     insmod /sbin/texfat.ko
 
-#insmod cfg80211.ko for cfg80211 and P2P mode.
+# insmod cfg80211.ko for cfg80211 and P2P mode.
     insmod /system/lib/modules/cfg80211.ko
 
 # Touch
@@ -285,7 +285,7 @@ service iprenew_rmnet1 /system/bin/dhcpcd -n
     class main
     user root
     oneshot
-#Sensor load calibration files end
+# Sensor load calibration files end
 
 # create virtual SD card at /mnt/sdcard, based on the /data/media directory
 # deamon will drop to user/group system/media_rw after initializing
@@ -301,7 +301,7 @@ service bugreport /system/bin/dumpstate -d -v -o /data/storage/bugreports/bugrep
     oneshot
     keycodes 115 114
 
-#BCM hciattach - bt firmware loader
+# BCM hciattach - bt firmware loader
 service hciattach /system/bin/bt_firmware_loader.sh
     class main
     user root
@@ -335,7 +335,7 @@ service mischelp /system/bin/mischelp /dev/block/platform/sdhci-tegra.3/by-name/
 on property:sys.shutdown.requested=1recovery
     start mischelp
 
-#Prepare TF service
+# Prepare TF service
 service tf_daemon /system/bin/tf_daemon -storageDir /data/tf -d
     disabled
     class main
@@ -343,14 +343,10 @@ service tf_daemon /system/bin/tf_daemon -storageDir /data/tf -d
     group shell
     oneshot
 
-#Create data directory and start service
+# Create data directory and start service
 on property:tf.enable=y
     mkdir /data/tf
     start tf_daemon
-
-#insmod bcmdhd driver for BCM4330
-#on property:wifi.module.type=0
-#    insmod /system/lib/modules/bcmdhd.ko
 
 # stop ril-daemon if this is a wifi-only device
 on property:ro.carrier=wifi-only
@@ -419,14 +415,14 @@ on property:wifi.module.type=5
 on property:wifi.module.type=6
     insmod /system/lib/modules/bcmdhd_34.ko
 
-#Blutooth DUN support 
+# Blutooth DUN support
 service BtService /system/bin/sh /system/etc/BtService.sh
     user root
     group root
     disabled
     oneshot
 
-#Touch
+# Touch
 service touch_update /system/bin/touch_fw_update --default
     user system
     group system
