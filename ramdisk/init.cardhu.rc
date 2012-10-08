@@ -19,11 +19,9 @@ on early-init
     symlink /storage/usbdisk /mnt/usbdisk
 
 on fs
-    mount ext4 /dev/block/mmcblk0p1 /system wait rw
     setprop ro.crypto.tmpfs_options size=128m,mode=0771,uid=1000,gid=1000
     setprop ro.crypto.umount_sd false
-    mount ext4 /dev/block/mmcblk0p8 /data wait noatime nosuid nodev data=ordered,delalloc
-    mount ext4 /dev/block/mmcblk0p2 /cache wait noatime nosuid nodev data=ordered,delalloc
+    mount_all /fstab.cardhu
 
 on post-fs-data
     mkdir /data/misc/wifi 0770 wifi wifi
