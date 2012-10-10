@@ -10,7 +10,7 @@ $(call inherit-product, vendor/cm/config/common_full_tablet_wifionly.mk)
 PRODUCT_NAME := cm_tf700t
 PRODUCT_BRAND := asus
 PRODUCT_DEVICE := tf700t
-PRODUCT_MODEL := Transformer Pad Infinity TF700T
+PRODUCT_MODEL := ASUS Transformer Pad TF700T
 PRODUCT_MANUFACTURER := asus
 PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=EeePad BUILD_FINGERPRINT=asus/US_epad/EeePad:4.1.1/JRO03C/US_epad-10.4.4.16-20120927:user/release-keys PRIVATE_BUILD_DESC="US_epad-user 4.1.1 JRO03C US_epad-10.4.4.16-20120927 release-keys"
 
