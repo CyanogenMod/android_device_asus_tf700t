@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Asus Transformer Infinity Einstellungen</string>
+
+    <!--preferences -->
+    <string name="cpu_settings_title">CPU-Einstellungen</string>
+    <string name="cpu_mode_title">CPU-Modus</string>
+    <string name="cpu_settings_summary">Ändert den CPU-Modus</string>
+
+    <!-- CPU Modes -->
+    <string name="cpu_pwrsv">Energiesparen</string>
+    <string name="cpu_bal">Ausbalanciert</string>
+    <string name="cpu_pref">Leistung</string>
+</resources>
