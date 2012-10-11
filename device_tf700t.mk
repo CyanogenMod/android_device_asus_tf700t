@@ -34,8 +34,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/cpu.sh:system/bin/cpu.sh \
     $(LOCAL_PATH)/prebuilt/vold.fstab:system/etc/vold.fstab \
-    $(LOCAL_PATH)/prebuilt/gpsconfig.xml:system/etc/gps/gpsconfig.xml
-    $(LOCAL_PATH)/prebuilt/mixer_paths.xml:system/etc/mixer_paths.xml
+    $(LOCAL_PATH)/prebuilt/gpsconfig.xml:system/etc/gps/gpsconfig.xml \
+    $(LOCAL_PATH)/prebuilt/mixer_paths.xml:system/etc/mixer_paths.xml \
+    $(LOCAL_PATH)/prebuilt/audio_policy.conf:system/etc/audio_policy.conf
 
 # Input device configuration files
 PRODUCT_COPY_FILES += \
@@ -112,7 +113,7 @@ PRODUCT_PROPERTY_OVERRIDES := \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.tegra.nvmmlite=1
 
-# Prime spacific overrides
+# Infinity specific overrides
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.epad.model=TF700T \
     ro.product.model=TF700T

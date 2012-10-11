@@ -7,7 +7,6 @@ bin/sensors-config
 bin/touch_fw_update
 bin/wifimacwriter
 etc/asound.conf
-etc/audio_policy.conf
 etc/BtService.sh
 etc/enctune.conf
 etc/nvcamera.conf
