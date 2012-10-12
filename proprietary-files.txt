@@ -6,7 +6,6 @@ bin/rm_ts_server
 bin/sensors-config
 bin/touch_fw_update
 bin/wifimacwriter
-etc/asound.conf
 etc/BtService.sh
 etc/enctune.conf
 etc/nvcamera.conf
@@ -80,7 +79,6 @@ lib/mpu6050/libmllite.so
 lib/mpu6050/libmlplatform.so
 lib/mpu6050/libmplmpu.so
 lib/mpu6050/libsensors.mpl6050.so
-lib/libasound.so
 lib/libaudioavp.so
 lib/libami.so
 lib/libami_sensor_mw.so
