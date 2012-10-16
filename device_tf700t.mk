@@ -133,6 +133,6 @@ $(call inherit-product-if-exists, vendor/asus/tf700t/tf700t-vendor.mk)
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 PRODUCT_NAME := full_tf700t
 PRODUCT_DEVICE := tf700t
-PRODUCT_MODEL := tf700t
+PRODUCT_MODEL := ASUS Transformer Pad Infinity TF700T
 PRODUCT_BRAND := asus
 PRODUCT_MANUFACTURER := asus
