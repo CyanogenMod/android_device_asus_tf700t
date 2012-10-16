@@ -1333,7 +1333,7 @@ struct audio_module HAL_MODULE_INFO_SYM = {
         .module_api_version = AUDIO_MODULE_API_VERSION_0_1,
         .hal_api_version = HARDWARE_HAL_API_VERSION,
         .id = AUDIO_HARDWARE_MODULE_ID,
-        .name = "TF201 audio HW HAL",
+        .name = "TF700T audio HW HAL",
         .author = "The Android Open Source Project",
         .methods = &hal_module_methods,
     },
