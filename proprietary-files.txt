@@ -8,6 +8,7 @@ bin/touch_fw_update
 bin/wifimacwriter
 etc/BtService.sh
 etc/enctune.conf
+etc/model_frontal.xml
 etc/nvcamera.conf
 etc/nvram_4329.txt
 etc/nvram_4330.txt
