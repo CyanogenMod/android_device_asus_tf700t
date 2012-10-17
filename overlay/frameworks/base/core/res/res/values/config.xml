@@ -182,6 +182,12 @@
     <bool name="config_screenOffAnimation">true</bool>
 
     <bool name="config_hasRemovableLid">true</bool>
+
+    <!-- Maximum wallpaper width for devices with very high-res screen (1920x1200)
+         the wallpaper width suggestion by the launcher may be too large for
+         the GPU to handle. -->
+    <integer name="config_wallpaperMaxWidth">2048</integer>
+
     <!-- Component name of the default wallpaper. This will be ImageWallpaper if not
          specified -->
  <!--   <string name="default_wallpaper_component" translatable="false">com.android.magicsmoke/.MagicSmoke</string> -->
