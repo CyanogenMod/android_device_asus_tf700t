@@ -190,8 +190,4 @@
          the wallpaper width suggestion by the launcher may be too large for
          the GPU to handle. -->
     <integer name="config_wallpaperMaxWidth">2048</integer>
-
-    <!-- Component name of the default wallpaper. This will be ImageWallpaper if not
-         specified -->
- <!--   <string name="default_wallpaper_component" translatable="false">com.android.magicsmoke/.MagicSmoke</string> -->
 </resources>
