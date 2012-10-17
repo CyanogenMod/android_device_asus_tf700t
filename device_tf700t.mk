@@ -78,7 +78,7 @@ PRODUCT_COPY_FILES += \
 # Build characteristics setting 
 PRODUCT_CHARACTERISTICS := tablet
 
-# This device have enough room for precise davick
+# This device have enough space for precise dalvik
 PRODUCT_TAGS += dalvik.gc.type-precise
 
 # Extra packages to build for this device
@@ -102,14 +102,14 @@ PRODUCT_PACKAGES += \
     com.cyanogenmod.asusdec \
     libasusdec_jni
 
-# Propertys spacific for this device
+# Infinity specific propertys
 PRODUCT_PROPERTY_OVERRIDES := \
     wifi.interface=wlan0 \
     wifi.supplicant_scan_interval=15 \
     ro.opengles.version=131072 \
     persist.sys.usb.config=mtp,adb
 
-# Tegra 3 spacific overrides
+# Tegra 3 specific overrides
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.tegra.nvmmlite=1
 
@@ -122,6 +122,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_COPY_FILES += \
     device/asus/tf700t/media_codecs.xml:system/etc/media_codecs.xml \
     device/asus/tf700t/media_profiles.xml:system/etc/media_profiles.xml
+
+# GPS configuration
+PRODUCT_COPY_FILES += \
+    device/asus/tf700t/configs/gps.conf:system/etc/gps.conf
 
 # Inherit tablet dalvik settings
 $(call inherit-product, frameworks/native/build/tablet-dalvik-heap.mk)
