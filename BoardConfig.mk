@@ -16,7 +16,7 @@
 
 # Audio Options
 BOARD_USES_GENERIC_AUDIO := false
-BOARD_USES_ALSA_AUDIO := true 
+BOARD_USES_ALSA_AUDIO := true
 BOARD_USES_TINY_AUDIO_HW := true
 
 # inherit from the proprietary version
