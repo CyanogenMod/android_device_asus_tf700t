@@ -15,8 +15,8 @@ on early-init
     # make the pathes for the external media mounts
     mkdir /storage/sdcard1 0000 system system
     mkdir /storage/sdcard2 0000 system system
-    mkdir /storage/usbdisk 0000 system system
-    symlink /storage/usbdisk /mnt/usbdisk
+    mkdir /storage/usbdisk0 0000 system system
+    mkdir /storage/usbdisk1 0000 system system
 
 on fs
     setprop ro.crypto.tmpfs_options size=128m,mode=0771,uid=1000,gid=1000
