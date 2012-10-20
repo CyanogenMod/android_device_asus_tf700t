@@ -11,6 +11,7 @@ TARGET_SCREEN_WIDTH := 1920
 #
 # Setup device specific product configuration.
 #
+PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 PRODUCT_NAME := cm_tf700t
 PRODUCT_BRAND := asus
 PRODUCT_DEVICE := tf700t
