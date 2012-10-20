@@ -179,7 +179,7 @@
     <string name="config_deviceKeyHandlerLib" translatable="false">/system/framework/com.cyanogenmod.asusdec.jar</string>
     <string name="config_deviceKeyHandlerClass" translatable="false">com.cyanogenmod.asusdec.KeyHandler</string>
 
-    <bool name="config_screenOffAnimation">true</bool>
+    <bool name="config_screenOffAnimation">false</bool>
 
     <bool name="config_hasRemovableLid">true</bool>
 
