@@ -19,8 +19,6 @@ BOARD_USES_GENERIC_AUDIO := false
 BOARD_USES_ALSA_AUDIO := true 
 BOARD_USES_TINY_AUDIO_HW := true
 
-USE_CAMERA_STUB := false
-
 # inherit from the proprietary version
 -include vendor/asus/tf700t/BoardConfigVendor.mk
 
@@ -30,9 +28,6 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 TARGET_NO_RADIOIMAGE := true
 TARGET_BOARD_PLATFORM := tegra
 TARGET_BOOTLOADER_BOARD_NAME := cardhu
-
-#ICS Camera HAL
-COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB
 
 # Target arch settings
 TARGET_NO_BOOTLOADER := true
