@@ -165,8 +165,8 @@ on boot
     chmod 0664 /sys/class/gpio/gpio162/value
 
 # NTFS and exFAT support
-    insmod /sbin/tntfs.ko
-    insmod /sbin/texfat.ko
+    insmod /system/lib/tntfs.ko
+    insmod /system/lib/texfat.ko
 
 # insmod cfg80211.ko for cfg80211 and P2P mode.
     insmod /system/lib/modules/cfg80211.ko
