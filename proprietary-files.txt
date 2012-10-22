@@ -45,6 +45,7 @@ etc/firmware/camera/03-02-000129.bin
 etc/firmware/camera/04-RS_M6Mo.bin
 etc/firmware/camera/05-01-000129.bin
 etc/firmware/camera/05-02-000129.bin
+etc/firmware/camera/07-02-030102.bin
 etc/firmware/EC/00-PAD-0214.rom
 etc/firmware/EC/DOCK-EC20N-0207.rom
 etc/firmware/EC/DOCK-EC21N-0105.rom
