@@ -1,10 +1,9 @@
 <resources>
-
     <bool name="config_largeHeap">true</bool>
     <bool name="config_cyanogenmod">true</bool>
     <bool name="is_large_screen">true</bool>
+    <bool name="allow_rotation">false</bool>
 
     <!-- Allow tablets to set grid size in settings, false disables -->
     <bool name="config_workspaceTabletGrid">true</bool>
-
 </resources>
