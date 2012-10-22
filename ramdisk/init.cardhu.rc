@@ -217,7 +217,6 @@ service wpa_supplicant2 /system/bin/wpa_supplicant \
     socket wpa_wlan0 dgram 660 wifi wifi
     disabled
     oneshot
-    oneshot
 
 service dhcpcd_wlan0 /system/bin/dhcpcd -aABKL
     class main
