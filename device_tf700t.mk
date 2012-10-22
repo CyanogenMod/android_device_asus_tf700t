@@ -115,10 +115,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.epad.model=TF700T \
     ro.product.model=TF700T
 
-# media files
+# Media configuration
 PRODUCT_COPY_FILES += \
-    device/asus/tf700t/media_codecs.xml:system/etc/media_codecs.xml \
-    device/asus/tf700t/media_profiles.xml:system/etc/media_profiles.xml
+    device/asus/tf700t/configs/media_codecs.xml:system/etc/media_codecs.xml \
+    device/asus/tf700t/configs/media_profiles.xml:system/etc/media_profiles.xml
 
 # GPS configuration
 PRODUCT_COPY_FILES += \
