@@ -35,7 +35,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/cpu.sh:system/bin/cpu.sh \
     $(LOCAL_PATH)/prebuilt/vold.fstab:system/etc/vold.fstab \
     $(LOCAL_PATH)/prebuilt/gpsconfig.xml:system/etc/gps/gpsconfig.xml \
-    $(LOCAL_PATH)/prebuilt/mixer_paths.xml:system/etc/mixer_paths.xml \
     $(LOCAL_PATH)/prebuilt/audio_policy.conf:system/etc/audio_policy.conf
 
 # Input device configuration files
@@ -87,14 +86,10 @@ PRODUCT_PACKAGES += \
     com.android.future.usb.accessory \
     make_ext4fs \
     setup_fs \
-    audio.primary.cardhu \
     audio.a2dp.default \
     audio.usb.default \
     libtinyalsa \
     libaudioutils \
-    tinymix \
-    tinyplay \
-    tinyrec \
     libinvensense_mpl \
     AutoParts_tfp \
     blobpack_tfp \

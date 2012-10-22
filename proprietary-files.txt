@@ -6,9 +6,13 @@ bin/rm_ts_server
 bin/sensors-config
 bin/touch_fw_update
 bin/wifimacwriter
+etc/asound.conf
 etc/BtService.sh
 etc/enctune.conf
 etc/model_frontal.xml
+etc/nvaudio_conf_RT5631.xml
+etc/nvaudio_conf_RT5642.xml
+etc/nvaudio_conf_WM8903.xml
 etc/nvcamera.conf
 etc/nvram_4329.txt
 etc/nvram_4330.txt
@@ -64,6 +68,7 @@ lib/egl/libGLESv1_CM_tegra.so
 lib/egl/libGLESv2_perfhud.so
 lib/egl/libGLESv2_tegra_impl.so
 lib/egl/libGLESv2_tegra.so
+lib/hw/audio.primary.tegra.so
 lib/hw/audio_policy.tegra.so
 lib/hw/camera.tegra.so
 lib/hw/gps.tegra.so
@@ -81,6 +86,7 @@ lib/mpu6050/libmllite.so
 lib/mpu6050/libmlplatform.so
 lib/mpu6050/libmplmpu.so
 lib/mpu6050/libsensors.mpl6050.so
+lib/libasound.so
 lib/libaudioavp.so
 lib/libami.so
 lib/libami_sensor_mw.so
