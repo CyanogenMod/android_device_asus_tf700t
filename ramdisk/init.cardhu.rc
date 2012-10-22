@@ -289,8 +289,7 @@ service iprenew_rmnet1 /system/bin/dhcpcd -n
 # deamon will drop to user/group system/media_rw after initializing
 # underlying files in /data/media wil be created with user and group media_rw (1023)
 service sdcard /system/bin/sdcard /data/media 1023 1023
-    class main
-    oneshot
+    class late_start
 
 # bugreport is triggered by the VOLUME-DOWN and VOLUME-UP keys
 service bugreport /system/bin/dumpstate -d -v -o /data/storage/bugreports/bugreport
