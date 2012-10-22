@@ -76,6 +76,8 @@ PRODUCT_COPY_FILES += \
 
 # Build characteristics setting 
 PRODUCT_CHARACTERISTICS := tablet
+PRODUCT_AAPT_CONFIG := normal large xlarge hdpi
+PRODUCT_AAPT_PREF_CONFIG := xlarge hdpi
 
 # This device has enough space for precise dalvik
 PRODUCT_TAGS += dalvik.gc.type-precise
@@ -123,7 +125,7 @@ PRODUCT_COPY_FILES += \
     device/asus/tf700t/configs/gps.conf:system/etc/gps.conf
 
 # Inherit tablet dalvik settings
-$(call inherit-product, frameworks/native/build/tablet-dalvik-heap.mk)
+$(call inherit-product, frameworks/native/build/tablet-7in-hdpi-1024-dalvik-heap.mk)
 
 # Call the vendor to setup proprietary files
 $(call inherit-product-if-exists, vendor/asus/tf700t/tf700t-vendor.mk)
