@@ -137,10 +137,12 @@ on boot
 # We dont want to swap keys unless needed
     setprop sys.dockkeys.change 0
 
-# Touchscreen Config-UI interface
-   chmod 666 /sys/devices/platform/tegra-i2c.1/i2c-1/1-005a/debug_enable
-   chmod 666 /sys/devices/platform/tegra-i2c.1/i2c-1/1-005a/pause_driver
-   chmod 666 /sys/devices/platform/tegra-i2c.1/i2c-1/1-005a/slowscan_enable
+on property:ro.debuggable=1
+    # Touchscreen Config-UI interface
+    chmod 666 /sys/devices/platform/tegra-i2c.1/i2c-1/1-005a/mem_access
+    chmod 666 /sys/devices/platform/tegra-i2c.1/i2c-1/1-005a/debug_enable
+    chmod 666 /sys/devices/platform/tegra-i2c.1/i2c-1/1-005a/pause_driver
+    chmod 666 /sys/devices/platform/tegra-i2c.1/i2c-1/1-005a/slowscan_enable
 
 # Fuse
     chmod 444 /sys/firmware/fuse/odm_production_mode
