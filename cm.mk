@@ -1,12 +1,12 @@
 # Inherit device configuration for tf700t.
 $(call inherit-product, device/asus/tf700t/full_tf700t.mk)
 
-# Inherit some common cyanogenmod stuff.
-$(call inherit-product, vendor/cm/config/common_full_tablet_wifionly.mk)
-
-# resolution values for bootanimation
+# Resolution values for bootanimation
 TARGET_SCREEN_HEIGHT := 1200
 TARGET_SCREEN_WIDTH := 1920
+
+# Inherit some common cyanogenmod stuff.
+$(call inherit-product, vendor/cm/config/common_full_tablet_wifionly.mk)
 
 #
 # Setup device specific product configuration.
