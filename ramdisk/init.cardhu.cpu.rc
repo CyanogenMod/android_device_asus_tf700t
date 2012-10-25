@@ -39,7 +39,7 @@ on property:sys.cpu.mode=2
     write /sys/module/cpu_tegra/parameters/pwr_cap_limit_3 9999999
     write /sys/module/cpu_tegra/parameters/pwr_cap_limit_4 9999999
     setprop power.saving.mode 1
-    setprop persist.tegra.NV_FPSLIMIT 60
-    setprop persist.sys.NV_FPSLIMIT 0
+    setprop persist.tegra.NV_FPSLIMIT 0
+    setprop persist.sys.NV_FPSLIMIT 60
     setprop persist.sys.NV_POWERMODE 0
 
