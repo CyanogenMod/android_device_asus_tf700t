@@ -99,6 +99,10 @@ PRODUCT_PACKAGES += \
     com.cyanogenmod.asusdec \
     libasusdec_jni
 
+# Torch
+PRODUCT_PACKAGES += \
+    Torch
+
 # Infinity specific properties
 PRODUCT_PROPERTY_OVERRIDES := \
     wifi.interface=wlan0 \
