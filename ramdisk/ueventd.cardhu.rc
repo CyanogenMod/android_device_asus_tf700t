@@ -64,3 +64,4 @@
 /dev/sis_zeus_hid_bridge_touch_device	0666   root       root
 /dev/asusdec     0660    system  system
 /dev/asuspec     0660    system  system
+/dev/rfkill     0660    wifi    wifi
