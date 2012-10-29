@@ -15,7 +15,7 @@
 # Inherit full-base
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 
-# Inherit from toro device
+# Inherit from tf700t device
 $(call inherit-product, device/asus/tf700t/device_tf700t.mk)
 
 # This is where we'd set a backup provider if we had one
