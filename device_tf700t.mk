@@ -12,13 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Inherit common language setup
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
-# The gps config appropriate for this device
-$(call inherit-product, device/common/gps/gps_us_supl.mk)
-
+# Inherit tf700t vendor setup
 $(call inherit-product-if-exists, vendor/asus/tf700t/tf700t-vendor.mk)
 
+# Path to overlay files
 DEVICE_PACKAGE_OVERLAYS += device/asus/tf700t/overlay
 
 # Files needed for boot image
@@ -120,6 +120,3 @@ PRODUCT_COPY_FILES += \
 
 # Inherit tablet dalvik settings
 $(call inherit-product, frameworks/native/build/tablet-7in-hdpi-1024-dalvik-heap.mk)
-
-# Call the vendor to setup proprietary files
-$(call inherit-product-if-exists, vendor/asus/tf700t/tf700t-vendor.mk)
