@@ -170,6 +170,7 @@ lib/libsensors.isl29018.so
 lib/libsensors.isl29028.so
 lib/libsensors.ltr558als.so
 lib/libsensors.mpl.so
+lib/libtjpg.so
 lib/texfat.ko
 lib/tntfs.ko
 usr/share/alsa/alsa.conf
