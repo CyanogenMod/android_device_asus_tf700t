@@ -148,8 +148,10 @@ on property:ro.debuggable=1
     chmod 444 /sys/firmware/fuse/odm_production_mode
 
 # Default Read Ahead value for sdcards
-    write /sys/block/mmcblk0/queue/read_ahead_kb 2048
-    write /sys/block/mmcblk1/queue/read_ahead_kb 2048
+    write /sys/block/mmcblk0/bdi/read_ahead_kb   4096
+    write /sys/block/mmcblk1/bdi/read_ahead_kb   4096
+    write /sys/block/mmcblk0/queue/read_ahead_kb 4096
+    write /sys/block/mmcblk1/queue/read_ahead_kb 4096
 
 # Wiimote connect status
     write /data/misc/wminput/connected 0
