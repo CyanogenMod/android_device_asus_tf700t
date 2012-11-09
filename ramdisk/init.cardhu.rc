@@ -353,16 +353,6 @@ on property:tf.enable=y
 on property:ro.carrier=wifi-only
     stop ril-daemon
 
-# Enable NvCpuD, and set it to never poll config again
-#on boot
-#    setprop nvcpud.enabled true
-#    setprop nvcpud.config_refresh_ms -1
-
-#service nvcpud /system/bin/nvcpud
-#    class main
-#    user root
-#    group root
-
 service ps3service /system/bin/ps3service
     class main
     user root
