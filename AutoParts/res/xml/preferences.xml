@@ -11,4 +11,10 @@
         android:entryValues="@array/cpu_settings_array_values" />
 
     </PreferenceCategory>
+    <PreferenceCategory
+     android:title="@string/general_settings_title">
+
+    <ListPreference android:key="general" />
+
+    </PreferenceCategory>
 </PreferenceScreen>

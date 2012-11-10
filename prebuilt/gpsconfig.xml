@@ -6,12 +6,17 @@
     lBaudRate="115200"
     cLogEnabled="false"
     acLogDirectory="/data/gps"
+    acLtoDir="/data/gps/"
     ltoFileName="lto.dat"
     ctrlPipe="/data/gps/glgpsctrl"
     lcsApiSockName="/dev/socket/gps"
     gpioNStdbyPath="/sys/class/gpio/gpio162/value"
     acNvStoDir="/data/gps/"
     acNmeaOutName="/data/gps/nmeapipe"  
+    LbsEnable="false"
+    LbsLocal="true"
+    LbsSyncLto="true"
+    LbsSyncCells="true"
 />
 
 <!-- GPS configuration with standalone 16.8 MHz TCXO  -->
