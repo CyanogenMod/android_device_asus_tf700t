@@ -94,6 +94,7 @@ PRODUCT_PACKAGES += \
     libinvensense_mpl \
     AutoParts_tfp \
     blobpack_tfp \
+    wifimacwriter \
     mischelp \
     com.cyanogenmod.asusdec \
     libasusdec_jni
