@@ -6,7 +6,6 @@ bin/rm_ts_server
 bin/sensors-config
 bin/tf_daemon
 bin/touch_fw_update
-bin/wifimacwriter
 etc/asound.conf
 etc/BtService.sh
 etc/enctune.conf
