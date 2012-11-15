@@ -19,7 +19,7 @@
 
     <!-- LTO settings -->
     <string name="lto_download_title">LTO Data Download</string>
-    <string name="lto_download_summary">Download of assistive data which can help improving GPS performance</string>
+    <string name="lto_download_summary">Download of assistive data which can help improving GPS performance. NOTE: Changes here require a reboot to take effect.</string>
     <string name="lto_download_enabled_title">Automatic download</string>
     <string name="lto_download_enabled_summary">Download data automatically if a network connection is available</string>
     <string name="lto_download_interval_title">Download interval</string>
