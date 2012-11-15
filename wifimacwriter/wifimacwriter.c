@@ -43,57 +43,21 @@ oops:
     return NULL;
 }
 
-int main(int argc, char *argv[])
-{
-    FILE *fstream = NULL;
+int copy_nvram(char *src) {
+
     struct stat st;
-    char project_id[16] = { 0 };
     char *mac = NULL;
     char *nvram = NULL;
     char *out = NULL;
-    char *src = NULL;
     char dest[] = "/data/misc/wifi/nvram.txt";
     char mac_addr[] = "\nmacaddr=\0";
     char over_ride[] = "\nnvram_override=1\n\0";
     int fd = 0;
     int err = 0;
-    mode_t mode = 0;
-
-    fstream = fopen("/sys/devices/platform/cardhu_misc/cardhu_projectid", "r");
-
-    if (!fstream) {
-         SLOGE("Failed to read sysfs %s", strerror(errno));
-         goto exit;
-    }
-
-    fscanf(fstream, "%s", project_id);
-    fclose(fstream);
-
-    SLOGI("Found project id %s", project_id);
-
-    switch(atoi(project_id)) {
-        case 2:
-            property_set("ro.epad.model_id","02");
-            property_set("wifi.module.type","1");
-            property_set("wlan.driver.p2p","0");
-            src = "/system/etc/nvram_nh615.txt";
-            break;
-        case 4:
-            property_set("ro.epad.model_id","04");
-            property_set("wifi.module.type","2");
-            src = "/system/etc/nvram_nh665.txt";
-            break;
-        default:
-            SLOGE("Unsupported project id");
-            err = 1;
-            goto exit;
-    }
 
     if (stat(dest, &st) == 0 ) {
         SLOGI("%s exists", dest);
-        chown(dest, 1000, 1010);
-        chmod(dest, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
-        goto exit;
+        goto permissions;
     }
 
     nvram = read_file(src);
@@ -156,8 +120,7 @@ write:
         chown("/data/misc/wifi", 1010, 1010);
     }
 
-    mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH;
-    fd = open(dest, O_CREAT|O_WRONLY|O_TRUNC, mode);
+    fd = open(dest, O_CREAT|O_WRONLY|O_TRUNC, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 
     if (fd < 0) {
         SLOGE("Failed to open %s %s", dest, strerror(errno));
@@ -167,7 +130,59 @@ write:
 
     write(fd, out, strlen(out));
     close(fd);
+
+permissions:
     chown(dest, 1000, 1010);
+    chmod(dest, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+
+exit:
+    if (mac) free(mac);
+    if (nvram) free(nvram);
+    if (out) free(out);
+    umount("/data/wifimac");
+    rmdir("/data/wifimac");
+    return err;
+}
+
+int main(int argc, char *argv[])
+{
+    FILE *fstream = NULL;
+    char project_id[16] = { 0 };
+    char *src = NULL;
+    int err = 0;
+
+    fstream = fopen("/sys/devices/platform/cardhu_misc/cardhu_projectid", "r");
+
+    if (!fstream) {
+        SLOGE("Failed to read sysfs %s", strerror(errno));
+        err = 1;
+        goto exit;
+    }
+
+    fscanf(fstream, "%s", project_id);
+    fclose(fstream);
+
+    SLOGI("Found project id %s", project_id);
+
+    switch(atoi(project_id)) {
+        case 2:
+            src = "/system/etc/nvram_nh615.txt";
+            err = copy_nvram(src);
+            property_set("ro.epad.model_id","02");
+            property_set("wifi.module.type","1");
+            property_set("wlan.driver.p2p","0");
+            break;
+        case 4:
+            src = "/system/etc/nvram_nh665.txt";
+            err = copy_nvram(src);
+            property_set("ro.epad.model_id","04");
+            property_set("wifi.module.type","2");
+            break;
+        default:
+            SLOGE("Unsupported project id");
+            err = 1;
+            goto exit;
+    }
 
 exit:
     if (err == 0) {
@@ -175,10 +190,5 @@ exit:
     } else {
         SLOGE("Completed with error(s)");
     }
-    if (mac) free(mac);
-    if (nvram) free(nvram);
-    if (out) free(out);
-    umount("/data/wifimac");
-    rmdir("/data/wifimac");
     return err;
 }
