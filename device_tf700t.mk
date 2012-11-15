@@ -121,3 +121,9 @@ PRODUCT_COPY_FILES += \
 
 # Inherit tablet dalvik settings
 $(call inherit-product, frameworks/native/build/tablet-7in-hdpi-1024-dalvik-heap.mk)
+
+# Device Naming
+PRODUCT_NAME := full_tf700t
+PRODUCT_DEVICE := tf700t
+PRODUCT_BRAND := asus
+PRODUCT_MODEL := ASUS Transformer Pad TF700T
