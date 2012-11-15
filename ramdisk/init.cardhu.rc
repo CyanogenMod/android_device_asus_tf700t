@@ -59,6 +59,9 @@ on boot
     chown system system /sys/class/graphics/fb0/device/smartdimmer/aggressiveness
     chown system system /sys/class/graphics/fb0/device/smartdimmer/phase_in_adjustments
 
+# smartdimmer parameters
+    write /sys/class/graphics/fb0/device/smartdimmer/enable 0
+
 # power
     chown system system /sys/kernel/tegra_cap/core_cap_level
     chown system system /sys/kernel/tegra_cap/core_cap_state
