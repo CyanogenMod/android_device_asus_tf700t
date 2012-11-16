@@ -72,7 +72,6 @@ int copy_nvram(char *src) {
         if (mkdir("/data/wifimac", S_IRWXU | S_IRWXG | S_IRWXO) < 0) {
             SLOGE("Failed to create mount point /data/wifimac %s", strerror(errno));
             err = 1;
-            out = nvram;
             goto write;
         }
     } else {
@@ -83,7 +82,6 @@ int copy_nvram(char *src) {
     if (mount("/dev/block/mmcblk0p5", "/data/wifimac", "vfat", 0, NULL)) {
         SLOGE("Failed to mount /data/wifimac %s", strerror(errno));
         err = 1;
-        out = nvram;
         goto write;
     }
 
@@ -92,7 +90,6 @@ int copy_nvram(char *src) {
     if (!mac) {
         SLOGE("Failed to read /data/wifimac/wifi_mac %s", strerror(errno));
         err = 1;
-        out = nvram;
         goto write;
     }
 
@@ -101,7 +98,6 @@ int copy_nvram(char *src) {
     if (!out) {
         SLOGE("Failed to allocate memory %s", strerror(errno));
         err = 1;
-        out = nvram;
         goto write;
     }
 
@@ -128,12 +124,22 @@ write:
         goto exit;
     }
 
-    write(fd, out, strlen(out));
+    if (!out) {
+        write(fd, nvram, strlen(nvram));
+    } else {
+        write(fd, out, strlen(out));
+    }
     close(fd);
 
 permissions:
-    chown(dest, 1000, 1010);
-    chmod(dest, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+    if (chown(dest, 1000, 1010) < 0) {
+        SLOGE("Failed to set owner/group %s %s", dest, strerror(errno));
+        err = 1;
+    }
+    if (chmod(dest, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH) < 0) {
+        SLOGE("Failed to set permissions %s %s", dest, strerror(errno));
+        err = 1;
+    }
 
 exit:
     if (mac) free(mac);
