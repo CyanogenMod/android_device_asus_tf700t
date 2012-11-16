@@ -206,6 +206,9 @@
 
     <bool name="config_screenOffAnimation">false</bool>
 
+    <!-- Diable lockscreen rotation by default -->
+    <bool name="config_enableLockScreenRotation">true</bool>
+
     <bool name="config_hasRemovableLid">true</bool>
 
     <!-- If this is true, the screen will come on when you unplug usb/power/whatever. -->
