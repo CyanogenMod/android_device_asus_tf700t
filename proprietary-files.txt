@@ -8,6 +8,7 @@ bin/tf_daemon
 bin/touch_fw_update
 etc/asound.conf
 etc/BtService.sh
+etc/dbus.conf
 etc/enctune.conf
 etc/model_frontal.xml
 etc/nvaudio_conf_RT5631.xml
