@@ -221,4 +221,8 @@
          the wallpaper width suggestion by the launcher may be too large for
          the GPU to handle. -->
     <!-- <integer name="config_wallpaperMaxWidth">2048</integer> -->
+
+
+    <bool name="config_showNavigationBar">true</bool>
+    <integer name="config_multiuserMaximumUsers">8</integer>
 </resources>
