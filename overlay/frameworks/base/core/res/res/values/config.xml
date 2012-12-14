@@ -178,12 +178,6 @@
         <item>0</item>
     </integer-array>
 
-    <!-- Package name providing network location support. -->
-    <!-- <string name="config_networkLocationProviderPackageName" translatable="false">com.google.android.location</string> -->
-
-    <!-- Package name providing geocoder API support. -->
-    <!-- <string name="config_geocodeProviderPackageName" translatable="false">com.google.android.location</string> -->
-
     <integer name="config_downloadDataDirSize">200</integer>
 
     <!-- Minimum screen brightness allowed by the power manager. -->
