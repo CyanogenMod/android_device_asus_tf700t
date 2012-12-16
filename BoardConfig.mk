@@ -60,6 +60,7 @@ BOARD_NO_ALLOW_DEQUEUE_CURRENT_BUFFER := true
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
+BOARD_BLUEDROID_VENDOR_CONF := device/asus/tf700t/bluetooth/vnd_tf700t.txt
 
 # Support for dock battery
 TARGET_HAS_DOCK_BATTERY := true
