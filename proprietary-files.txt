@@ -193,3 +193,4 @@ vendor/firmware/bcm4330/fw_bcmdhd_apsta.bin
 vendor/firmware/bcm4330/fw_bcmdhd_b1.bin
 vendor/firmware/bcm4330/fw_bcmdhd.bin
 vendor/firmware/bcm4330/fw_bcmdhd_p2p.bin
+vendor/lib/libbt-vendor.so
