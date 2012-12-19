@@ -46,7 +46,6 @@
 /dev/nvhost-vi	0666	root	root
 /dev/tf_driver	0666	system	system
 /dev/ttyHS1	0664	root	system
-/dev/ttyHS2	0660	bluetooth	bluetooth
 /dev/ion	0666	system	system
 /dev/raydium_ts	0660	system	system
 /dev/timerinfo	0444	system	system
