@@ -235,7 +235,7 @@ public final class KeyHandler implements DeviceKeyHandler {
                     ServiceManager.getService("power"));
         }
         try {
-            mPowerManager.setBacklightBrightness(value);
+            mPowerManager.setTemporaryScreenBrightnessSettingOverride(value);
         } catch (RemoteException ex) {
             Slog.e(TAG, "Could not set backlight brightness", ex);
         }
