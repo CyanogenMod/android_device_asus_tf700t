@@ -34,6 +34,7 @@ import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
+import android.util.Log;
 import android.util.Slog;
 import android.view.KeyEvent;
 
@@ -42,9 +43,21 @@ import com.android.internal.os.DeviceKeyHandler;
 public final class KeyHandler implements DeviceKeyHandler {
     private static final String TAG = "AsusdecKeyHandler";
 
+    private static final boolean DEBUG_KEYEVENT = true;
+
     private static final int MINIMUM_BACKLIGHT = android.os.PowerManager.BRIGHTNESS_OFF + 1;
     private static final int MAXIMUM_BACKLIGHT = android.os.PowerManager.BRIGHTNESS_ON;
     private static final String SETTING_TOUCHPAD_STATUS = "touchpad_status";
+
+    // Use specific scan codes from device instead of aosp keycodes
+    private static final int SCANCODE_TOGGLE_WIFI     = 238;
+    private static final int SCANCODE_TOGGLE_BT       = 237;
+    private static final int SCANCODE_TOGGLE_TOUCHPAD = 60; // KEYCODE_F2
+    private static final int SCANCODE_BRIGHTNESS_DOWN = 224;
+    private static final int SCANCODE_BRIGHTNESS_UP   = 225;
+    private static final int SCANCODE_BRIGHTNESS_AUTO = 61; // KEYCODE_F3
+    private static final int SCANCODE_SCREENSHOT      = 212;
+    private static final int SCANCODE_SETTINGS        = 62; // KEYCODE_F4
 
     private final Context mContext;
     private final Handler mHandler;
@@ -98,43 +111,54 @@ public final class KeyHandler implements DeviceKeyHandler {
     };
 
     @Override
-    public int handleKeyEvent(KeyEvent event) {
-        if (event.getAction() != KeyEvent.ACTION_DOWN
-                || event.getRepeatCount() != 0) {
-            return KEYEVENT_UNCAUGHT;
+    public boolean handleKeyEvent(KeyEvent event) {
+
+        if (DEBUG_KEYEVENT) {
+            Log.d(TAG, "KeyEvent: action=" + event.getAction()
+                    + ", flags=" + event.getFlags()
+                    + ", canceled=" + event.isCanceled()
+                    + ", keyCode=" + event.getKeyCode()
+                    + ", scanCode=" + event.getScanCode()
+                    + ", metaState=" + event.getMetaState()
+                    + ", repeatCount=" + event.getRepeatCount());
         }
 
-        switch (event.getKeyCode()) {
-            case KeyEvent.KEYCODE_TOGGLE_WIFI:
+        if (event.getAction() != KeyEvent.ACTION_DOWN
+                || event.getRepeatCount() != 0) {
+            return false;
+        }
+
+        switch (event.getScanCode()) {
+            case SCANCODE_TOGGLE_WIFI:
                 toggleWifi();
                 break;
-            case KeyEvent.KEYCODE_TOGGLE_BT:
+            case SCANCODE_TOGGLE_BT:
                 toggleBluetooth();
                 break;
-            case KeyEvent.KEYCODE_TOGGLE_TOUCHPAD:
+            case SCANCODE_TOGGLE_TOUCHPAD:
                 toggleTouchpad();
                 break;
-            case KeyEvent.KEYCODE_BRIGHTNESS_DOWN:
+            case SCANCODE_BRIGHTNESS_DOWN:
                 brightnessDown();
                 break;
-            case KeyEvent.KEYCODE_BRIGHTNESS_UP:
+            case SCANCODE_BRIGHTNESS_UP:
                 brightnessUp();
                 break;
-            case KeyEvent.KEYCODE_BRIGHTNESS_AUTO:
+            case SCANCODE_BRIGHTNESS_AUTO:
                 brightnessAuto();
                 break;
-            case KeyEvent.KEYCODE_SCREENSHOT:
+            case SCANCODE_SCREENSHOT:
                 takeScreenshot();
                 break;
-            case KeyEvent.KEYCODE_SETTINGS:
+            case SCANCODE_SETTINGS:
                 launchSettings();
                 break;
 
             default:
-                return KEYEVENT_UNCAUGHT;
+                return false;
         }
 
-        return KEYEVENT_CAUGHT;
+        return true;
     }
 
     private void toggleWifi() {
@@ -235,7 +259,7 @@ public final class KeyHandler implements DeviceKeyHandler {
                     ServiceManager.getService("power"));
         }
         try {
-            mPowerManager.setBacklightBrightness(value);
+            mPowerManager.setTemporaryScreenBrightnessSettingOverride(value);
         } catch (RemoteException ex) {
             Slog.e(TAG, "Could not set backlight brightness", ex);
         }
