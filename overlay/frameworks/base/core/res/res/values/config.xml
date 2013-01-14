@@ -209,7 +209,7 @@
     <bool name="config_unplugTurnsOnScreen">true</bool>
 
     <!-- Setting to false will disable CM's IME switcher implementation for tablets -->
-    <!-- <bool name="config_show_cmIMESwitcher">false</bool> -->
+    <bool name="config_show_cmIMESwitcher">false</bool>
 
     <!-- Maximum wallpaper width for devices with very high-res screen (1920x1200)
          the wallpaper width suggestion by the launcher may be too large for
