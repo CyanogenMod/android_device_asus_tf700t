@@ -205,6 +205,9 @@ on property:ro.debuggable=1
 # insmod cfg80211.ko for cfg80211 and P2P mode.
     insmod /system/lib/modules/cfg80211.ko
 
+# insmod WiFi module
+    insmod /system/lib/modules/bcmdhd.ko
+
 # Touch
     start touch_update
     chown system system /proc/ektf_dbg
@@ -331,8 +334,9 @@ service bugreport /system/bin/bugmailer.sh -b /system/media/audio/ui/Dock.ogg -e
     oneshot
     keycodes 115 114
 
-# BCM hciattach - bt firmware loader
-service hciattach /system/bin/bt_firmware_loader.sh
+# BCM
+service hciattach /system/bin/brcm_patchram_plus --enable_hci --scopcm=0,2,0,0,0,0,0,0,0,0 \
+    --baudrate 3000000 --use_baudrate_for_download --patchram /etc/firmware/BCM4330B1_002.001.003.0750.0820.hcd --enable_lpm --no2bytes --tosleep=5000 /dev/ttyHS2
     class main
     user root
     group system bluetooth net_bt_admin misc
@@ -418,22 +422,6 @@ on property:ril.testmode=0
     start ril-daemon
 
 # End of testmode patches.
-
-# insmod bcmdhd driver for BCM4330/BCM4334
-on property:wifi.module.type=0
-    insmod /system/lib/modules/bcmdhd.ko
-
-on property:wifi.module.type=2
-    insmod /system/lib/modules/bcmdhd.ko
-
-on property:wifi.module.type=4
-    insmod /system/lib/modules/bcmdhd.ko
-
-on property:wifi.module.type=5
-    insmod /system/lib/modules/bcmdhd_34.ko
-
-on property:wifi.module.type=6
-    insmod /system/lib/modules/bcmdhd_34.ko
 
 # Blutooth DUN support
 service BtService /system/bin/sh /system/etc/BtService.sh
