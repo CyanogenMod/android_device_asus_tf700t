@@ -1,4 +1,5 @@
 bin/brcm_patchram_plus
+bin/btmacreader
 bin/glgps
 bin/rild
 bin/rm_ts_server
