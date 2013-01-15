@@ -28,13 +28,13 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ramdisk/ueventd.cardhu.rc:root/ueventd.cardhu.rc \
     $(LOCAL_PATH)/ramdisk/init.cardhu.usb.rc:root/init.cardhu.usb.rc \
     $(LOCAL_PATH)/ramdisk/init.cardhu.cpu.rc:root/init.cardhu.cpu.rc \
-    $(LOCAL_PATH)/prebuilt/fstab.cardhu:root/fstab.cardhu
+    $(LOCAL_PATH)/ramdisk/fstab.cardhu:root/fstab.cardhu
 
 # Prebuilt configuration files
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/vold.fstab:system/etc/vold.fstab \
-    $(LOCAL_PATH)/prebuilt/gpsconfig.xml:system/etc/gps/gpsconfig.xml \
-    $(LOCAL_PATH)/prebuilt/audio_policy.conf:system/etc/audio_policy.conf \
+    $(LOCAL_PATH)/configs/vold.fstab:system/etc/vold.fstab \
+    $(LOCAL_PATH)/configs/gpsconfig.xml:system/etc/gps/gpsconfig.xml \
+    $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
     $(LOCAL_PATH)/configs/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
 
 # Input device configuration files
@@ -113,8 +113,8 @@ PRODUCT_PROPERTY_OVERRIDES := \
 
 # media files
 PRODUCT_COPY_FILES += \
-    device/asus/tf700t/media_codecs.xml:system/etc/media_codecs.xml \
-    device/asus/tf700t/media_profiles.xml:system/etc/media_profiles.xml
+    device/asus/tf700t/configs/media_codecs.xml:system/etc/media_codecs.xml \
+    device/asus/tf700t/configs/media_profiles.xml:system/etc/media_profiles.xml
 
 # GPS configuration
 PRODUCT_COPY_FILES += \

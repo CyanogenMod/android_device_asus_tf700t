@@ -50,7 +50,7 @@ BOARD_KERNEL_PAGESIZE :=
 
 # EGL settings
 BOARD_EGL_NEEDS_LEGACY_FB := true
-BOARD_EGL_CFG := device/asus/tf700t/prebuilt/egl.cfg
+BOARD_EGL_CFG := device/asus/tf700t/configs/egl.cfg
 USE_OPENGL_RENDERER := true
 
 # Misc display settings
