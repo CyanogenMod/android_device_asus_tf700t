@@ -1,0 +1,17 @@
+This has been pre-compiled from 4.2.1 sources with exFAT and NTFS R/W support.
+This is designed to work with the texfat and tntfs modules provided by ASUS.
+
+vold.patch should work just fine by applying in src/system/vold
+
+    patch < vold.patch
+
+The patch was provided by untermensch from:
+
+https://github.com/untermensch/CyanogenMod_device_asus_tf300t/blob/master/patches/vold.patch
+
+It has been modified to work with 4.2.x
+
+TODO:
+
+* Pull changes and make it so it's functional across all devices and add this support to
+  android_system_vold
