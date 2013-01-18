@@ -26,6 +26,11 @@
 
     <bool name="config_allowAllRotations">true</bool>
 
+    <string-array name="config_locationProviderPackageNames" translatable="false">
+        <item>com.android.location.fused</item>
+        <item>com.google.android.location</item>
+    </string-array>
+
     <string-array translatable="false" name="networkAttributes">
         <item>"wifi,1,1,3,-1,true"</item>
         <item>"bluetooth,7,7,2,-1,true"</item>
