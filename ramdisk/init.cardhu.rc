@@ -160,8 +160,8 @@ on boot
     chown system system /sys/devices/system/cpu/cpufreq/interactive/sustain_load
     chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/sustain_load
 
-# Setup CPU for "balanced" mode 
-    setprop sys.cpu.mode 1
+# Setup CPU for "performance" mode
+    setprop sys.cpu.mode 2
 
 # We dont want to swap keys unless needed
     setprop sys.dockkeys.change 0
