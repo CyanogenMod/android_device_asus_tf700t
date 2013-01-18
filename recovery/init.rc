@@ -39,10 +39,6 @@ service mischelp /sbin/mischelp /dev/block/platform/sdhci-tegra.3/by-name/MC
 service adbd /sbin/adbd recovery
   \ disabled
 
-# NTFS and exFAT support
-    insmod /sbin/tntfs.ko
-    insmod /sbin/texfat.ko
-
 # Always start adbd on userdebug and eng builds
 on property:ro.debuggable=1
     write /sys/class/android_usb/android0/enable 0
