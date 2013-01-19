@@ -30,12 +30,14 @@ public class LtoDownloadUtils {
         return DOWNLOAD_INTERVAL_DEFAULT;
     }
 
-    static void scheduleNextDownload(Context context, long lastDownload) {
+    static long scheduleNextDownload(Context context, long lastDownload) {
         AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(context, LtoDownloadService.class);
         PendingIntent pi = PendingIntent.getService(context, 0, intent,
                 PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_ONE_SHOT);
 
-        am.set(AlarmManager.RTC, lastDownload + getDownloadInterval(context), pi);
+        long nextLtoDownload = lastDownload + getDownloadInterval(context);
+        am.set(AlarmManager.RTC, nextLtoDownload, pi);
+        return nextLtoDownload;
     }
 }
