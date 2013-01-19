@@ -14,12 +14,13 @@
      limitations under the License.
  -->
 
-<resources xmlns:android="http://schemas.android.com/apk/res/android">
-    <string name="app_name">Asus Transformer Infinity Einstellungen</string>
-    <string name="cpu_settings_title">CPU</string>
-    <string name="cpu_mode_title">CPU-Modus</string>
-    <string name="cpu_settings_summary">Ändert den CPU-Modus</string>
-    <string name="cpu_pwrsv">Energiesparen</string>
-    <string name="cpu_bal">Ausbalanciert</string>
-    <string name="cpu_perf">Leistung</string>
-</resources>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ListPreference android:key="cpu_settings"
+        android:title="@string/cpu_mode_title"
+        android:summary="@string/cpu_settings_summary"
+        android:entries="@array/cpu_settings_array"
+        android:entryValues="@array/cpu_settings_array_values"
+        android:defaultValue="2" /> <!-- Performance -->
+
+</PreferenceScreen>

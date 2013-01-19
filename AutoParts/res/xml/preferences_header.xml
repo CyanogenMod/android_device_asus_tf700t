@@ -14,12 +14,11 @@
      limitations under the License.
  -->
 
-<resources xmlns:android="http://schemas.android.com/apk/res/android">
-    <string name="app_name">Asus Transformer Infinity Einstellungen</string>
-    <string name="cpu_settings_title">CPU</string>
-    <string name="cpu_mode_title">CPU-Modus</string>
-    <string name="cpu_settings_summary">Ändert den CPU-Modus</string>
-    <string name="cpu_pwrsv">Energiesparen</string>
-    <string name="cpu_bal">Ausbalanciert</string>
-    <string name="cpu_perf">Leistung</string>
-</resources>
+<preference-headers xmlns:android="http://schemas.android.com/apk/res/android">
+    <header
+      android:fragment="com.cyanogenmod.settings.device.DeviceSettings$CpuSettingsFragment"
+      android:title="@string/cpu_settings_title" />
+    <header
+      android:fragment="com.cyanogenmod.settings.device.DeviceSettings$GpsSettingsFragment"
+      android:title="@string/gps_settings_title" />
+</preference-headers>
