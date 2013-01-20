@@ -1,29 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<!-- Copyright (C) 2013 The CyanogenMod Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
     <string name="app_name">Asus Transformer Infinity Settings</string>
 
-    <!--preferences -->
-    <string name="cpu_settings_title">CPU Settings</string>
-
+    <!--CPU -->
+    <string name="cpu_settings_title">CPU</string>
     <string name="cpu_mode_title">CPU Mode Switch</string>
     <string name="cpu_settings_summary">Change CPU Power Mode</string>
-
+    <string name="cpu_set_on_boot_title">Set on boot</string>
+    <string name="cpu_set_on_boot_summary">Restore the processor settings on boot</string>
 
     <!-- CPU Modes -->
     <string name="cpu_pwrsv">Power Save</string>
     <string name="cpu_bal">Balanced</string>
-    <string name="cpu_pref">Performance</string>
+    <string name="cpu_perf">Performance</string>
 
-    <!-- General -->
-    <string name="general_settings_title">GPS Settings</string>
+
+    <!-- GPS -->
+    <string name="gps_settings_title">GPS</string>
 
     <!-- LTO settings -->
     <string name="lto_download_title">LTO Data Download</string>
-    <string name="lto_download_summary">Download of assistive data which can help improve GPS performance. NOTE: Changes here require a reboot to take effect.</string>
     <string name="lto_download_enabled_title">Automatic download</string>
     <string name="lto_download_enabled_summary">Download data automatically if a network connection is available</string>
     <string name="lto_download_interval_title">Download interval</string>
-    <string name="lto_download_interval_summary">Interval: %1$s</string>
     <string name="lto_download_interval_12hours">12 hours</string>
     <string name="lto_download_interval_1day">1 day</string>
     <string name="lto_download_interval_3days">3 days</string>
@@ -38,7 +53,8 @@
     <string name="lto_download_now">Download now</string>
     <string name="lto_last_download_date">Last download: %1$s</string>
     <string name="lto_last_download_date_failure">Last download attempt: %1$s (Unsuccessful)</string>
+    <string name="lto_last_download_date_never">Last download: Never</string>
     <string name="lto_downloading_data">Downloading data\u2026 (%1$s%%)</string>
-    <string name="never">Never</string>
+    <string name="lto_downloading_data_notification">GPS. Downloading LTO data\u2026</string>
 
 </resources>

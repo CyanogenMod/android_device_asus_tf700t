@@ -1,9 +1,28 @@
+/*
+ * Copyright (C) 2013 The CyanogenMod Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.cyanogenmod.settings.device;
 
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -18,7 +37,6 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Date;
@@ -62,6 +80,9 @@ public class LtoDownloadService extends Service {
 
     private LtoDownloadTask mTask;
 
+    private NotificationManager mNotificationManager;
+    private static final int NOTIFICATION_ID = 1;
+
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         if (mTask != null && mTask.getStatus() != AsyncTask.Status.FINISHED) {
@@ -79,6 +100,8 @@ public class LtoDownloadService extends Service {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String type = prefs.getString(KEY_FILE_TYPE, FILE_TYPE_DEFAULT);
         String uri = String.format(LTO_SOURCE_URI_PATTERN, type);
+
+        mNotificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
 
         mTask = new LtoDownloadTask(uri, LTO_DESTINATION_FILE);
         mTask.execute();
@@ -175,6 +198,7 @@ public class LtoDownloadService extends Service {
         protected void onPreExecute() {
             mWakeLock.acquire();
             reportStateChange(STATE_DOWNLOADING, null, null);
+            showDownloadNotification(0, true);
         }
 
         @Override
@@ -249,10 +273,12 @@ public class LtoDownloadService extends Service {
         @Override
         protected void onProgressUpdate(Integer... progress) {
             reportStateChange(STATE_DOWNLOADING, null, progress[0]);
+            showDownloadNotification(progress[0].intValue(), false);
         }
 
         @Override
         protected void onPostExecute(Integer result) {
+            cancelDownloadNotificacion();
             if (result != null) {
                 finish(result);
             }
@@ -260,6 +286,7 @@ public class LtoDownloadService extends Service {
 
         @Override
         protected void onCancelled() {
+            cancelDownloadNotificacion();
             finish(RESULT_CANCELLED);
         }
 
@@ -318,5 +345,24 @@ public class LtoDownloadService extends Service {
         }
         intent.putExtra(EXTRA_TIMESTAMP, new Date().getTime());
         sendStickyBroadcast(intent);
+    }
+
+    private void showDownloadNotification(int progress, boolean indeterminate) {
+        // Create a notificacion
+        Notification.Builder builder = new Notification.Builder(this)
+                        .setContentTitle(getString(R.string.lto_downloading_data_notification))
+                        .setSmallIcon(R.drawable.ic_lto_download)
+                        .setLargeIcon(
+                                (((BitmapDrawable)getResources().
+                                        getDrawable(R.drawable.ic_lto_download_large)).getBitmap()))
+                        .setProgress(100, progress, indeterminate)
+                        .setWhen(0);
+        Notification notification = builder.build();
+        notification.flags = Notification.FLAG_NO_CLEAR;
+        mNotificationManager.notify(NOTIFICATION_ID, notification);
+    }
+
+    private void cancelDownloadNotificacion() {
+        mNotificationManager.cancel(NOTIFICATION_ID);
     }
 }
