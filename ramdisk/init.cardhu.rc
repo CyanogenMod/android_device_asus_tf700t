@@ -365,14 +365,6 @@ service hciattach /system/bin/brcm_patchram_plus --enable_hci --scopcm=0,2,0,0,0
   group root
   class late_start
 
-# Mount usb drives as /usbdrive. Generally usb drives are formatted with FAT
-# filesystem, so we support FAT as of now.
-#on device-added-/sys/block/sda
-#  mount vfat /dev/block/sda /mnt/usbdrive
-
-#on device-removed-/sys/block/sda
-#  umount /mnt/usbdrive
-
 # configure MSC partition
 service mischelp /system/bin/mischelp /dev/block/platform/sdhci-tegra.3/by-name/MC boot-recovery
     disabled
