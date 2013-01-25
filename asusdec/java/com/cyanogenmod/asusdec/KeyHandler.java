@@ -145,7 +145,7 @@ public final class KeyHandler implements DeviceKeyHandler {
                 brightnessUp();
                 break;
             case SCANCODE_BRIGHTNESS_AUTO:
-                brightnessAuto();
+                toggleAutoBrightness();
                 break;
             case SCANCODE_SCREENSHOT:
                 takeScreenshot();
@@ -241,11 +241,19 @@ public final class KeyHandler implements DeviceKeyHandler {
         setBrightness(value);
     }
 
-    private void brightnessAuto() {
+    private void toggleAutoBrightness() {
         if (!mAutomaticAvailable) {
             return;
         }
-        setBrightnessMode(Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC);
+        int currentValue =
+                Settings.System.getInt(
+                    mContext.getContentResolver(),
+                    Settings.System.SCREEN_BRIGHTNESS_MODE,
+                    Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL);
+        setBrightnessMode(
+                currentValue == Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL ?
+                Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC :
+                Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL);
     }
 
     private void setBrightnessMode(int mode) {
