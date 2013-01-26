@@ -24,6 +24,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
+import android.media.AudioManager;
 import android.net.wifi.WifiManager;
 import android.os.Handler;
 import android.os.IBinder;
@@ -52,12 +53,13 @@ public final class KeyHandler implements DeviceKeyHandler {
     // Use specific scan codes from device instead of aosp keycodes
     private static final int SCANCODE_TOGGLE_WIFI     = 238;
     private static final int SCANCODE_TOGGLE_BT       = 237;
-    private static final int SCANCODE_TOGGLE_TOUCHPAD = 60; // KEYCODE_F2
+    private static final int SCANCODE_TOGGLE_TOUCHPAD =  60;  // KEYCODE_F2
     private static final int SCANCODE_BRIGHTNESS_DOWN = 224;
     private static final int SCANCODE_BRIGHTNESS_UP   = 225;
-    private static final int SCANCODE_BRIGHTNESS_AUTO = 61; // KEYCODE_F3
+    private static final int SCANCODE_BRIGHTNESS_AUTO =  61;  // KEYCODE_F3
     private static final int SCANCODE_SCREENSHOT      = 212;
-    private static final int SCANCODE_SETTINGS        = 62; // KEYCODE_F4
+    private static final int SCANCODE_SETTINGS        =  62;  // KEYCODE_F4
+    private static final int SCANCODE_VOLUME_MUTE     = 113;  // KEYCODE_VOLUME_MUTE
 
     private final Context mContext;
     private final Handler mHandler;
@@ -65,6 +67,7 @@ public final class KeyHandler implements DeviceKeyHandler {
     private final boolean mAutomaticAvailable;
     private boolean mTouchpadEnabled = true;
     private WifiManager mWifiManager;
+    private AudioManager mAudioManager;
     private BluetoothAdapter mBluetoothAdapter;
     private IPowerManager mPowerManager;
 
@@ -153,6 +156,14 @@ public final class KeyHandler implements DeviceKeyHandler {
             case SCANCODE_SETTINGS:
                 launchSettings();
                 break;
+            case SCANCODE_VOLUME_MUTE:
+                // KEYCODE_VOLUME_MUTE is part of the aosp keyevent intercept handling, but
+                // aosp uses it stop ringing in phone devices (no system volume mute toggle).
+                // Since transformer devices doesn't have a telephony subsystem, we handle and
+                // treat this event as a volume mute toggle action. the asusdec KeyHandler
+                // mustn't mark the key event as consumed.
+                toggleAudioMute();
+                return false;
 
             default:
                 return false;
@@ -290,6 +301,25 @@ public final class KeyHandler implements DeviceKeyHandler {
             mContext.startActivity(mSettingsIntent);
         } catch (ActivityNotFoundException ex) {
             Slog.e(TAG, "Could not launch settings intent", ex);
+        }
+    }
+
+    private void toggleAudioMute() {
+        if (mAudioManager == null) {
+            mAudioManager = (AudioManager)mContext.getSystemService(Context.AUDIO_SERVICE);
+        }
+        // We only act in normal mode (rings, calls, ... are handled by aosp)
+        if (mAudioManager.getMode() == AudioManager.MODE_NORMAL) {
+            // TODO: If an alarm is sound then don't toggle the volume mute. In this case,
+            // is better to ignore the key event and let the alarm app to handle it.
+
+            // Just toggle between normal and silent (by now we are not going to handle
+            // vibration here)
+            int newValue =
+                    mAudioManager.getRingerMode() != AudioManager.RINGER_MODE_NORMAL ?
+                    AudioManager.RINGER_MODE_NORMAL :
+                    AudioManager.RINGER_MODE_SILENT;
+            mAudioManager.setRingerMode(newValue);
         }
     }
 
