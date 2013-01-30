@@ -72,7 +72,7 @@ public final class KeyHandler implements DeviceKeyHandler {
     private IPowerManager mPowerManager;
 
     static {
-        System.loadLibrary("asusdec_jni");
+        AsusdecNative.loadAsusdecLib();
     }
 
     public KeyHandler(Context context) {
