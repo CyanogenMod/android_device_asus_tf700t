@@ -22,6 +22,7 @@
 namespace asusdec {
 int register_asusdec_KeyHandler(JNIEnv* env);
 int register_asusdec_DockBatteryHandler(JNIEnv* env);
+int register_asusdec_DockEmbeddedController(JNIEnv* env);
 };
 
 using namespace asusdec;
@@ -39,6 +40,7 @@ extern "C" jint JNI_OnLoad(JavaVM* vm, void* reserved)
 
     register_asusdec_KeyHandler(env);
     register_asusdec_DockBatteryHandler(env);
+    register_asusdec_DockEmbeddedController(env);
 
     return JNI_VERSION_1_4;
 }

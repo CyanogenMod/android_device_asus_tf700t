@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012 The CyanogenMod Project
+ * Copyright (C) 2013 The CyanogenMod Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,26 +14,20 @@
  * limitations under the License.
  */
 
-package com.cyanogenmod.asusdec;
+package com.cyanogenmod.settings.device;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
-public final class AsusdecNative {
+public class DockUtils {
 
-    private static final String TAG = "AsusdecNative";
+    public static final String PREFERENCE_DOCK_EC_WAKEUP = "dock_ec_wakeup";
 
-    private static final boolean DEBUG = false;
-
-    private static boolean sLoaded = false;
-
-    public static synchronized void loadAsusdecLib() {
-        if (!sLoaded) {
-            System.loadLibrary("asusdec_jni");
-            sLoaded = true;
-            if (DEBUG) {
-                Log.i(TAG, "Asusdec native library loaded");
-            }
-        }
+    static boolean getEcWakeUp(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        return prefs.getBoolean(PREFERENCE_DOCK_EC_WAKEUP, false);
     }
 
 }

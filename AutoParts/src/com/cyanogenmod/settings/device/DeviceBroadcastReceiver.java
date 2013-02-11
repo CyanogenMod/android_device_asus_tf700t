@@ -24,6 +24,8 @@ import android.net.ConnectivityManager;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
+import com.cyanogenmod.asusdec.DockEmbeddedController;
+
 import java.util.Date;
 
 public class DeviceBroadcastReceiver extends BroadcastReceiver {
@@ -68,6 +70,25 @@ public class DeviceBroadcastReceiver extends BroadcastReceiver {
                 }
             } catch (Exception ex) {
                 Log.e(TAG, "CPU set on boot failed", ex);
+            }
+
+            // Restore dock EcWakeUp mode
+            try {
+                DockEmbeddedController dockEc = new DockEmbeddedController();
+                boolean ecWakeUp = DockUtils.getEcWakeUp(context);
+                boolean currentEcWakeUp = dockEc.isECWakeUp();
+                if (ecWakeUp != currentEcWakeUp) {
+                    Log.w(TAG, "Set EcWakeUp on boot: " + ecWakeUp);
+                    if (!dockEc.setECWakeUp(ecWakeUp)) {
+                        Log.w(TAG,
+                                String.format(
+                                        "Set EcWakeUp failed. Setting: %s; Current: %s",
+                                        String.valueOf(ecWakeUp),
+                                        String.valueOf(currentEcWakeUp)));
+                    }
+                }
+            } catch (Exception ex) {
+                Log.e(TAG, "EcWakeUp set on boot failed", ex);
             }
 
             // Schedule LTO download

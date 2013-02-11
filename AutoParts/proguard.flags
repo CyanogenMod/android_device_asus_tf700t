@@ -52,3 +52,7 @@
   public <init>(...);
 }
 
+# Keep asusdec classes
+-keep public class com.cyanogenmod.asusdec.** {
+  public protected private *;
+}

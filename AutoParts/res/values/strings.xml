@@ -30,6 +30,13 @@
     <string name="cpu_bal">Balanced</string>
     <string name="cpu_perf">Performance</string>
 
+    <!-- Dock -->
+    <string name="dock_settings_title">Dock</string>
+    <string name="dock_msg_failed">Failed to set the dock property</string>
+    <string name="dock_power_title">Power</string>
+    <string name="dock_ec_wakeup">Keyboard wakes the device up</string>
+    <string name="dock_ec_wakeup_summary_on">Pressing any key will wake the device up.</string>
+    <string name="dock_ec_wakeup_summary_off">The device will not wake up when pressing a key.</string>
 
     <!-- GPS -->
     <string name="gps_settings_title">GPS</string>
