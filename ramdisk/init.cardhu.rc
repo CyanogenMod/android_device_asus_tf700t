@@ -202,12 +202,6 @@ on property:ro.debuggable=1
     insmod /system/lib/tntfs.ko
     insmod /system/lib/texfat.ko
 
-# insmod cfg80211.ko for cfg80211 and P2P mode.
-    insmod /system/lib/modules/cfg80211.ko
-
-# insmod WiFi module
-    insmod /system/lib/modules/bcmdhd.ko
-
 # Touch
     start touch_update
     chown system system /proc/ektf_dbg
