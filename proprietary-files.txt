@@ -1,6 +1,7 @@
 bin/brcm_patchram_plus
 bin/btmacreader
 bin/glgps
+bin/pppd_btdun
 bin/rild
 bin/rm_ts_server
 bin/sensors-config
