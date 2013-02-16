@@ -17,7 +17,7 @@
 #ifndef _BDROID_BUILDCFG_H
 #define _BDROID_BUILDCFG_H
 
-#define BTM_DEF_LOCAL_NAME "Asus TF700t"
+#define BTM_DEF_LOCAL_NAME "ASUS Transformer Pad TF700T"
 
 // Networking, Capturing, Object Transfer
 // MAJOR CLASS: COMPUTER
