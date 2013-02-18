@@ -19,15 +19,20 @@ package com.cyanogenmod.settings.device;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.util.Log;
 
 public class DockUtils {
 
     public static final String PREFERENCE_DOCK_EC_WAKEUP = "dock_ec_wakeup";
+    public static final String PREFERENCE_DOCK_KP_NOTIFICATIONS = "dock_kp_notifications";
 
     static boolean getEcWakeUp(Context context) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         return prefs.getBoolean(PREFERENCE_DOCK_EC_WAKEUP, false);
+    }
+
+    static boolean getKpNotifications(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        return prefs.getBoolean(PREFERENCE_DOCK_KP_NOTIFICATIONS, false);
     }
 
 }

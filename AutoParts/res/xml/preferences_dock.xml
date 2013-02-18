@@ -25,4 +25,13 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:key="dock_notifications"
+        android:title="@string/dock_kp_notifications_title">
+
+      <CheckBoxPreference android:key="dock_kp_notifications"
+          android:title="@string/dock_kp_notifications" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>

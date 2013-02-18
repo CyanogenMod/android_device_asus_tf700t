@@ -22,6 +22,7 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -31,6 +32,8 @@ import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import android.preference.PreferenceManager;
 import android.util.Log;
+
+import com.cyanogenmod.settings.device.R;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -81,7 +84,7 @@ public class LtoDownloadService extends Service {
     private LtoDownloadTask mTask;
 
     private NotificationManager mNotificationManager;
-    private static final int NOTIFICATION_ID = 1;
+    private static final int NOTIFICATION_ID = R.string.lto_downloading_data_notification;
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
@@ -348,16 +351,20 @@ public class LtoDownloadService extends Service {
     }
 
     private void showDownloadNotification(int progress, boolean indeterminate) {
-        // Create a notificacion
+        // Create a notification
+        Bitmap largeIcon =
+                (((BitmapDrawable)getResources().
+                        getDrawable(
+                                com.cyanogenmod.settings.device.R.drawable.stat_sys_download)).getBitmap());
+        String title = getString(R.string.lto_downloading_data_notification);
         Notification.Builder builder = new Notification.Builder(this)
-                        .setContentTitle(getString(R.string.lto_downloading_data_notification))
-                        .setSmallIcon(R.drawable.ic_lto_download)
-                        .setLargeIcon(
-                                (((BitmapDrawable)getResources().
-                                        getDrawable(R.drawable.ic_lto_download_large)).getBitmap()))
+                        .setContentTitle(title)
+                        .setSmallIcon(android.R.drawable.stat_sys_download)
+                        .setLargeIcon(largeIcon)
                         .setProgress(100, progress, indeterminate)
                         .setWhen(0);
         Notification notification = builder.build();
+        notification.tickerText = title;
         notification.flags = Notification.FLAG_NO_CLEAR;
         mNotificationManager.notify(NOTIFICATION_ID, notification);
     }
