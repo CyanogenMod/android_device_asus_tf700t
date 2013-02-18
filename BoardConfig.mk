@@ -45,8 +45,8 @@ ARCH_ARM_USE_NON_NEON_MEMCPY := true
 
 NEED_WORKAROUND_CORTEX_A9_745320 := true
 
-# Boot/Recovery image settings  
-BOARD_KERNEL_CMDLINE := 
+# Boot/Recovery image settings
+BOARD_KERNEL_CMDLINE :=
 BOARD_KERNEL_BASE := 0x10000000
 BOARD_KERNEL_PAGESIZE :=
 
@@ -90,7 +90,7 @@ TARGET_USERIMAGES_SPARSE_EXT_DISABLED := true
 
 # Build kernel from source
 TARGET_KERNEL_SOURCE := kernel/asus/tf700t
-TARGET_KERNEL_CONFIG := cyanogenmod_cardhu_defconfig 
+TARGET_KERNEL_CONFIG := cyanogenmod_cardhu_defconfig
 
 # Custom Tools
 TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/asus/tf700t/releasetools/tf700t_ota_from_target_files
