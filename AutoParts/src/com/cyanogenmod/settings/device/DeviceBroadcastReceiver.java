@@ -73,7 +73,14 @@ public class DeviceBroadcastReceiver extends BroadcastReceiver {
             checkBootComplete(ctx, intent);
 
         } else if (Intent.ACTION_DOCK_EVENT.equals(action)) {
-            restoreEcWakeMode(ctx);
+            int state = intent.getIntExtra(
+                                Intent.EXTRA_DOCK_STATE, Intent.EXTRA_DOCK_STATE_UNDOCKED);
+            // On undock unset ec_wakeup. Otherwise, restore the last setting status
+            if (state == Intent.EXTRA_DOCK_STATE_UNDOCKED) {
+                setEcWakeMode(false);
+            } else {
+                restoreEcWakeMode(ctx);
+            }
         }
     }
 
@@ -237,8 +244,20 @@ public class DeviceBroadcastReceiver extends BroadcastReceiver {
         try {
             DockEmbeddedController dockEc = new DockEmbeddedController();
             boolean ecWakeUp = DockUtils.getEcWakeUp(ctx);
-            Log.i(TAG, "Set EcWakeUp: " + ecWakeUp);
+            Log.i(TAG, "Restore EcWakeUp: " + ecWakeUp);
             if (!dockEc.setECWakeUp(ecWakeUp)) {
+                Log.w(TAG, "Restore EcWakeUp failed.");
+            }
+        } catch (Exception ex) {
+            Log.e(TAG, "Restore EcWakeUp failed", ex);
+        }
+    }
+
+    private void setEcWakeMode(boolean on) {
+        try {
+            DockEmbeddedController dockEc = new DockEmbeddedController();
+            Log.i(TAG, "Set EcWakeUp: " + on);
+            if (!dockEc.setECWakeUp(on)) {
                 Log.w(TAG, "Set EcWakeUp failed.");
             }
         } catch (Exception ex) {
