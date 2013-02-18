@@ -50,6 +50,36 @@ public final class KeyHandler implements DeviceKeyHandler {
     private static final int MAXIMUM_BACKLIGHT = android.os.PowerManager.BRIGHTNESS_ON;
     private static final String SETTING_TOUCHPAD_STATUS = "touchpad_status";
 
+    public static final String PERMISSION_KEYPAD_RECEIVER =
+            "com.cyanogenmod.asusdec.permission.KEYPAD_RECEIVER";
+
+    public static final String ACTION_DOCK_KEYPAD_KEY_PRESSED =
+                                "com.cyanogenmod.asusdec.actions.ACTION_DOCK_KEYPAD_KEY_PRESSED";
+    public static final String EXTRA_ASUSDEC_KEY = "key";
+    public static final String EXTRA_ASUSDEC_STATUS = "status";
+    public static final String EXTRA_ASUSDEC_VALUE = "value";
+
+    // Private asusdec keys values (for notification purpose)
+    public static final int ASUSDEC_UNKNOWN          = -1;
+    public static final int ASUSDEC_WIFI             =  1;
+    public static final int ASUSDEC_BT               =  2;
+    public static final int ASUSDEC_TOUCHPAD         =  3;
+    public static final int ASUSDEC_BRIGHTNESS       =  4;
+    public static final int ASUSDEC_VOLUME           =  5;
+    public static final int ASUSDEC_VOLUME_MUTE      =  6;
+    public static final int ASUSDEC_MEDIA            =  7;
+    public static final int ASUSDEC_SCREENSHOT       =  8;
+    public static final int ASUSDEC_EXPLORER         =  9;
+    public static final int ASUSDEC_SETTINGS         = 10;
+    public static final int ASUSDEC_CAPS_LOCK        = 11;
+
+    public static final int ASUSDEC_STATUS_OFF       =  0;
+    public static final int ASUSDEC_STATUS_ON        =  1;
+
+    public static final int ASUSDEC_MEDIA_PLAY_PAUSE =  0;
+    public static final int ASUSDEC_MEDIA_PREVIOUS   =  1;
+    public static final int ASUSDEC_MEDIA_NEXT       =  2;
+
     // Use specific scan codes from device instead of aosp keycodes
     private static final int SCANCODE_TOGGLE_WIFI     = 238;
     private static final int SCANCODE_TOGGLE_BT       = 237;
@@ -58,8 +88,15 @@ public final class KeyHandler implements DeviceKeyHandler {
     private static final int SCANCODE_BRIGHTNESS_UP   = 225;
     private static final int SCANCODE_BRIGHTNESS_AUTO =  61;  // KEYCODE_F3
     private static final int SCANCODE_SCREENSHOT      = 212;
+    private static final int SCANCODE_EXPLORER        = 150;
     private static final int SCANCODE_SETTINGS        =  62;  // KEYCODE_F4
     private static final int SCANCODE_VOLUME_MUTE     = 113;  // KEYCODE_VOLUME_MUTE
+    private static final int SCANCODE_VOLUME_DOWN     = 114;
+    private static final int SCANCODE_VOLUME_UP       = 115;
+    private static final int SCANCODE_MEDIA_PREVIOUS  = 163;
+    private static final int SCANCODE_MEDIA_PLAY_PAUSE = 164;
+    private static final int SCANCODE_MEDIA_NEXT      = 165;
+    private static final int SCANCODE_CAPS_LOCK       = 58;
 
     private final Context mContext;
     private final Handler mHandler;
@@ -126,7 +163,7 @@ public final class KeyHandler implements DeviceKeyHandler {
                     + ", repeatCount=" + event.getRepeatCount());
         }
 
-        if (event.getAction() != KeyEvent.ACTION_DOWN
+        if (event.getAction() != KeyEvent.ACTION_UP
                 || event.getRepeatCount() != 0) {
             return false;
         }
@@ -153,6 +190,9 @@ public final class KeyHandler implements DeviceKeyHandler {
             case SCANCODE_SCREENSHOT:
                 takeScreenshot();
                 break;
+            case SCANCODE_EXPLORER:
+                launchExplorer();
+                return false;
             case SCANCODE_SETTINGS:
                 launchSettings();
                 break;
@@ -163,6 +203,24 @@ public final class KeyHandler implements DeviceKeyHandler {
                 // treat this event as a volume mute toggle action. the asusdec KeyHandler
                 // mustn't mark the key event as consumed.
                 toggleAudioMute();
+                return false;
+            case SCANCODE_VOLUME_DOWN:
+                volumeDown();
+                return false;
+            case SCANCODE_VOLUME_UP:
+                volumeUp();
+                return false;
+            case SCANCODE_MEDIA_PLAY_PAUSE:
+                mediaPlayPause();
+                return false;
+            case SCANCODE_MEDIA_PREVIOUS:
+                mediaPrevious();
+                return false;
+            case SCANCODE_MEDIA_NEXT:
+                mediaNext();
+                return false;
+            case SCANCODE_CAPS_LOCK:
+                capsLock(event);
                 return false;
 
             default:
@@ -193,10 +251,12 @@ public final class KeyHandler implements DeviceKeyHandler {
                 || apState == WifiManager.WIFI_AP_STATE_ENABLED) {
             mWifiManager.setWifiEnabled(false);
             mWifiManager.setWifiApEnabled(null, false);
+            notifyKey(ASUSDEC_WIFI, ASUSDEC_STATUS_OFF);
 
         } else if (state == WifiManager.WIFI_STATE_DISABLED
                 && apState == WifiManager.WIFI_AP_STATE_DISABLED) {
             mWifiManager.setWifiEnabled(true);
+            notifyKey(ASUSDEC_WIFI, ASUSDEC_STATUS_ON);
         }
     }
 
@@ -213,9 +273,11 @@ public final class KeyHandler implements DeviceKeyHandler {
         }
         if (state == BluetoothAdapter.STATE_OFF) {
             mBluetoothAdapter.enable();
+            notifyKey(ASUSDEC_BT, ASUSDEC_STATUS_ON);
         }
         if (state == BluetoothAdapter.STATE_ON) {
             mBluetoothAdapter.disable();
+            notifyKey(ASUSDEC_BT, ASUSDEC_STATUS_OFF);
         }
     }
 
@@ -226,36 +288,37 @@ public final class KeyHandler implements DeviceKeyHandler {
         int enabled = mTouchpadEnabled ? 1 : 0;
         Settings.Secure.putInt(mContext.getContentResolver(),
                 SETTING_TOUCHPAD_STATUS, enabled);
+
+        notifyKey(ASUSDEC_TOUCHPAD, mTouchpadEnabled ? ASUSDEC_STATUS_ON : ASUSDEC_STATUS_OFF);
     }
 
     private void brightnessDown() {
-        setBrightnessMode(Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL);
-
         int value = getBrightness(MINIMUM_BACKLIGHT);
-
         value -= 10;
         if (value < MINIMUM_BACKLIGHT) {
             value = MINIMUM_BACKLIGHT;
         }
+        setBrightnessMode(Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL);
         setBrightness(value);
+        notifyKey(ASUSDEC_BRIGHTNESS, ASUSDEC_STATUS_OFF, value);
     }
 
     private void brightnessUp() {
-        setBrightnessMode(Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL);
-
         int value = getBrightness(MAXIMUM_BACKLIGHT);
-
         value += 10;
         if (value > MAXIMUM_BACKLIGHT) {
             value = MAXIMUM_BACKLIGHT;
         }
+        setBrightnessMode(Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL);
         setBrightness(value);
+        notifyKey(ASUSDEC_BRIGHTNESS, ASUSDEC_STATUS_OFF, value);
     }
 
     private void toggleAutoBrightness() {
         if (!mAutomaticAvailable) {
             return;
         }
+        int value = getBrightness(MINIMUM_BACKLIGHT);
         int currentValue =
                 Settings.System.getInt(
                     mContext.getContentResolver(),
@@ -263,8 +326,12 @@ public final class KeyHandler implements DeviceKeyHandler {
                     Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL);
         setBrightnessMode(
                 currentValue == Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL ?
-                Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC :
-                Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL);
+                                Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC :
+                                Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL);
+        int status = currentValue == Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL ?
+                                    ASUSDEC_STATUS_ON :
+                                    ASUSDEC_STATUS_OFF;
+        notifyKey(ASUSDEC_BRIGHTNESS, status, value);
     }
 
     private void setBrightnessMode(int mode) {
@@ -296,9 +363,14 @@ public final class KeyHandler implements DeviceKeyHandler {
         return value;
     }
 
+    private void launchExplorer() {
+        notifyKey(ASUSDEC_EXPLORER, ASUSDEC_STATUS_OFF);
+    }
+
     private void launchSettings() {
         try {
             mContext.startActivity(mSettingsIntent);
+            notifyKey(ASUSDEC_SETTINGS, ASUSDEC_STATUS_OFF);
         } catch (ActivityNotFoundException ex) {
             Slog.e(TAG, "Could not launch settings intent", ex);
         }
@@ -320,7 +392,53 @@ public final class KeyHandler implements DeviceKeyHandler {
                     AudioManager.RINGER_MODE_NORMAL :
                     AudioManager.RINGER_MODE_SILENT;
             mAudioManager.setRingerMode(newValue);
+
+            int status = newValue == AudioManager.RINGER_MODE_NORMAL ?
+                    ASUSDEC_STATUS_OFF :
+                    ASUSDEC_STATUS_ON;
+            notifyKey(ASUSDEC_VOLUME_MUTE, status);
         }
+    }
+
+    private void volumeDown() {
+        if (mAudioManager == null) {
+            mAudioManager = (AudioManager)mContext.getSystemService(Context.AUDIO_SERVICE);
+        }
+        int value = mAudioManager.getStreamVolume(AudioManager.STREAM_SYSTEM);
+        int status = mAudioManager.getRingerMode() == AudioManager.RINGER_MODE_NORMAL ?
+                    ASUSDEC_STATUS_ON :
+                    ASUSDEC_STATUS_OFF;
+        notifyKey(ASUSDEC_VOLUME, status, value);
+    }
+
+    private void volumeUp() {
+        if (mAudioManager == null) {
+            mAudioManager = (AudioManager)mContext.getSystemService(Context.AUDIO_SERVICE);
+        }
+        int value = mAudioManager.getStreamVolume(AudioManager.STREAM_SYSTEM);
+        int status = mAudioManager.getRingerMode() == AudioManager.RINGER_MODE_NORMAL ?
+                    ASUSDEC_STATUS_ON :
+                    ASUSDEC_STATUS_OFF;
+        notifyKey(ASUSDEC_VOLUME, status, value);
+    }
+
+    private void mediaPlayPause() {
+        notifyKey(ASUSDEC_MEDIA, ASUSDEC_MEDIA_PLAY_PAUSE);
+    }
+
+    private void mediaPrevious() {
+        notifyKey(ASUSDEC_MEDIA, ASUSDEC_MEDIA_PREVIOUS);
+    }
+
+    private void mediaNext() {
+        notifyKey(ASUSDEC_MEDIA, ASUSDEC_MEDIA_NEXT);
+    }
+
+    private void capsLock(KeyEvent event) {
+        int status = event.getMetaState() == KeyEvent.META_CAPS_LOCK_ON ?
+                ASUSDEC_STATUS_ON :
+                ASUSDEC_STATUS_OFF;
+        notifyKey(ASUSDEC_CAPS_LOCK, status);
     }
 
     /*
@@ -348,6 +466,9 @@ public final class KeyHandler implements DeviceKeyHandler {
             if (mScreenshotConnection != null) {
                 return;
             }
+
+            notifyKey(ASUSDEC_SCREENSHOT, ASUSDEC_STATUS_OFF);
+
             ComponentName cn = new ComponentName("com.android.systemui",
                     "com.android.systemui.screenshot.TakeScreenshotService");
             Intent intent = new Intent();
@@ -392,6 +513,19 @@ public final class KeyHandler implements DeviceKeyHandler {
                 mHandler.postDelayed(mScreenshotTimeout, 10000);
             }
         }
+    }
+
+    private void notifyKey(int asusdeckey, int status, int value) {
+        Intent intent = new Intent();
+        intent.setAction(ACTION_DOCK_KEYPAD_KEY_PRESSED);
+        intent.putExtra(EXTRA_ASUSDEC_KEY, asusdeckey);
+        intent.putExtra(EXTRA_ASUSDEC_STATUS, status);
+        intent.putExtra(EXTRA_ASUSDEC_VALUE, value);
+        mContext.sendBroadcast(intent, PERMISSION_KEYPAD_RECEIVER);
+    }
+
+    private void notifyKey(int asusdeckey, int status) {
+        notifyKey(asusdeckey, status, 0);
     }
 
     /*

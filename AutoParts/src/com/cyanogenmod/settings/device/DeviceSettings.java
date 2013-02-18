@@ -34,7 +34,6 @@ import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.preference.Preference.OnPreferenceChangeListener;
-import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -119,6 +118,7 @@ public class DeviceSettings extends PreferenceActivity {
         extends PreferenceFragment implements OnPreferenceChangeListener {
 
         private CheckBoxPreference mECWakeUp;
+        private CheckBoxPreference mKpNotifications;
 
         DockEmbeddedController mDockEc;
 
@@ -135,6 +135,11 @@ public class DeviceSettings extends PreferenceActivity {
                                                 DockUtils.PREFERENCE_DOCK_EC_WAKEUP);
             updateECWakeUpSummary(mECWakeUp.isChecked());
             mECWakeUp.setOnPreferenceChangeListener(this);
+
+            mKpNotifications = (CheckBoxPreference)findPreference(
+                                DockUtils.PREFERENCE_DOCK_KP_NOTIFICATIONS);
+            updateKpNotificationsSummary(mKpNotifications.isChecked());
+            mKpNotifications.setOnPreferenceChangeListener(this);
         }
 
         @Override
@@ -159,6 +164,12 @@ public class DeviceSettings extends PreferenceActivity {
             mECWakeUp.setSummary(on
                                  ? R.string.dock_ec_wakeup_summary_on
                                  : R.string.dock_ec_wakeup_summary_off);
+        }
+
+        private void updateKpNotificationsSummary(boolean on) {
+            mECWakeUp.setSummary(on
+                                 ? R.string.dock_kp_notifications_summary_on
+                                 : R.string.dock_kp_notifications_summary_off);
         }
     }
 

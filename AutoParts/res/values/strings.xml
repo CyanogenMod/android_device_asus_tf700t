@@ -14,7 +14,8 @@
      limitations under the License.
  -->
 
-<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+           xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <string name="app_name">Asus Transformer Infinity Settings</string>
 
@@ -33,10 +34,37 @@
     <!-- Dock -->
     <string name="dock_settings_title">Dock</string>
     <string name="dock_msg_failed">Failed to set the dock property</string>
+
+    <!-- Dock * Power -->
     <string name="dock_power_title">Power</string>
     <string name="dock_ec_wakeup">Keyboard wakes the device up</string>
     <string name="dock_ec_wakeup_summary_on">Pressing any key will wake the device up.</string>
     <string name="dock_ec_wakeup_summary_off">The device will not wake up when pressing a key.</string>
+
+    <!-- Dock * Keypad Notifications -->
+    <string name="dock_kp_notifications_title">Notifications</string>
+    <string name="dock_kp_notifications">Display keypad notifications</string>
+    <string name="dock_kp_notifications_summary_on">Notifications will be displayed at status bar.</string>
+    <string name="dock_kp_notifications_summary_off">Notifications will not be displayed at status bar.</string>
+    <string name="kp_wifi_on">Wi-Fi ON</string>
+    <string name="kp_wifi_off">Wi-Fi OFF</string>
+    <string name="kp_bt_on">Bluetooth ON</string>
+    <string name="kp_bt_off">Bluetooth OFF</string>
+    <string name="kp_tp_on">TouchPad ON</string>
+    <string name="kp_tp_off">TouchPad OFF</string>
+    <string name="kp_brightness_manual">Brightness <xliff:g id="brightness">%1$s</xliff:g></string>
+    <string name="kp_brightness_auto">Brightness AUTO</string>
+    <string name="kp_volume">Volume <xliff:g id="volume">%1$s</xliff:g></string>
+    <string name="kp_volume_mute_on">Mute ON</string>
+    <string name="kp_volume_mute_off">Mute OFF</string>
+    <string name="kp_media_play_pause">Media PLAY/PAUSE</string>
+    <string name="kp_media_previous">Media PREVIOUS</string>
+    <string name="kp_media_next">Media NEXT</string>
+    <string name="kp_screenshot">Take screenshot</string>
+    <string name="kp_explorer">Launch browser</string>
+    <string name="kp_settings">Launch settings</string>
+    <string name="kp_caps_lock_on">Caps-Lock ON</string>
+    <string name="kp_caps_lock_off">Caps-Lock OFF</string>
 
     <!-- GPS -->
     <string name="gps_settings_title">GPS</string>
@@ -62,6 +90,6 @@
     <string name="lto_last_download_date_failure">Last download attempt: %1$s (Unsuccessful)</string>
     <string name="lto_last_download_date_never">Last download: Never</string>
     <string name="lto_downloading_data">Downloading data\u2026 (%1$s%%)</string>
-    <string name="lto_downloading_data_notification">GPS. Downloading LTO data\u2026</string>
+    <string name="lto_downloading_data_notification">Downloading LTO data\u2026</string>
 
 </resources>
