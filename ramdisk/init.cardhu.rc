@@ -193,8 +193,7 @@ on property:ro.debuggable=1
     chown root system /sys/class/gpio/gpio162/value
     chmod 0664 /sys/class/gpio/gpio162/value
 
-# NTFS and exFAT support
-    insmod /system/lib/tntfs.ko
+# exFAT support
     insmod /system/lib/texfat.ko
 
 # Touch
