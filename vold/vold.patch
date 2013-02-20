@@ -1,17 +1,17 @@
 diff -uNr a/Android.mk b/Android.mk
---- a/Android.mk	2012-11-11 12:04:15.000000000 -0800
-+++ b/Android.mk	2012-11-11 11:51:26.000000000 -0800
+--- a/Android.mk	2013-02-19 10:25:26.650977897 -0700
++++ b/Android.mk	2013-02-19 10:26:22.239827744 -0700
 @@ -14,6 +14,7 @@
-        Ext4.cpp \
-        Fat.cpp \
-        Ntfs.cpp \
-+       exFat.cpp \
-        Loop.cpp \
-        Devmapper.cpp \
-        ResponseCode.cpp \
+ 	Ext4.cpp \
+ 	Fat.cpp \
+ 	Ntfs.cpp \
++	exFat.cpp \
+ 	Loop.cpp \
+ 	Devmapper.cpp \
+ 	ResponseCode.cpp \
 diff -uNr a/DirectVolume.cpp b/DirectVolume.cpp
---- a/DirectVolume.cpp	2012-11-11 12:04:15.000000000 -0800
-+++ b/DirectVolume.cpp	2012-11-11 11:58:56.000000000 -0800
+--- a/DirectVolume.cpp	2013-02-19 10:25:26.650977897 -0700
++++ b/DirectVolume.cpp	2013-02-19 10:25:55.595420458 -0700
 @@ -18,6 +18,7 @@
  #include <stdlib.h>
  #include <string.h>
@@ -20,7 +20,7 @@ diff -uNr a/DirectVolume.cpp b/DirectVolume.cpp
 
  #include <linux/kdev_t.h>
 
-@@ -125,6 +126,7 @@ int DirectVolume::handleBlockEvent(NetlinkEvent *evt) {
+@@ -125,6 +126,7 @@
                  if (getState() == Volume::State_Idle) {
                      char msg[255];
 
@@ -28,7 +28,7 @@ diff -uNr a/DirectVolume.cpp b/DirectVolume.cpp
                      snprintf(msg, sizeof(msg),
                               "Volume %s %s disk inserted (%d:%d)", getLabel(),
                               getMountpoint(), mDiskMajor, mDiskMinor);
-@@ -307,6 +309,7 @@ void DirectVolume::handleDiskRemoved(const char *devpath, NetlinkEvent *evt) {
+@@ -307,6 +309,7 @@
      mVm->getBroadcaster()->sendBroadcast(ResponseCode::VolumeDiskRemoved,
                                               msg, false);
      setState(Volume::State_NoMedia);
@@ -37,8 +37,8 @@ diff -uNr a/DirectVolume.cpp b/DirectVolume.cpp
 
  void DirectVolume::handlePartitionRemoved(const char *devpath, NetlinkEvent *evt) {
 diff -uNr a/exFat.cpp b/exFat.cpp
---- a/exFat.cpp	1969-12-31 16:00:00.000000000 -0800
-+++ b/exFat.cpp	2012-11-11 11:51:26.000000000 -0800
+--- a/exFat.cpp	1969-12-31 17:00:00.000000000 -0700
++++ b/exFat.cpp	2013-02-19 10:25:55.599420519 -0700
 @@ -0,0 +1,100 @@
 +/*
 + * Copyright (C) 2008 The Android Open Source Project
@@ -141,8 +141,8 @@ diff -uNr a/exFat.cpp b/exFat.cpp
 +
 +}
 diff -uNr a/exFat.h b/exFat.h
---- a/exFat.h	1969-12-31 16:00:00.000000000 -0800
-+++ b/exFat.h	2012-11-11 11:51:26.000000000 -0800
+--- a/exFat.h	1969-12-31 17:00:00.000000000 -0700
++++ b/exFat.h	2013-02-19 10:25:55.599420519 -0700
 @@ -0,0 +1,32 @@
 +/*
 + * Copyright (C) 2008 The Android Open Source Project
@@ -177,26 +177,26 @@ diff -uNr a/exFat.h b/exFat.h
 +
 +#endif
 diff -uNr a/Ntfs.cpp b/Ntfs.cpp
---- a/Ntfs.cpp	2012-11-11 12:04:15.000000000 -0800
-+++ b/Ntfs.cpp	2012-11-11 12:00:08.000000000 -0800
+--- a/Ntfs.cpp	2013-02-19 10:25:26.678978326 -0700
++++ b/Ntfs.cpp	2013-02-19 10:25:55.599420519 -0700
 @@ -83,12 +83,12 @@
              "uid=%d,gid=%d,fmask=%o,dmask=%o",
              ownerUid, ownerGid, permMask, permMask);
 
 -    rc = mount(fsPath, mountPoint, "ntfs", flags, mountData);
-+    rc = mount(fsPath, mountPoint, "tntfs", flags, mountData);
++    rc = mount(fsPath, mountPoint, "fuse", flags, mountData);
 
      if (rc && errno == EROFS) {
          SLOGE("%s appears to be a read only filesystem - retrying mount RO", fsPath);
          flags |= MS_RDONLY;
 -        rc = mount(fsPath, mountPoint, "ntfs", flags, mountData);
-+        rc = mount(fsPath, mountPoint, "tntfs", flags, mountData);
++        rc = mount(fsPath, mountPoint, "fuse", flags, mountData);
      }
 
      return rc;
 diff -uNr a/Volume.cpp b/Volume.cpp
---- a/Volume.cpp	2012-11-11 12:04:15.000000000 -0800
-+++ b/Volume.cpp	2012-11-11 11:56:51.000000000 -0800
+--- a/Volume.cpp	2013-02-19 10:25:26.646977836 -0700
++++ b/Volume.cpp	2013-02-19 10:25:55.599420519 -0700
 @@ -45,6 +45,7 @@
  #include "ResponseCode.h"
  #include "Fat.h"

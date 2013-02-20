@@ -149,7 +149,6 @@ lib/libsensors.isl29028.so
 lib/libsensors.ltr558als.so
 lib/libtjpg.so
 lib/texfat.ko
-lib/tntfs.ko
 usr/share/alsa/alsa.conf
 usr/share/alsa/cards/aliases.conf
 usr/share/alsa/pcm/center_lfe.conf

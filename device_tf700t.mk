@@ -100,7 +100,11 @@ PRODUCT_PACKAGES += \
     wifimacwriter \
     mischelp \
     com.cyanogenmod.asusdec \
-    libasusdec_jni
+    libasusdec_jni \
+    libntfs-3g \
+    ntfs-3g \
+    ntfs-3g.probe \
+    ntfsfix
 
 # Torch
 PRODUCT_PACKAGES += \
