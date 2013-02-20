@@ -1,85 +1,92 @@
 key 158   BACK                    WAKE_DROPPED
-key 238   TOGGLE_WIFI
-key 237   TOGGLE_BT
-key 60    TOGGLE_TOUCHPAD
-key 224   BRIGHTNESS_DOWN
-key 225   BRIGHTNESS_UP
-key 61    BRIGHTNESS_AUTO
-key 212   SCREENSHOT
-key 150   EXPLORER
-key 62    SETTINGS
-key 165   MEDIA_PREVIOUS
-key 164   MEDIA_PLAY_PAUSE
-key 163   MEDIA_NEXT
-key 113   VOLUME_MUTE
-key 114   VOLUME_DOWN
-key 115   VOLUME_UP
+# TOGGLE_WIFI
+key 238   F1                      WAKE_DROPPED
+# TOGGLE_BT
+key 237   F2                      WAKE_DROPPED
+# TOGGLE_TOUCHPAD
+key 60    F3                      WAKE_DROPPED
+# BRIGHTNESS_DOWN
+key 224   F4                      WAKE_DROPPED
+# BRIGHTNESS_UP
+key 225   F5                      WAKE_DROPPED
+# BRIGHTNESS_AUTO
+key 61    F6                      WAKE_DROPPED
+# SCREENSHOT
+key 212   F7                      WAKE_DROPPED
+key 150   EXPLORER                WAKE_DROPPED
+key 62    SETTINGS                WAKE_DROPPED
+key 165   MEDIA_PREVIOUS          WAKE_DROPPED
+key 164   MEDIA_PLAY_PAUSE        WAKE_DROPPED
+key 163   MEDIA_NEXT              WAKE_DROPPED
+key 113   VOLUME_MUTE             WAKE_DROPPED
+key 114   VOLUME_DOWN             WAKE_DROPPED
+key 115   VOLUME_UP               WAKE_DROPPED
 key 142   POWER                   WAKE
-key 41    GRAVE
-key 2     1
-key 3     2
-key 4     3
-key 5     4
-key 6     5
-key 7     6
-key 8     7
-key 9     8
-key 10    9
-key 11    0
-key 12    MINUS
-key 13    EQUALS
-key 14    DEL
-key 15    TAB
-key 16    Q
-key 17    W
-key 18    E
-key 19    R
-key 20    T
-key 21    Y
-key 22    U
-key 23    I
-key 24    O
-key 25    P
-key 26    LEFT_BRACKET
-key 27    RIGHT_BRACKET
-key 43    BACKSLASH
-key 58    CAPS_LOCK
-key 30    A
-key 31    S
-key 32    D
-key 33    F
-key 34    G
-key 35    H
-key 36    J
-key 37    K
-key 38    L
-key 39    SEMICOLON
-key 40    APOSTROPHE
-key 28    ENTER
-key 42    SHIFT_LEFT
-key 44    Z
-key 45    X
-key 46    C
-key 47    V
-key 48    B
-key 49    N
-key 50    M
-key 51    COMMA
-key 52    PERIOD
-key 53    SLASH
-key 54    SHIFT_RIGHT
-key 29    CTRL_LEFT
-key 217   SEARCH
-key 57    SPACE
-key 100   ALT_RIGHT
-key 97    CTRL_RIGHT
-key 105   DPAD_LEFT
-key 103   DPAD_UP
-key 108   DPAD_DOWN
-key 106   DPAD_RIGHT
-key 172   HOME
-key 139   MENU
-key 104   PAGE_UP
-key 109   PAGE_DOWN
-key 107   MOVE_END
-key 102   MOVE_HOME
+key 41    GRAVE                   WAKE_DROPPED
+key 2     1                       WAKE_DROPPED
+key 3     2                       WAKE_DROPPED
+key 4     3                       WAKE_DROPPED
+key 5     4                       WAKE_DROPPED
+key 6     5                       WAKE_DROPPED
+key 7     6                       WAKE_DROPPED
+key 8     7                       WAKE_DROPPED
+key 9     8                       WAKE_DROPPED
+key 10    9                       WAKE_DROPPED
+key 11    0                       WAKE_DROPPED
+key 12    MINUS                   WAKE_DROPPED
+key 13    EQUALS                  WAKE_DROPPED
+key 14    DEL                     WAKE_DROPPED
+key 15    TAB                     WAKE_DROPPED
+key 16    Q                       WAKE_DROPPED
+key 17    W                       WAKE_DROPPED
+key 18    E                       WAKE_DROPPED
+key 19    R                       WAKE_DROPPED
+key 20    T                       WAKE_DROPPED
+key 21    Y                       WAKE_DROPPED
+key 22    U                       WAKE_DROPPED
+key 23    I                       WAKE_DROPPED
+key 24    O                       WAKE_DROPPED
+key 25    P                       WAKE_DROPPED
+key 26    LEFT_BRACKET            WAKE_DROPPED
+key 27    RIGHT_BRACKET           WAKE_DROPPED
+key 43    BACKSLASH               WAKE_DROPPED
+key 58    CAPS_LOCK               WAKE_DROPPED
+key 30    A                       WAKE_DROPPED
+key 31    S                       WAKE_DROPPED
+key 32    D                       WAKE_DROPPED
+key 33    F                       WAKE_DROPPED
+key 34    G                       WAKE_DROPPED
+key 35    H                       WAKE_DROPPED
+key 36    J                       WAKE_DROPPED
+key 37    K                       WAKE_DROPPED
+key 38    L                       WAKE_DROPPED
+key 39    SEMICOLON               WAKE_DROPPED
+key 40    APOSTROPHE              WAKE_DROPPED
+key 28    ENTER                   WAKE_DROPPED
+key 42    SHIFT_LEFT              WAKE_DROPPED
+key 44    Z                       WAKE_DROPPED
+key 45    X                       WAKE_DROPPED
+key 46    C                       WAKE_DROPPED
+key 47    V                       WAKE_DROPPED
+key 48    B                       WAKE_DROPPED
+key 49    N                       WAKE_DROPPED
+key 50    M                       WAKE_DROPPED
+key 51    COMMA                   WAKE_DROPPED
+key 52    PERIOD                  WAKE_DROPPED
+key 53    SLASH                   WAKE_DROPPED
+key 54    SHIFT_RIGHT             WAKE_DROPPED
+key 29    CTRL_LEFT               WAKE_DROPPED
+key 217   SEARCH                  WAKE_DROPPED
+key 57    SPACE                   WAKE_DROPPED
+key 100   ALT_RIGHT               WAKE_DROPPED
+key 97    CTRL_RIGHT              WAKE_DROPPED
+key 105   DPAD_LEFT               WAKE_DROPPED
+key 103   DPAD_UP                 WAKE_DROPPED
+key 108   DPAD_DOWN               WAKE_DROPPED
+key 106   DPAD_RIGHT              WAKE_DROPPED
+key 172   HOME                    WAKE_DROPPED
+key 139   MENU                    WAKE_DROPPED
+key 104   PAGE_UP                 WAKE_DROPPED
+key 109   PAGE_DOWN               WAKE_DROPPED
+key 107   MOVE_END                WAKE_DROPPED
+key 102   MOVE_HOME               WAKE_DROPPED
