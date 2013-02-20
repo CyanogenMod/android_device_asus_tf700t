@@ -1,6 +1,11 @@
-This has been pre-compiled from 4.2.1 sources with exFAT and NTFS R/W support.
-This is designed to work with the texfat and tntfs modules provided by ASUS.
+NOTES:
+------
+This has been pre-compiled from 4.2.2 sources with exFAT and NTFS R/W support.
+This is designed to work with the texfat module provided by ASUS and Tuxera's
+ntfs-3g project.
 
+PATCHING:
+---------
 vold.patch should work just fine by applying in src/system/vold
 
     patch < vold.patch
@@ -12,6 +17,16 @@ https://github.com/untermensch/CyanogenMod_device_asus_tf300t/blob/master/patche
 It has been modified to work with 4.2.x
 
 TODO:
+-----
+* Fix exFAT mounting, should mount as r/w by default.
 
-* Pull changes and make it so it's functional across all devices and add this support to
-  android_system_vold
+CHANGELOG:
+----------
+
+January 16, 2013:
+* Add rudimentary exFAT R/W support
+* Add rudimentary NTFS R/W support
+
+February 19, 2013:
+* Remove tntfs module support
+* Add libntfs-3g support
