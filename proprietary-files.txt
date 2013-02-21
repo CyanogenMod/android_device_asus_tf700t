@@ -168,6 +168,5 @@ usr/share/alsa/pcm/surround50.conf
 usr/share/alsa/pcm/surround51.conf
 usr/share/alsa/pcm/surround71.conf
 vendor/firmware/bcm4330/fw_bcmdhd_apsta.bin
-vendor/firmware/bcm4330/fw_bcmdhd_b1.bin
 vendor/firmware/bcm4330/fw_bcmdhd.bin
 vendor/firmware/bcm4330/fw_bcmdhd_p2p.bin
