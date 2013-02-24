@@ -19,6 +19,9 @@
       android:fragment="com.cyanogenmod.settings.device.DeviceSettings$CpuSettingsFragment"
       android:title="@string/cpu_settings_title" />
     <header
+      android:fragment="com.cyanogenmod.settings.device.DeviceSettings$DisplaySettingsFragment"
+      android:title="@string/display_settings_title" />
+    <header
       android:fragment="com.cyanogenmod.settings.device.DeviceSettings$DockSettingsFragment"
       android:title="@string/dock_settings_title" />
     <header

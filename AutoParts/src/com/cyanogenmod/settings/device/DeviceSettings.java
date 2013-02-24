@@ -114,6 +114,40 @@ public class DeviceSettings extends PreferenceActivity {
         }
     }
 
+    public static class DisplaySettingsFragment
+        extends PreferenceFragment implements OnPreferenceChangeListener {
+
+        private CheckBoxPreference mSmartdimmer;
+
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+
+            addPreferencesFromResource(R.xml.preferences_display);
+
+            mSmartdimmer = (CheckBoxPreference)findPreference(
+                                DisplayUtils.PREFERENCE_DISPLAY_SMARTDIMMER);
+            mSmartdimmer.setOnPreferenceChangeListener(this);
+        }
+
+        @Override
+        public boolean onPreferenceChange(Preference preference, Object newValue) {
+            String key = preference.getKey();
+            if (key.compareTo(DisplayUtils.PREFERENCE_DISPLAY_SMARTDIMMER) == 0) {
+                final boolean newSmartdimmerValue = ((Boolean)newValue).booleanValue();
+                if (!DisplayUtils.writeSmartdimmerStatus(newSmartdimmerValue)) {
+                    // Failed to set property
+                    Toast.makeText(
+                            (Context)getActivity(),
+                            R.string.display_msg_failed,
+                            Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+
     public static class DockSettingsFragment
         extends PreferenceFragment implements OnPreferenceChangeListener {
 
@@ -156,6 +190,9 @@ public class DeviceSettings extends PreferenceActivity {
                     return false;
                 }
                 updateECWakeUpSummary(newEcWakeMode);
+            } else if (key.compareTo(DockUtils.PREFERENCE_DOCK_KP_NOTIFICATIONS) == 0) {
+                final boolean newNotifications = ((Boolean)newValue).booleanValue();
+                updateKpNotificationsSummary(newNotifications);
             }
             return true;
         }
@@ -167,7 +204,7 @@ public class DeviceSettings extends PreferenceActivity {
         }
 
         private void updateKpNotificationsSummary(boolean on) {
-            mECWakeUp.setSummary(on
+            mKpNotifications.setSummary(on
                                  ? R.string.dock_kp_notifications_summary_on
                                  : R.string.dock_kp_notifications_summary_off);
         }

@@ -16,16 +16,9 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <ListPreference android:key="cpu_settings"
-        android:title="@string/cpu_mode_title"
-        android:summary="@string/cpu_settings_summary"
-        android:entries="@array/cpu_settings_array"
-        android:entryValues="@array/cpu_settings_array_values"
-        android:defaultValue="1" /> <!-- Balanced -->
-
-    <CheckBoxPreference android:key="cpu_set_on_boot"
-        android:title="@string/cpu_set_on_boot_title"
-        android:summary="@string/cpu_set_on_boot_summary"
-        android:defaultValue="false"  />
+    <CheckBoxPreference android:key="display_smartdimmer"
+        android:title="@string/display_smartdimmer_title"
+        android:summary="@string/display_smartdimmer_summary"
+        android:defaultValue="true" />
 
 </PreferenceScreen>

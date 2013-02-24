@@ -21,7 +21,8 @@
         android:title="@string/dock_power_title">
 
       <CheckBoxPreference android:key="dock_ec_wakeup"
-          android:title="@string/dock_ec_wakeup" />
+          android:title="@string/dock_ec_wakeup"
+          android:defaultValue="false"  />
 
     </PreferenceCategory>
 
@@ -30,7 +31,8 @@
         android:title="@string/dock_kp_notifications_title">
 
       <CheckBoxPreference android:key="dock_kp_notifications"
-          android:title="@string/dock_kp_notifications" />
+          android:title="@string/dock_kp_notifications"
+          android:defaultValue="false"  />
 
     </PreferenceCategory>
 

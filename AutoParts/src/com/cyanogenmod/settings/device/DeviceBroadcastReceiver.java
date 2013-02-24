@@ -210,6 +210,9 @@ public class DeviceBroadcastReceiver extends BroadcastReceiver {
         // Restore CPU mode
         restoreCpuMode(ctx);
 
+        // Restore Nvidia Smartdimmer mode
+        restoreSmartdimmerMode(ctx);
+
         // Restore dock EcWakeUp mode
         restoreEcWakeMode(ctx);
 
@@ -237,6 +240,18 @@ public class DeviceBroadcastReceiver extends BroadcastReceiver {
             }
         } catch (Exception ex) {
             Log.e(TAG, "CPU set on boot failed", ex);
+        }
+    }
+
+    private void restoreSmartdimmerMode(Context ctx) {
+        try {
+            boolean smartdimmer = DisplayUtils.getSmartdimmer(ctx);
+            Log.i(TAG, "Restore Smartdimmer: " + smartdimmer);
+            if (!DisplayUtils.writeSmartdimmerStatus(smartdimmer)) {
+                Log.w(TAG, "Restore Smartdimmer failed.");
+            }
+        } catch (Exception ex) {
+            Log.e(TAG, "Restore Smartdimmer failed", ex);
         }
     }
 

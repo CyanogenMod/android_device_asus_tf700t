@@ -22,7 +22,8 @@
 
         <CheckBoxPreference android:key="lto_download_enabled"
               android:title="@string/lto_download_enabled_title"
-              android:summary="@string/lto_download_enabled_summary" />
+              android:summary="@string/lto_download_enabled_summary"
+              android:defaultValue="false"  />
 
         <ListPreference android:key="lto_download_interval"
               android:dependency="lto_download_enabled"
