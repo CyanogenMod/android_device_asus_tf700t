@@ -35,7 +35,10 @@
     <string name="dock_ec_wakeup">El teclado despierta la tablet</string>
     <string name="dock_ec_wakeup_summary_on">Pulsar cualquier tecla del teclado despertará la tablet.</string>
     <string name="dock_ec_wakeup_summary_off">La tablet no se despertará cuando se pulse una tecla del teclado.</string>
-    <string name="dock_kp_notifications_title">Notificaciones</string>
+    <string name="dock_kp_title">Teclado</string>
+    <string name="dock_kp_function_keys">Teclas de función (Fn)</string>
+    <string name="dock_kp_function_keys_summary">Las teclas de función solo se activan pulsando la combinación de teclas <xliff:g id="keys" example="CTRL+SHIFT">%1$s</xliff:g>.</string>
+    <string name="dock_kp_function_keys_summary_disabled">Las teclas de función están desactivadas.</string>
     <string name="dock_kp_notifications">Mostrar notificaciones del teclado</string>
     <string name="dock_kp_notifications_summary_on">Las notificaciones del teclado se mostraran en la barra de estado.</string>
     <string name="dock_kp_notifications_summary_off">Las notificaciones del teclado no se mostraran en la barra de estado.</string>
