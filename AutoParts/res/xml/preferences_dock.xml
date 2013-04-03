@@ -27,8 +27,14 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:key="dock_notifications"
-        android:title="@string/dock_kp_notifications_title">
+        android:key="dock_kp"
+        android:title="@string/dock_kp_title">
+
+      <MultiSelectListPreference android:key="dock_kp_function_keys"
+            android:title="@string/dock_kp_function_keys"
+            android:entries="@array/dock_kp_function_keys_array"
+            android:entryValues="@array/dock_kp_function_keys_values"
+            android:defaultValue="@array/dock_kp_function_keys_default" />
 
       <CheckBoxPreference android:key="dock_kp_notifications"
           android:title="@string/dock_kp_notifications"

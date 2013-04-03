@@ -49,8 +49,11 @@
     <string name="dock_ec_wakeup_summary_on">Pressing any key will wake the device up.</string>
     <string name="dock_ec_wakeup_summary_off">The device will not wake up when pressing a key.</string>
 
-    <!-- Dock * Keypad Notifications -->
-    <string name="dock_kp_notifications_title">Notifications</string>
+    <!-- Dock * Keypad -->
+    <string name="dock_kp_title">Keypad</string>
+    <string name="dock_kp_function_keys">Function keys</string>
+    <string name="dock_kp_function_keys_summary">Function keys only be triggered with the presence of the <xliff:g id="keys" example="CTRL+SHIFT">%1$s</xliff:g> key combination.</string>
+    <string name="dock_kp_function_keys_summary_none">Function keys will be triggered with any key combination.</string>
     <string name="dock_kp_notifications">Display keypad notifications</string>
     <string name="dock_kp_notifications_summary_on">Notifications will be displayed at status bar.</string>
     <string name="dock_kp_notifications_summary_off">Notifications will not be displayed at status bar.</string>
