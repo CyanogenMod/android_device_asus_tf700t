@@ -33,10 +33,12 @@ import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
 import android.os.ServiceManager;
+import android.os.SystemProperties;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 import android.util.Log;
 import android.util.Slog;
+import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
 
 import com.android.internal.os.DeviceKeyHandler;
@@ -58,6 +60,8 @@ public final class KeyHandler implements DeviceKeyHandler {
     public static final String EXTRA_ASUSDEC_KEY = "key";
     public static final String EXTRA_ASUSDEC_STATUS = "status";
     public static final String EXTRA_ASUSDEC_VALUE = "value";
+
+    public static final String META_FUNCTION_KEYS_PROPERTY = "sys.asusdec.kp.meta";
 
     // Private asusdec keys values (for notification purpose)
     public static final int ASUSDEC_UNKNOWN          = -1;
@@ -98,10 +102,34 @@ public final class KeyHandler implements DeviceKeyHandler {
     private static final int SCANCODE_MEDIA_NEXT      = 165;
     private static final int SCANCODE_CAPS_LOCK       = 58;
 
+    private static final int[] ALL_HANDLED_SCANCODES = {
+        SCANCODE_TOGGLE_WIFI, SCANCODE_TOGGLE_BT, SCANCODE_TOGGLE_TOUCHPAD,
+        SCANCODE_BRIGHTNESS_DOWN, SCANCODE_BRIGHTNESS_UP, SCANCODE_BRIGHTNESS_AUTO,
+        SCANCODE_SCREENSHOT, SCANCODE_EXPLORER, SCANCODE_SETTINGS,
+        SCANCODE_VOLUME_MUTE, SCANCODE_VOLUME_DOWN, SCANCODE_VOLUME_UP,
+        SCANCODE_MEDIA_PREVIOUS, SCANCODE_MEDIA_PLAY_PAUSE, SCANCODE_MEDIA_NEXT,
+        SCANCODE_CAPS_LOCK
+    };
+
+    private static final int[] ALL_FUNCTION_KEYS_SCANCODES = {
+        SCANCODE_TOGGLE_WIFI, SCANCODE_TOGGLE_BT, SCANCODE_TOGGLE_TOUCHPAD,
+        SCANCODE_BRIGHTNESS_DOWN, SCANCODE_BRIGHTNESS_UP, SCANCODE_BRIGHTNESS_AUTO,
+        SCANCODE_SCREENSHOT, SCANCODE_EXPLORER, SCANCODE_SETTINGS,
+        SCANCODE_VOLUME_MUTE, SCANCODE_VOLUME_DOWN, SCANCODE_VOLUME_UP,
+        SCANCODE_MEDIA_PREVIOUS, SCANCODE_MEDIA_PLAY_PAUSE, SCANCODE_MEDIA_NEXT
+    };
+
+    private static final int[] ALL_CONSUMED_SCANCODES = {
+        SCANCODE_TOGGLE_WIFI, SCANCODE_TOGGLE_BT, SCANCODE_TOGGLE_TOUCHPAD,
+        SCANCODE_BRIGHTNESS_DOWN, SCANCODE_BRIGHTNESS_UP, SCANCODE_BRIGHTNESS_AUTO,
+        SCANCODE_SCREENSHOT, SCANCODE_SETTINGS
+    };
+
     private final Context mContext;
     private final Handler mHandler;
     private final Intent mSettingsIntent;
     private final boolean mAutomaticAvailable;
+    private boolean mDocked = false;
     private boolean mTouchpadEnabled = true;
     private WifiManager mWifiManager;
     private AudioManager mAudioManager;
@@ -143,7 +171,8 @@ public final class KeyHandler implements DeviceKeyHandler {
             if (Intent.ACTION_DOCK_EVENT.equals(intent.getAction())) {
                 int dockMode = intent.getIntExtra(Intent.EXTRA_DOCK_STATE,
                         Intent.EXTRA_DOCK_STATE_UNDOCKED);
-                if (dockMode != Intent.EXTRA_DOCK_STATE_UNDOCKED) {
+                mDocked = dockMode != Intent.EXTRA_DOCK_STATE_UNDOCKED;
+                if (mDocked) {
                     nativeToggleTouchpad(mTouchpadEnabled);
                 }
             }
@@ -158,16 +187,40 @@ public final class KeyHandler implements DeviceKeyHandler {
                     + ", flags=" + event.getFlags()
                     + ", canceled=" + event.isCanceled()
                     + ", keyCode=" + event.getKeyCode()
+                    + ", deviceId=" + event.getDeviceId()
                     + ", scanCode=" + event.getScanCode()
                     + ", metaState=" + event.getMetaState()
                     + ", repeatCount=" + event.getRepeatCount());
         }
 
-        if (event.getAction() != KeyEvent.ACTION_UP
-                || event.getRepeatCount() != 0) {
+        // Asusdec should only handle key events when the device is docked.
+        // The device should be a full keyboard like the Transformers one (otherwise we
+        // are in present of a gpio interruption or virtual keyboards)
+        if (!mDocked || event.getDeviceId() < KeyCharacterMap.FULL) {
+            // No consume any key
             return false;
         }
 
+        // Are we able to handle it?
+        if (!isHandled(event)) {
+            // Then no consume the key
+            return false;
+        }
+
+        // Consume the event if we are going to handle it. We don't want other subsystem can
+        // handle it)
+        if (event.getAction() != getScanCodeAction(event) || event.getRepeatCount() != 0) {
+            // Then mark as consumed
+            return true;
+        }
+
+        // Now, check that the functions keys are triggered with the user-defined key combination
+        if (isFunctionKey(event) && !isValidMetaFunctionKeys(event)) {
+            // Consume the key
+            return true;
+        }
+
+        // Now check every type of scancode that we are able to handle
         switch (event.getScanCode()) {
             case SCANCODE_TOGGLE_WIFI:
                 toggleWifi();
@@ -192,7 +245,7 @@ public final class KeyHandler implements DeviceKeyHandler {
                 break;
             case SCANCODE_EXPLORER:
                 launchExplorer();
-                return false;
+                break;
             case SCANCODE_SETTINGS:
                 launchSettings();
                 break;
@@ -203,31 +256,97 @@ public final class KeyHandler implements DeviceKeyHandler {
                 // treat this event as a volume mute toggle action. the asusdec KeyHandler
                 // mustn't mark the key event as consumed.
                 toggleAudioMute();
-                return false;
+                break;
             case SCANCODE_VOLUME_DOWN:
                 volumeDown();
-                return false;
+                break;
             case SCANCODE_VOLUME_UP:
                 volumeUp();
-                return false;
+                break;
             case SCANCODE_MEDIA_PLAY_PAUSE:
                 mediaPlayPause();
-                return false;
+                break;
             case SCANCODE_MEDIA_PREVIOUS:
                 mediaPrevious();
-                return false;
+                break;
             case SCANCODE_MEDIA_NEXT:
                 mediaNext();
-                return false;
+                break;
             case SCANCODE_CAPS_LOCK:
                 capsLock(event);
-                return false;
-
-            default:
-                return false;
+                break;
         }
 
+        // Return if the key was consumed here
+        return isConsumed(event);
+    }
+
+    private boolean isValidMetaFunctionKeys(final KeyEvent event) {
+        // Check the user-defined key combination to accept function keys
+        long meta = getMetaFunctionKeys();
+        if (DEBUG_KEYEVENT) {
+            Log.d(TAG, "MetaFunctionKeys: " + meta);
+        }
+        if (meta != 0 && (!event.isAltPressed() && (meta | KeyEvent.META_ALT_MASK) == meta)) {
+            return false;
+        }
+        if (meta != 0 && (!event.isCtrlPressed() && (meta | KeyEvent.META_CTRL_MASK) == meta)) {
+            return false;
+        }
+        if (meta != 0 && (!event.isShiftPressed() && (meta | KeyEvent.META_SHIFT_MASK) == meta)) {
+            return false;
+        }
         return true;
+    }
+
+    private boolean isHandled(final KeyEvent event) {
+        int scancode = event.getScanCode();
+        int cc = ALL_HANDLED_SCANCODES.length;
+        for (int i = 0; i < cc; i++) {
+            if (ALL_HANDLED_SCANCODES[i] == scancode){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean isFunctionKey(final KeyEvent event) {
+        int scancode = event.getScanCode();
+        int cc = ALL_FUNCTION_KEYS_SCANCODES.length;
+        for (int i = 0; i < cc; i++) {
+            if (ALL_FUNCTION_KEYS_SCANCODES[i] == scancode){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean isConsumed(final KeyEvent event) {
+        int scancode = event.getScanCode();
+        int cc = ALL_CONSUMED_SCANCODES.length;
+        for (int i = 0; i < cc; i++) {
+            if (ALL_CONSUMED_SCANCODES[i] == scancode){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private int getScanCodeAction(final KeyEvent event) {
+        int scancode = event.getScanCode();
+        switch (scancode) {
+            case SCANCODE_EXPLORER:
+            case SCANCODE_VOLUME_MUTE:
+            case SCANCODE_VOLUME_DOWN:
+            case SCANCODE_VOLUME_UP:
+            case SCANCODE_MEDIA_PLAY_PAUSE:
+            case SCANCODE_MEDIA_PREVIOUS:
+            case SCANCODE_MEDIA_NEXT:
+            case SCANCODE_CAPS_LOCK:
+                return KeyEvent.ACTION_DOWN;
+            default:
+                return KeyEvent.ACTION_UP;
+        }
     }
 
     private void toggleWifi() {
@@ -526,6 +645,10 @@ public final class KeyHandler implements DeviceKeyHandler {
 
     private void notifyKey(int asusdeckey, int status) {
         notifyKey(asusdeckey, status, 0);
+    }
+
+    private static long getMetaFunctionKeys() {
+        return SystemProperties.getLong(KeyHandler.META_FUNCTION_KEYS_PROPERTY, 0);
     }
 
     /*

@@ -29,6 +29,8 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
+import android.preference.MultiCheckPreference;
+import android.preference.MultiSelectListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
@@ -38,10 +40,12 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.cyanogenmod.asusdec.DockEmbeddedController;
+import com.cyanogenmod.settings.device.DockUtils;
 
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 public class DeviceSettings extends PreferenceActivity {
 
@@ -152,6 +156,7 @@ public class DeviceSettings extends PreferenceActivity {
         extends PreferenceFragment implements OnPreferenceChangeListener {
 
         private CheckBoxPreference mECWakeUp;
+        private MultiSelectListPreference mKpFunctionKeys;
         private CheckBoxPreference mKpNotifications;
 
         DockEmbeddedController mDockEc;
@@ -169,6 +174,14 @@ public class DeviceSettings extends PreferenceActivity {
                                                 DockUtils.PREFERENCE_DOCK_EC_WAKEUP);
             updateECWakeUpSummary(mECWakeUp.isChecked());
             mECWakeUp.setOnPreferenceChangeListener(this);
+
+            mKpFunctionKeys = (MultiSelectListPreference)findPreference(
+                                DockUtils.PREFERENCE_DOCK_KP_FUNCTION_KEYS);
+            long meta =
+                    DockUtils.translateFunctionKeysToMetaKeys(
+                        DockUtils.getKpFunctionKeys((Context)getActivity()));
+            updateKpFunctionKeysSummary(meta);
+            mKpFunctionKeys.setOnPreferenceChangeListener(this);
 
             mKpNotifications = (CheckBoxPreference)findPreference(
                                 DockUtils.PREFERENCE_DOCK_KP_NOTIFICATIONS);
@@ -190,6 +203,11 @@ public class DeviceSettings extends PreferenceActivity {
                     return false;
                 }
                 updateECWakeUpSummary(newEcWakeMode);
+            } else if (key.compareTo(DockUtils.PREFERENCE_DOCK_KP_FUNCTION_KEYS) == 0) {
+                final Set<String> newFunctionKeys = (Set<String>)newValue;
+                final long metaKeys = DockUtils.translateFunctionKeysToMetaKeys(newFunctionKeys);
+                DockUtils.setMetaFunctionKeys(metaKeys);
+                updateKpFunctionKeysSummary(metaKeys);
             } else if (key.compareTo(DockUtils.PREFERENCE_DOCK_KP_NOTIFICATIONS) == 0) {
                 final boolean newNotifications = ((Boolean)newValue).booleanValue();
                 updateKpNotificationsSummary(newNotifications);
@@ -201,6 +219,16 @@ public class DeviceSettings extends PreferenceActivity {
             mECWakeUp.setSummary(on
                                  ? R.string.dock_ec_wakeup_summary_on
                                  : R.string.dock_ec_wakeup_summary_off);
+        }
+
+        private void updateKpFunctionKeysSummary(long meta) {
+            if (meta == 0) {
+                mKpFunctionKeys.setSummary(R.string.dock_kp_function_keys_summary_none);
+            } else {
+                String metaKeys = DockUtils.translateFunctionKeysToString(meta);
+                String summary = getString(R.string.dock_kp_function_keys_summary, metaKeys);
+                mKpFunctionKeys.setSummary(summary);
+            }
         }
 
         private void updateKpNotificationsSummary(boolean on) {
