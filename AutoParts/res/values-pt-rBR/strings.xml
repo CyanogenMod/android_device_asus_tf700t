@@ -33,7 +33,6 @@
     <string name="dock_ec_wakeup">Teclado acorda o dispositivo</string>
     <string name="dock_ec_wakeup_summary_on">O dispositivo irá acordar ao pressionar uma tecla</string>
     <string name="dock_ec_wakeup_summary_off">O dispositivo não irá acordar ao pressionar uma tecla</string>
-    <string name="dock_kp_notifications_title">Notificações</string>
     <string name="dock_kp_notifications">Exibir notificações do teclado</string>
     <string name="dock_kp_notifications_summary_on">Notificações irão ser exibidas na barra de status</string>
     <string name="dock_kp_notifications_summary_off">Notificações não irão ser exibidas na barra de status</string>

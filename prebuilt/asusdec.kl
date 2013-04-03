@@ -1,20 +1,31 @@
 key 158   BACK                    WAKE_DROPPED
+key 59    F1                      WAKE_DROPPED
+key 60    F2                      WAKE_DROPPED
+key 61    F3                      WAKE_DROPPED
+key 62    F4                      WAKE_DROPPED
+key 63    F5                      WAKE_DROPPED
+key 64    F6                      WAKE_DROPPED
+key 65    F7                      WAKE_DROPPED
+key 66    F8                      WAKE_DROPPED
+key 67    F9                      WAKE_DROPPED
+key 68    F10                     WAKE_DROPPED
+key 87    F11                     WAKE_DROPPED
+key 88    F12                     WAKE_DROPPED
 # TOGGLE_WIFI
 key 238   F1                      WAKE_DROPPED
 # TOGGLE_BT
 key 237   F2                      WAKE_DROPPED
 # TOGGLE_TOUCHPAD
-key 60    F3                      WAKE_DROPPED
+key 202   F3                      WAKE_DROPPED
 # BRIGHTNESS_DOWN
 key 224   F4                      WAKE_DROPPED
 # BRIGHTNESS_UP
 key 225   F5                      WAKE_DROPPED
 # BRIGHTNESS_AUTO
-key 61    F6                      WAKE_DROPPED
-# SCREENSHOT
-key 212   F7                      WAKE_DROPPED
+key 244   F6                      WAKE_DROPPED
+key 212   CAMERA                  WAKE_DROPPED
 key 150   EXPLORER                WAKE_DROPPED
-key 62    SETTINGS                WAKE_DROPPED
+key 141   SETTINGS                WAKE_DROPPED
 key 165   MEDIA_PREVIOUS          WAKE_DROPPED
 key 164   MEDIA_PLAY_PAUSE        WAKE_DROPPED
 key 163   MEDIA_NEXT              WAKE_DROPPED

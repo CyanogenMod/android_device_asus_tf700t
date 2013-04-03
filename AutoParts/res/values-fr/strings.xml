@@ -34,7 +34,6 @@
     <string name="dock_ec_wakeup">Reveil avec une touche</string>
     <string name="dock_ec_wakeup_summary_on">L\'appui sur une touche du clavier réveille l\'appareil</string>
     <string name="dock_ec_wakeup_summary_off">L\'appui sur une touche du clavier ne réveille pas l\'appareil</string>
-    <string name="dock_kp_notifications_title">Notifications</string>
     <string name="dock_kp_notifications">Afficher les notifications du clavier</string>
     <string name="dock_kp_notifications_summary_on">Les notifications du clavier seront affichées dans la barre d\'état</string>
     <string name="dock_kp_notifications_summary_off">Les notifications du clavier ne seront pas affichées dans la barre d\'état</string>
