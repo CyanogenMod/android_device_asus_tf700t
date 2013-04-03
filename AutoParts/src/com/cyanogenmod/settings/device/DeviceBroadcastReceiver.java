@@ -37,7 +37,7 @@ import java.util.Date;
 public class DeviceBroadcastReceiver extends BroadcastReceiver {
     private static final String TAG = "DeviceBroadcastReceiver";
 
-    private static final int NOTIFICATION_ID = R.string.dock_kp_notifications_title;
+    private static final int NOTIFICATION_ID = R.string.dock_kp_notifications;
 
     private final Handler mHandler;
     private static final Object mLock = new Object();
@@ -210,6 +210,9 @@ public class DeviceBroadcastReceiver extends BroadcastReceiver {
         // Restore CPU mode
         restoreCpuMode(ctx);
 
+        // Restore Function keys
+        restoreFunctionKeys(ctx);
+
         // Restore Nvidia Smartdimmer mode
         restoreSmartdimmerMode(ctx);
 
@@ -240,6 +243,20 @@ public class DeviceBroadcastReceiver extends BroadcastReceiver {
             }
         } catch (Exception ex) {
             Log.e(TAG, "CPU set on boot failed", ex);
+        }
+    }
+
+    private void restoreFunctionKeys(Context ctx) {
+        try {
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ctx);
+            long meta =
+                    DockUtils.translateFunctionKeysToMetaKeys(
+                        DockUtils.getKpFunctionKeys(ctx));
+            DockUtils.setMetaFunctionKeys(meta);
+            Log.i(TAG,
+                    String.format("Set Function keys on boot %s.", String.valueOf(meta)));
+        } catch (Exception ex) {
+            Log.e(TAG, "Function keys set on boot failed", ex);
         }
     }
 
