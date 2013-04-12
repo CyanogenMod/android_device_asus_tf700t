@@ -4,7 +4,6 @@
 ro.carrier=wifi-only
 ro.sf.lcd_density=240
 ro.epad.model=TF700T
-ro.product.model=TF700T
 ro.epad.model_id=04
 persist.tegra.nvmmlite=1
 persist.sys.fw.camera.status=1
