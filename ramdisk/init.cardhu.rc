@@ -52,6 +52,9 @@ on post-fs-data
 on boot
 
 # bluetooth
+    # change back to bluetooth from system
+    chown bluetooth net_bt_stack /data/misc/bluetooth
+
     # UART device
     chmod 0660 /dev/ttyHS2
     chown bluetooth net_bt_stack /dev/ttyHS2
@@ -59,6 +62,7 @@ on boot
     # power up/down interface
     chmod 0660 /sys/class/rfkill/rfkill0/state
     chmod 0660 /sys/class/rfkill/rfkill0/type
+    write /sys/class/rfkill/rfkill0/state 0
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
 
@@ -66,29 +70,26 @@ on boot
     chown bluetooth net_bt_stack ro.bt.bdaddr_path
     chown bluetooth net_bt_stack /system/etc/bluetooth
     chown bluetooth net_bt_stack /data/misc/bluetooth
-    setprop ro.bt.bdaddr_path "/data/misc/bluetooth/bdaddr"
-
-    # bluetooth LPM
-    chmod 0220 /proc/bluetooth/sleep/lpm
-    chmod 0220 /proc/bluetooth/sleep/btwrite
-    chown bluetooth net_bt_stack /proc/bluetooth/sleep/lpm
-    chown bluetooth net_bt_stack /proc/bluetooth/sleep/btwrite
+    setprop ro.bt.bdaddr_path "/data/misc/bluetooth/mac.txt"
 
 # nvdps
     chown system system /sys/class/graphics/fb0/device/nvdps
 
 # backlight
     chown system system /sys/class/backlight/pwm-backlight/brightness
+    chown system system /sys/class/backlight/pwm-backlight/brightness_overwrite
 
 # didim
     chown system system /sys/class/graphics/fb0/device/smartdimmer/enable
     chown system system /sys/class/graphics/fb0/device/smartdimmer/aggressiveness
     chown system system /sys/class/graphics/fb0/device/smartdimmer/phase_in_adjustments
 
+# USB camera
+    chown media media sys/class/usb_camera/power
+
 # power
     chown system system /sys/kernel/tegra_cap/core_cap_level
     chown system system /sys/kernel/tegra_cap/core_cap_state
-    chown system system /sys/devices/platform/tegra_grhost/enable_3d_scaling
     chown system system /sys/module/cpu_tegra/parameters/cpu_user_cap
     chown system system /sys/module/cpu_tegra3/parameters/mp_overhead
     chown system system /sys/module/cpu_tegra/parameters/system_mode
@@ -108,8 +109,8 @@ on boot
     chown system system /sys/bus/iio/devices/device0/proximity_low_threshold
     chown system system /sys/devices/platform/tegra-i2c.2/i2c-2/2-000f/enable
     chown system system /sys/devices/platform/tegra-i2c.2/i2c-2/2-000f/delay
-    chmod 777 /sys/devices/platform/tegra-i2c.2/i2c-2/2-000f/enable
-    chmod 777 /sys/devices/platform/tegra-i2c.2/i2c-2/2-000f/delay
+    chmod 0660 /sys/devices/platform/tegra-i2c.2/i2c-2/2-000f/enable
+    chmod 0660 /sys/devices/platform/tegra-i2c.2/i2c-2/2-000f/delay
 
     # new nodes from linux kernel v3.4
     chown system system /sys/bus/iio/devices/iio:device0/als_ir_mode
@@ -146,16 +147,11 @@ on boot
     write /sys/module/cpuidle/parameters/lp2_in_idle 0
 
 # Interactive governor settings
-    chown system system /sys/devices/system/cpu/cpufreq/interactive/boost_factor
-    chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/boost_factor
     chown system system /sys/devices/system/cpu/cpufreq/interactive/go_maxspeed_load
-    chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/go_maxspeed_load
-    chown system system /sys/devices/system/cpu/cpufreq/interactive/io_is_busy
-    chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/io_is_busy
     chown system system /sys/devices/system/cpu/cpufreq/interactive/max_boost
-    chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/max_boost
-    chown system system /sys/devices/system/cpu/cpufreq/interactive/sustain_load
-    chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/sustain_load
+
+# Set battery poll interval
+    write /sys/module/bq27x00_battery/parameters/poll_interval 30
 
 # Setup CPU for "balanced" mode 
     setprop sys.cpu.mode 1
@@ -187,6 +183,8 @@ on property:ro.debuggable=1
     mkdir /data/gps
     chown system system /data/gps
     chmod 770 /data/gps
+    chown system system /sys/module/cpu_tegra/parameters/gps_start
+    chmod 600 /sys/module/cpu_tegra/parameters/gps_start
 
 # GPS init
     write /sys/class/gpio/export 162
@@ -200,8 +198,8 @@ on property:ro.debuggable=1
     insmod /system/lib/texfat.ko
 
 # Touch
-    start touch_update
     chown system system /proc/ektf_dbg
+    chmod 0660 /proc/ektf_dbg
 
 # BB mapping symbolic name to the logging ttyACM port
     symlink /dev/ttyACM2 /dev/log_modem
@@ -211,8 +209,8 @@ service wifimacwriter /system/bin/wifimacwriter
     class main
     oneshot
 
-# Write BT BD_ADDR
-service btmacreader /system/bin/btmacreader
+# Write ASUS BD_ADDR to /data/misc/bluetooth
+service bdaddrwriter /system/bin/bdaddrwriter
     class main
     oneshot
 
@@ -230,17 +228,6 @@ service p2p_supplicant /system/bin/wpa_supplicant \
 
 service wpa_supplicant /system/bin/wpa_supplicant \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf -e/data/misc/wifi/entropy.bin
-#   we will start as root and wpa_supplicant will switch to user wifi
-#   after setting up the capabilities required for WEXT
-#   user wifi
-#   group wifi inet keystore
-    class main
-    socket wpa_wlan0 dgram 660 wifi wifi
-    disabled
-    oneshot
-
-service wpa_supplicant2 /system/bin/wpa_supplicant \
-    -Dwext -iwlan0 -c/data/misc/wifi/wpa_supplicant.conf
 #   we will start as root and wpa_supplicant will switch to user wifi
 #   after setting up the capabilities required for WEXT
 #   user wifi
@@ -412,13 +399,6 @@ on property:ril.testmode=0
     start ril-daemon
 
 # End of testmode patches.
-
-# Blutooth DUN support
-service BtService /system/bin/sh /system/etc/BtService.sh
-    user root
-    group root
-    disabled
-    oneshot
 
 # Touch
 service touch_update /system/bin/touch_fw_update --default
