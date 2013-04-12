@@ -17,7 +17,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
            xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <string name="app_name">Asus Transformer Infinity Settings</string>
+    <string name="app_name">Advanced settings</string>
 
     <!--CPU -->
     <string name="cpu_settings_title">CPU</string>
