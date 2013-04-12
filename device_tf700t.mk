@@ -50,6 +50,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/idc/raydium_ts.idc:system/usr/idc/raydium_ts.idc \
     $(LOCAL_PATH)/idc/sis_touch.idc:system/usr/idc/sis_touch.idc \
     $(LOCAL_PATH)/idc/Vendor_0457_Product_0817.idc:system/usr/idc/Vendor_0457_Product_0817.idc \
+    $(LOCAL_PATH)/idc/Vendor_0457_Product_1012.idc:system/usr/idc/Vendor_0457_Product_1012.idc \
     $(LOCAL_PATH)/prebuilt/asusdec.kcm:system/usr/keychars/asusdec.kcm \
     $(LOCAL_PATH)/prebuilt/asusdec.kl:system/usr/keylayout/asusdec.kl \
     $(LOCAL_PATH)/prebuilt/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
@@ -91,8 +92,6 @@ PRODUCT_PACKAGES += \
     make_ext4fs \
     setup_fs \
     audio.a2dp.default \
-    audio.usb.default \
-    libtinyalsa \
     libaudioutils \
     libinvensense_mpl \
     AutoParts_tfp \
