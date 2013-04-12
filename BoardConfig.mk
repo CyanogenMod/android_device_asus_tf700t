@@ -19,7 +19,6 @@ USE_PROPRIETARY_AUDIO_EXTENSIONS := true
 BOARD_USES_GENERIC_AUDIO := false
 BOARD_USES_ALSA_AUDIO := false
 BOARD_USES_TINY_AUDIO_HW := false
-COMMON_GLOBAL_CFLAGS += -DMR0_AUDIO_BLOB
 
 # inherit from the proprietary version
 -include vendor/asus/tf700t/BoardConfigVendor.mk
@@ -51,7 +50,6 @@ BOARD_KERNEL_BASE := 0x10000000
 BOARD_KERNEL_PAGESIZE :=
 
 # EGL settings
-BOARD_EGL_NEEDS_LEGACY_FB := true
 BOARD_EGL_CFG := device/asus/tf700t/configs/egl.cfg
 USE_OPENGL_RENDERER := true
 
