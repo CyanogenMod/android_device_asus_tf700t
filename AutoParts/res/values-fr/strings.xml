@@ -29,7 +29,7 @@
     <string name="display_smartdimmer_title">Smartdimmer</string>
     <string name="display_smartdimmer_summary">Activer la technologie Nvidia Smartdimmer pour contrôler la luminosité de l\écran</string>
     <string name="dock_settings_title">Station d\'accueil</string>
-    <string name="dock_msg_failed">Failed to set the dock property</string>
+    <string name="dock_msg_failed">Impossible de définir les propriétés de la station d\'accueil</string>
     <string name="dock_power_title">Alimentation</string>
     <string name="dock_ec_wakeup">Reveil avec une touche</string>
     <string name="dock_ec_wakeup_summary_on">L\'appui sur une touche du clavier réveille l\'appareil</string>
