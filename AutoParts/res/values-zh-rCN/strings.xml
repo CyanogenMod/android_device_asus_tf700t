@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013 The CyanogenMod Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+           xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <string name="app_name">高级设置</string>
+    <string name="cpu_settings_title">CPU</string>
+    <string name="cpu_mode_title">CPU 模式切换</string>
+    <string name="cpu_settings_summary">更改 CPU 电源模式</string>
+    <string name="cpu_set_on_boot_title">启动时设定</string>
+    <string name="cpu_set_on_boot_summary">在启动时恢复当前的 CPU 设置</string>
+    <string name="cpu_pwrsv">节能</string>
+    <string name="cpu_bal">平衡</string>
+    <string name="cpu_perf">高性能</string>
+    <string name="display_settings_title">显示</string>
+    <string name="display_msg_failed">设定显示属性失败</string>
+    <string name="display_smartdimmer_title">Smartdimmer</string>
+    <string name="display_smartdimmer_summary">启用 Nvidia Smartdimmer 以便控制 LCD 的亮度</string>
+    <string name="dock_settings_title">基座</string>
+    <string name="dock_msg_failed">设定基座属性失败</string>
+    <string name="dock_power_title">电源</string>
+    <string name="dock_ec_wakeup">使用键盘唤醒设备</string>
+    <string name="dock_ec_wakeup_summary_on">按键盘上任意键将唤醒设备</string>
+    <string name="dock_ec_wakeup_summary_off">按键盘上任意键将不会唤醒设备</string>
+    <string name="dock_kp_title">小键盘</string>
+    <string name="dock_kp_function_keys">功能键 (Fn)</string>
+    <string name="dock_kp_function_keys_summary">通过 <xliff:g id="keys" example="CTRL+SHIFT">%1$s</xliff:g> 按键组合触发功能键</string>
+    <string name="dock_kp_function_keys_summary_disabled">功能键已被禁用</string>
+    <string name="dock_kp_notifications">显示小键盘通知</string>
+    <string name="dock_kp_notifications_summary_on">通知将在状态栏上显示</string>
+    <string name="dock_kp_notifications_summary_off">通知将不在状态栏上显示</string>
+    <string name="kp_wifi_on">Wi-Fi 已启用</string>
+    <string name="kp_wifi_off">Wi-Fi 已禁用</string>
+    <string name="kp_bt_on">蓝牙已启用</string>
+    <string name="kp_bt_off">蓝牙已禁用</string>
+    <string name="kp_tp_on">触摸板已启用</string>
+    <string name="kp_tp_off">触摸板已禁用</string>
+    <string name="kp_brightness_manual"><xliff:g id="brightness">%1$s</xliff:g> 亮度</string>
+    <string name="kp_brightness_auto">自动亮度</string>
+    <string name="kp_volume">Volume <xliff:g id="volume">%1$s</xliff:g></string>
+    <string name="kp_volume_mute_on">禁音模式已开启</string>
+    <string name="kp_volume_mute_off">禁音模式已关闭</string>
+    <string name="kp_media_play_pause">媒体播放/暂停</string>
+    <string name="kp_media_previous">媒体上一首</string>
+    <string name="kp_media_next">媒体下一首</string>
+    <string name="kp_screenshot">屏幕截图</string>
+    <string name="kp_explorer">启动浏览器</string>
+    <string name="kp_settings">启动设置</string>
+    <string name="kp_caps_lock_on">大写锁定已开启</string>
+    <string name="kp_caps_lock_off">大写锁定已关闭</string>
+    <string name="gps_settings_title">GPS</string>
+    <string name="lto_download_title">LTO 数据下载</string>
+    <string name="lto_download_enabled_title">自动下载</string>
+    <string name="lto_download_enabled_summary">有网络连接时自动下载数据</string>
+    <string name="lto_download_interval_title">下载频率</string>
+    <string name="lto_download_interval_12hours">12 小时</string>
+    <string name="lto_download_interval_1day">1 天</string>
+    <string name="lto_download_interval_3days">3 天</string>
+    <string name="lto_download_interval_1week">1 周</string>
+    <string name="lto_download_interval_2weeks">2 周</string>
+    <string name="lto_download_interval_1month">1 个月</string>
+    <string name="lto_download_file_title">下载文件类型</string>
+    <string name="lto_download_file_7days">7 天有效期</string>
+    <string name="lto_download_file_30days">30 天有效期</string>
+    <string name="lto_download_wifi_only_title">仅限于 Wi-Fi</string>
+    <string name="lto_download_wifi_only_summary">仅在连接 Wi-Fi 时下载辅助数据</string>
+    <string name="lto_download_now">立即下载</string>
+    <string name="lto_last_download_date">最后一次下载：%1$s</string>
+    <string name="lto_last_download_date_failure">最后一次尝试的下载：%1$s (未成功)</string>
+    <string name="lto_last_download_date_never">最后一次下载：从未</string>
+    <string name="lto_downloading_data">正在下载数据\u2026 (%1$s%%)</string>
+    <string name="lto_downloading_data_notification">正在下载 LTO 数据\u2026</string>
+
+</resources>
