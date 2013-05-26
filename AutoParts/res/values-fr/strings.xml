@@ -13,7 +13,6 @@
      See the License for the specific language governing permissions and
      limitations under the License.
  -->
-
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Paramètres avancés</string>
     <string name="cpu_settings_title">CPU</string>
@@ -34,6 +33,10 @@
     <string name="dock_ec_wakeup">Reveil avec une touche</string>
     <string name="dock_ec_wakeup_summary_on">L\'appui sur une touche du clavier réveille l\'appareil</string>
     <string name="dock_ec_wakeup_summary_off">L\'appui sur une touche du clavier ne réveille pas l\'appareil</string>
+    <string name="dock_kp_title">Clavier</string>
+    <string name="dock_kp_function_keys">Touches fonction (Fn)</string>
+    <string name="dock_kp_function_keys_summary">Les touches de fonction seront déclenchées en appuyant simultanément sur la touche <xliff:g id="keys" example="CTRL+SHIFT">%1$s</xliff:g></string>
+    <string name="dock_kp_function_keys_summary_disabled">Les touches de fonction sont désactivées</string>
     <string name="dock_kp_notifications">Afficher les notifications du clavier</string>
     <string name="dock_kp_notifications_summary_on">Les notifications du clavier seront affichées dans la barre d\'état</string>
     <string name="dock_kp_notifications_summary_off">Les notifications du clavier ne seront pas affichées dans la barre d\'état</string>
@@ -52,10 +55,10 @@
     <string name="kp_media_previous">Media précédent</string>
     <string name="kp_media_next">Media suivant</string>
     <string name="kp_screenshot">Prendre un imprime-écran</string>
-    <string name="kp_explorer">Lancer le navigateur</string>
+    <string name="kp_explorer">Ouvrir le navigateur</string>
     <string name="kp_settings">Ouvrir les paramètres</string>
-    <string name="kp_caps_lock_on">Caps-Lock activé</string>
-    <string name="kp_caps_lock_off">Caps-Lock désactivé</string>
+    <string name="kp_caps_lock_on">Verrouillage majuscule activé</string>
+    <string name="kp_caps_lock_off">Verrouillage majuscule désactivé</string>
     <string name="gps_settings_title">GPS</string>
     <string name="lto_download_title">Téléchargement LTO</string>
     <string name="lto_download_enabled_title">Téléchargement automatique</string>
@@ -70,8 +73,8 @@
     <string name="lto_download_file_title">Type de fichier téléchargé</string>
     <string name="lto_download_file_7days">7 jours de validité</string>
     <string name="lto_download_file_30days">30 jours de validité</string>
-    <string name="lto_download_wifi_only_title">Wifi seulement</string>
-    <string name="lto_download_wifi_only_summary">Télécharger les données seulement avec une connection Wifi</string>
+    <string name="lto_download_wifi_only_title">Wi-Fi seulement</string>
+    <string name="lto_download_wifi_only_summary">Télécharger les données seulement avec une connection Wi-Fi</string>
     <string name="lto_download_now">Télécharger maintenant</string>
     <string name="lto_last_download_date">Dernier téléchargement: %1$s</string>
     <string name="lto_last_download_date_failure">Dernier téléchargement\u00A0: %1$s (échoué)</string>
