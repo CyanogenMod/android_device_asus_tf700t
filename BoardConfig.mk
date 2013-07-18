@@ -99,3 +99,17 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_HAS_LARGE_FILESYSTEM := true
 TARGET_RECOVERY_INITRC := device/asus/tf700t/recovery/init.rc
 BOARD_HAS_SDCARD_INTERNAL := true
+BOARD_CHARGER_ENABLE_SUSPEND := true
+
+ifeq ($(HAVE_SELINUX),true)
+
+BOARD_SEPOLICY_DIRS := \
+    device/asus/tf700t/selinux
+
+BOARD_SEPOLICY_UNION := \
+    file_contexts \
+    file.te \
+    device.te \
+    domain.te
+
+endif
