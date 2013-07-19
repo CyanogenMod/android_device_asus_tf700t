@@ -101,3 +101,4 @@ key 104   PAGE_UP                 WAKE_DROPPED
 key 109   PAGE_DOWN               WAKE_DROPPED
 key 107   MOVE_END                WAKE_DROPPED
 key 102   MOVE_HOME               WAKE_DROPPED
+key 86    BACKSLASH               WAKE_DROPPED
