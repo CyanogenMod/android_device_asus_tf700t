@@ -215,4 +215,7 @@
 
     <bool name="config_showNavigationBar">true</bool>
     <integer name="config_multiuserMaximumUsers">4</integer>
+
+    <!-- Set to true to add links to Cell Broadcast app from Settings and MMS app. -->
+    <bool name="config_cellBroadcastAppLinks">false</bool>
 </resources>
