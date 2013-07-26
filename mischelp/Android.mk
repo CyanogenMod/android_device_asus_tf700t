@@ -3,7 +3,7 @@ LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)
 
 LOCAL_SHARED_LIBRARIES := \
-    libutils
+    liblog
 
 LOCAL_MODULE_TAGS := eng
 LOCAL_SRC_FILES := mischelp.c
@@ -16,7 +16,7 @@ include $(BUILD_EXECUTABLE)
 
 include $(CLEAR_VARS)
 LOCAL_SHARED_LIBRARIES := \
-    libutils
+    liblog
 
 LOCAL_SRC_FILES := mischelp.c
 LOCAL_MODULE := mischelp
@@ -33,7 +33,7 @@ LOCAL_MODULE_CLASS := UTILITY_EXECUTABLES
 LOCAL_MODULE_PATH := $(PRODUCT_OUT)/recovery/root/sbin
 LOCAL_UNSTRIPPED_PATH := $(PRODUCT_OUT)/symbols/utilities
 LOCAL_MODULE_STEM := mischelp
-LOCAL_STATIC_LIBRARIES := libc libcutils
+LOCAL_STATIC_LIBRARIES := libc liblog
 LOCAL_FORCE_STATIC_EXECUTABLE := true
 include $(BUILD_EXECUTABLE)
 
