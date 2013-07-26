@@ -32,7 +32,6 @@ PRODUCT_COPY_FILES += \
 
 # Prebuilt configuration files
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/vold.fstab:system/etc/vold.fstab \
     $(LOCAL_PATH)/configs/gpsconfig.xml:system/etc/gps/gpsconfig.xml \
     $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
     $(LOCAL_PATH)/configs/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
