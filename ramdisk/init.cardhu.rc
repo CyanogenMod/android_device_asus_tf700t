@@ -316,13 +316,6 @@ service iprenew_rmnet1 /system/bin/dhcpcd -n
 service sdcard /system/bin/sdcard /data/media /mnt/shell/emulated 1023 1023
     class late_start
 
-# bugreport is triggered by the VOLUME-DOWN and VOLUME-UP keys
-service bugreport /system/bin/bugmailer.sh -b /system/media/audio/ui/Dock.ogg -e /system/media/audio/ui/Undock.ogg
-    class main
-    disabled
-    oneshot
-    keycodes 115 114
-
 # Start GPS daemon
   on boot
   service gps-daemon /system/bin/glgps -c /system/etc/gps/gpsconfig.xml
