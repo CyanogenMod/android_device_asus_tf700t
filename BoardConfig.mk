@@ -102,8 +102,7 @@ BOARD_HAS_SDCARD_INTERNAL := true
 TARGET_RECOVERY_FSTAB := device/asus/tf700t/ramdisk/fstab.cardhu
 RECOVERY_FSTAB_VERSION := 2
 
-ifeq ($(HAVE_SELINUX),true)
-
+# SELINUX Defines
 BOARD_SEPOLICY_DIRS := \
     device/asus/tf700t/selinux
 
@@ -112,5 +111,3 @@ BOARD_SEPOLICY_UNION := \
     file.te \
     device.te \
     domain.te
-
-endif
