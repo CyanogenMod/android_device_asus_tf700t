@@ -100,6 +100,7 @@ BOARD_HAS_LARGE_FILESYSTEM := true
 TARGET_RECOVERY_INITRC := device/asus/tf700t/recovery/init.rc
 BOARD_HAS_SDCARD_INTERNAL := true
 TARGET_RECOVERY_FSTAB := device/asus/tf700t/ramdisk/fstab.cardhu
+RECOVERY_FSTAB_VERSION := 2
 
 ifeq ($(HAVE_SELINUX),true)
 
