@@ -4,17 +4,24 @@
 # specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
 
 # INIT mount points
-/dev/block/mmcblk0p1	/system	ext4	noatime,noauto_da_alloc,nodiratime,barrier=0,ro                            wait
-/dev/block/mmcblk0p2	/cache	ext4	noatime,noauto_da_alloc,nosuid,nodev,nodiratime,barrier=0,errors=panic     wait
-/dev/block/mmcblk0p8	/data	ext4	noatime,noauto_da_alloc,nosuid,nodev,nodiratime,barrier=0,errors=panic     wait,encryptable=footer
+/dev/block/mmcblk0p1 /system ext4 noatime,noauto_da_alloc,nodiratime,barrier=0,ro                        wait
+/dev/block/mmcblk0p2 /cache  ext4 noatime,noauto_da_alloc,nosuid,nodev,nodiratime,barrier=0,errors=panic wait
+/dev/block/mmcblk0p8 /data   ext4 noatime,noauto_da_alloc,nosuid,nodev,nodiratime,barrier=0,errors=panic wait,encryptable=footer
 
 # VOLD mount points
-/devices/platform/sdhci-tegra.0/mmc_host/mmc2 /storage/sdcard1  auto defaults voldmanaged=sdcard:auto
-/devices/platform/tegra-ehci.2/usb1/1-1/1-1.2 /storage/usbdisk0 auto defaults voldmanaged=sda:auto
-/devices/platform/tegra-ehci.2/usb2/2-1/2-1.2 /storage/usbdisk0 auto defaults voldmanaged=sda:auto
-/devices/platform/tegra-ehci.2/usb1/1-1/1-1.1 /storage/usbdisk1 auto defaults voldmanaged=sdb:auto
-/devices/platform/tegra-ehci.2/usb2/2-1/2-1.1 /storage/usbdisk1 auto defaults voldmanaged=sdb:auto
-/devices/platform/tegra-ehci.2/usb2/2-1/2-1:1 /storage/usbdisk1 auto defaults voldmanaged=sdb:auto
-/devices/platform/tegra-ehci.2/usb1/1-1/1-1:1 /storage/usbdisk1 auto defaults voldmanaged=sdb:auto
-/devices/platform/tegra-ehci.2/usb1/1-1/1-1.3 /storage/sdcard2  auto defaults voldmanaged=sdcard:auto
-/devices/platform/tegra-ehci.2/usb2/2-1/2-1.3 /storage/sdcard2  auto defaults voldmanaged=sdcard:auto
+/devices/platform/sdhci-tegra.0/mmc_host/mmc2 /storage/sdcard1  auto defaults voldmanaged=sdcard1:auto
+/devices/platform/tegra-ehci.2/usb1/1-1/1-1.2 /storage/usbdisk0 auto defaults voldmanaged=usbdisk0:auto
+/devices/platform/tegra-ehci.2/usb2/2-1/2-1.2 /storage/usbdisk0 auto defaults voldmanaged=usbdisk0:auto
+/devices/platform/tegra-ehci.2/usb1/1-1/1-1.1 /storage/usbdisk1 auto defaults voldmanaged=usbdisk1:auto
+/devices/platform/tegra-ehci.2/usb2/2-1/2-1.1 /storage/usbdisk1 auto defaults voldmanaged=usbdisk1:auto
+/devices/platform/tegra-ehci.2/usb2/2-1/2-1:1 /storage/usbdisk1 auto defaults voldmanaged=usbdisk1:auto
+/devices/platform/tegra-ehci.2/usb1/1-1/1-1:1 /storage/usbdisk1 auto defaults voldmanaged=usbdisk1:auto
+/devices/platform/tegra-ehci.2/usb1/1-1/1-1.3 /storage/sdcard2  auto defaults voldmanaged=sdcard2:auto
+/devices/platform/tegra-ehci.2/usb2/2-1/2-1.3 /storage/sdcard2  auto defaults voldmanaged=sdcard2:auto
+
+# Recovery only
+/dev/block/mmcblk1p1    /sdcard	  auto defaults recoveryonly
+/dev/block/mmcblk0p3	/misc	  emmc defaults recoveryonly
+/dev/block/mmcblk0p4	/staging  ext3 defaults recoveryonly
+/dev/block/mmcblk0p9	/recovery emmc defaults recoveryonly
+/dev/block/mmcblk0p10	/boot	  emmc defaults recoveryonly
