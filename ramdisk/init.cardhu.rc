@@ -263,7 +263,7 @@ service dhcpcd_rmnet1 /system/bin/dhcpcd -ABKL -f/system/etc/dhcpcd/dhcpcd.conf
     disabled
     oneshot
 
-service dhcpcd_bnep0 /system/bin/dhcpcd -ABKL
+service dhcpcd_bt-pan /system/bin/dhcpcd -ABKL
     class main
     disabled
     oneshot
@@ -288,7 +288,7 @@ service iprenew_usb0 /system/bin/dhcpcd -n
     disabled
     oneshot
 
-service iprenew_bnep0 /system/bin/dhcpcd -n
+service iprenew_bt-pan /system/bin/dhcpcd -n
     class main
     disabled
     oneshot
