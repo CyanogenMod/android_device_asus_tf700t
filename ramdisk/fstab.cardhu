@@ -20,8 +20,8 @@
 /devices/platform/tegra-ehci.2/usb2/2-1/2-1.3 /storage/sdcard2  auto defaults voldmanaged=sdcard2:auto
 
 # Recovery only
-/dev/block/mmcblk1p1    /external_sdcard   auto defaults recoveryonly
-/dev/block/mmcblk0p3    /misc              emmc defaults recoveryonly
-/dev/block/mmcblk0p4    /staging           ext3 defaults recoveryonly
-/dev/block/mmcblk0p9    /recovery          emmc defaults recoveryonly
-/dev/block/mmcblk0p10   /boot              emmc defaults recoveryonly
+/dev/block/mmcblk1p1    /external_sd auto defaults recoveryonly
+/dev/block/mmcblk0p3    /misc        emmc defaults recoveryonly
+/dev/block/mmcblk0p4    /staging     ext3 defaults recoveryonly
+/dev/block/mmcblk0p9    /recovery    emmc defaults recoveryonly
+/dev/block/mmcblk0p10   /boot        emmc defaults recoveryonly
