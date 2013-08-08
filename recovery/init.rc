@@ -9,6 +9,7 @@ on init
 
     symlink /system/etc /etc
 
+    mkdir /external_sd
     mkdir /sdcard
     mkdir /staging
     mkdir /system
