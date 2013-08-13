@@ -1,0 +1,2 @@
+allow ueventd sysfs:file relabelfrom;
+allow ueventd sysfs_writable:chr_file { create setattr };

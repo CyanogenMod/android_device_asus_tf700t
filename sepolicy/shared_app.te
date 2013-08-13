@@ -1,0 +1,2 @@
+allow shared_app unlabeled:file { read getattr open };
+allow shared_app video_device:chr_file { read write ioctl open };

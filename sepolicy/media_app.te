@@ -1,0 +1,5 @@
+allow media_app app_data_file:dir { relabelfrom relabelto };
+allow media_app cache_backup_file:dir getattr;
+allow media_app cache_backup_file:file getattr;
+allow media_app rootfs:file { read getattr open };
+allow media_app unlabeled:dir getattr;

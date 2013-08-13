@@ -1,0 +1,2 @@
+allow vold unlabeled:dir { read getattr open setattr };
+allow vold unlabeled:file { read getattr open setattr };

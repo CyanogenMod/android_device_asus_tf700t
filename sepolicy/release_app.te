@@ -1,0 +1,2 @@
+allow release_app unlabeled:file { read getattr open };
+allow release_app video_device:chr_file { read write ioctl open };

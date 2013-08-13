@@ -1,0 +1,18 @@
+type bdaddrwriter, domain;
+type bdaddrwriter_exec, exec_type, file_type;
+type mac_data_file, file_type, data_file_type;
+init_daemon_domain(bdaddrwriter)
+allow bdaddrwriter self:capability dac_override;
+allow bdaddrwriter mac_data_file:dir { mounton rmdir };
+allow bdaddrwriter shell_exec:file rx_file_perms;
+file_type_auto_trans(bdaddrwriter, system_data_file, mac_data_file)
+
+# Execute toolbox commands
+allow bdaddrwriter system_file:file execute_no_trans;
+
+# Read from per device partition
+allow bdaddrwriter sensors_block_device:lnk_file read;
+allow bdaddrwriter sdcard_external:filesystem { mount unmount };
+allow bdaddrwriter tty_device:chr_file rw_file_perms;
+allow bdaddrwriter self:capability sys_admin;
+allow bdaddrwriter bluetooth_data_file:dir search;

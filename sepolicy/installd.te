@@ -1,0 +1,2 @@
+allow installd unlabeled:dir { read search open getattr };
+allow installd unlabeled:file { read getattr open };
