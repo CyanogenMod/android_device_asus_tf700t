@@ -102,10 +102,21 @@ RECOVERY_FSTAB_VERSION := 2
 
 # SELINUX Defines
 BOARD_SEPOLICY_DIRS := \
-    device/asus/tf700t/selinux
+    device/asus/tf700t/sepolicy
 
 BOARD_SEPOLICY_UNION := \
     file_contexts \
-    file.te \
+    genfs_contexts \
+    app.te \
+    bdaddrwriter.te \
     device.te \
-    domain.te
+    drmserver.te \
+    file.te \
+    gpsd.te \
+    init_shell.te \
+    keystore.te \
+    mediaserver.te \
+    sensors_config.te \
+    surfaceflinger.te \
+    system.te \
+    zygote.te
