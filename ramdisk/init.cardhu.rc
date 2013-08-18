@@ -197,6 +197,11 @@ on property:ro.debuggable=1
     chown system system /proc/ektf_dbg
     chmod 0660 /proc/ektf_dbg
 
+# Hardware tunables
+    chown root system /sys/class/graphics/fb0/device/smartdimmer/enable
+    chmod 0664 /sys/class/graphics/fb0/device/smartdimmer/enable
+    restorecon /sys/class/graphics/fb0/device/smartdimmer/enable
+
 # BB mapping symbolic name to the logging ttyACM port
     symlink /dev/ttyACM2 /dev/log_modem
 
