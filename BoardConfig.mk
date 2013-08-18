@@ -109,3 +109,5 @@ BOARD_SEPOLICY_UNION := \
     file.te \
     device.te \
     domain.te
+
+BOARD_HARDWARE_CLASS := device/asus/tf700t/cmhw/
