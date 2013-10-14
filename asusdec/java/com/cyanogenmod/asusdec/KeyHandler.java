@@ -33,7 +33,6 @@ import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
 import android.os.ServiceManager;
-import android.os.SystemProperties;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 import android.util.Log;
@@ -60,8 +59,6 @@ public final class KeyHandler implements DeviceKeyHandler {
     public static final String EXTRA_ASUSDEC_KEY = "key";
     public static final String EXTRA_ASUSDEC_STATUS = "status";
     public static final String EXTRA_ASUSDEC_VALUE = "value";
-
-    public static final String META_FUNCTION_KEYS_PROPERTY = "sys.asusdec.kp.fk";
 
     // Private asusdec keys values (for notification purpose)
     public static final int ASUSDEC_UNKNOWN          = -1;
@@ -123,11 +120,6 @@ public final class KeyHandler implements DeviceKeyHandler {
         SCANCODE_MEDIA_PREVIOUS, SCANCODE_MEDIA_PLAY_PAUSE, SCANCODE_MEDIA_NEXT,
         SCANCODE_VOLUME_MUTE, SCANCODE_VOLUME_DOWN, SCANCODE_VOLUME_UP,
         SCANCODE_CAPS_LOCK
-    };
-
-    private static final int[] ALL_FUNCTION_KEYS_SCANCODES = {
-        SCANCODE_F1, SCANCODE_F2, SCANCODE_F3, SCANCODE_F4, SCANCODE_F5, SCANCODE_F6,
-        SCANCODE_F7, SCANCODE_F8, SCANCODE_F9, SCANCODE_F10, SCANCODE_F11, SCANCODE_F12
     };
 
     private final Context mContext;
@@ -217,118 +209,90 @@ public final class KeyHandler implements DeviceKeyHandler {
             return false;
         }
 
-        // Check if we are in presence of a function key
-        if (isFunctionKey(event)) {
-            // Do not capture the Fn key (unless the user-defined key combination do not match)
-            return !isValidMetaFunctionKeys(event);
+        // Consume the event if we are going to handle it. We don't want other subsystem can
+        // handle it)
+        if (event.getAction() != getScanCodeAction(event) || event.getRepeatCount() != 0) {
+            // Then mark as consumed
+            return true;
+        }
 
-        } else {
-            // Consume the event if we are going to handle it. We don't want other subsystem can
-            // handle it)
-            if (event.getAction() != getScanCodeAction(event) || event.getRepeatCount() != 0) {
-                // Then mark as consumed
-                return true;
-            }
-
-            // Now check every type of scancode that we are able to handle
-            switch (event.getScanCode()) {
-                case SCANCODE_TOGGLE_WIFI:
-                    toggleWifi();
-                    consumed = true;
-                    break;
-                case SCANCODE_TOGGLE_BT:
-                    toggleBluetooth();
-                    consumed = true;
-                    break;
-                case SCANCODE_TOGGLE_TOUCHPAD:
-                    toggleTouchpad();
-                    consumed = true;
-                    break;
-                case SCANCODE_BRIGHTNESS_DOWN:
-                    brightnessDown();
-                    consumed = true;
-                    break;
-                case SCANCODE_BRIGHTNESS_UP:
-                    brightnessUp();
-                    consumed = true;
-                    break;
-                case SCANCODE_BRIGHTNESS_AUTO:
-                    toggleAutoBrightness();
-                    consumed = true;
-                    break;
-                case SCANCODE_SCREENSHOT:
-                    takeScreenshot();
-                    consumed = true;
-                    break;
-                case SCANCODE_EXPLORER:
-                    launchExplorer();
-                    // We only display a notification. Explorer is open by the framework
-                    consumed = false;
-                    break;
-                case SCANCODE_SETTINGS:
-                    launchSettings();
-                    consumed = true;
-                    break;
-                case SCANCODE_VOLUME_MUTE:
-                    // KEYCODE_VOLUME_MUTE is part of the aosp keyevent intercept handling, but
-                    // aosp uses it stop ringing in phone devices (no system volume mute toggle).
-                    // Since transformer devices doesn't have a telephony subsystem, we handle and
-                    // treat this event as a volume mute toggle action. the asusdec KeyHandler
-                    // mustn't mark the key event as consumed.
-                    toggleAudioMute();
-                    consumed = false;
-                    break;
-                case SCANCODE_VOLUME_DOWN:
-                    volumeDown();
-                    consumed = false;
-                    break;
-                case SCANCODE_VOLUME_UP:
-                    volumeUp();
-                    consumed = false;
-                    break;
-                case SCANCODE_MEDIA_PLAY_PAUSE:
-                    mediaPlayPause();
-                    consumed = false;
-                    break;
-                case SCANCODE_MEDIA_PREVIOUS:
-                    mediaPrevious();
-                    consumed = false;
-                    break;
-                case SCANCODE_MEDIA_NEXT:
-                    mediaNext();
-                    consumed = false;
-                    break;
-                case SCANCODE_CAPS_LOCK:
-                    capsLock(event);
-                    // We only display a notification. Explorer is open by the framework
-                    consumed = false;
-                    break;
-            }
+        // Now check every type of scancode that we are able to handle
+        switch (event.getScanCode()) {
+            case SCANCODE_TOGGLE_WIFI:
+                toggleWifi();
+                consumed = true;
+                break;
+            case SCANCODE_TOGGLE_BT:
+                toggleBluetooth();
+                consumed = true;
+                break;
+            case SCANCODE_TOGGLE_TOUCHPAD:
+                toggleTouchpad();
+                consumed = true;
+                break;
+            case SCANCODE_BRIGHTNESS_DOWN:
+                brightnessDown();
+                consumed = true;
+                break;
+            case SCANCODE_BRIGHTNESS_UP:
+                brightnessUp();
+                consumed = true;
+                break;
+            case SCANCODE_BRIGHTNESS_AUTO:
+                toggleAutoBrightness();
+                consumed = true;
+                break;
+            case SCANCODE_SCREENSHOT:
+                takeScreenshot();
+                consumed = true;
+                break;
+            case SCANCODE_EXPLORER:
+                launchExplorer();
+                // We only display a notification. Explorer is open by the framework
+                consumed = false;
+                break;
+            case SCANCODE_SETTINGS:
+                launchSettings();
+                consumed = true;
+                break;
+            case SCANCODE_VOLUME_MUTE:
+                // KEYCODE_VOLUME_MUTE is part of the aosp keyevent intercept handling, but
+                // aosp uses it stop ringing in phone devices (no system volume mute toggle).
+                // Since transformer devices doesn't have a telephony subsystem, we handle and
+                // treat this event as a volume mute toggle action. the asusdec KeyHandler
+                // mustn't mark the key event as consumed.
+                toggleAudioMute();
+                consumed = false;
+                break;
+            case SCANCODE_VOLUME_DOWN:
+                volumeDown();
+                consumed = false;
+                break;
+            case SCANCODE_VOLUME_UP:
+                volumeUp();
+                consumed = false;
+                break;
+            case SCANCODE_MEDIA_PLAY_PAUSE:
+                mediaPlayPause();
+                consumed = false;
+                break;
+            case SCANCODE_MEDIA_PREVIOUS:
+                mediaPrevious();
+                consumed = false;
+                break;
+            case SCANCODE_MEDIA_NEXT:
+                mediaNext();
+                consumed = false;
+                break;
+            case SCANCODE_CAPS_LOCK:
+                capsLock(event);
+                // We only display a notification. Explorer is open by the framework
+                consumed = false;
+                break;
         }
 
         // Return if the key was consumed here
         return consumed;
-    }
-
-    private boolean isValidMetaFunctionKeys(final KeyEvent event) {
-        // Check the user-defined key combination to accept function keys
-        long meta = getMetaFunctionKeys();
-        if (DEBUG) {
-            Log.d(TAG, "MetaFunctionKeys: " + meta);
-        }
-        if (meta == 0) {
-            return false;
-        }
-        if (!event.isAltPressed() && (meta | KeyEvent.META_ALT_MASK) == meta) {
-            return false;
-        }
-        if (!event.isCtrlPressed() && (meta | KeyEvent.META_CTRL_MASK) == meta) {
-            return false;
-        }
-        if (!event.isShiftPressed() && (meta | KeyEvent.META_SHIFT_MASK) == meta) {
-            return false;
-        }
-        return true;
     }
 
     private int isHandled(final KeyEvent event) {
@@ -340,17 +304,6 @@ public final class KeyHandler implements DeviceKeyHandler {
             }
         }
         return -1;
-    }
-
-    private boolean isFunctionKey(final KeyEvent event) {
-        int scancode = event.getScanCode();
-        int cc = ALL_FUNCTION_KEYS_SCANCODES.length;
-        for (int i = 0; i < cc; i++) {
-            if (ALL_FUNCTION_KEYS_SCANCODES[i] == scancode){
-                return true;
-            }
-        }
-        return false;
     }
 
     private int getScanCodeAction(final KeyEvent event) {
@@ -666,10 +619,6 @@ public final class KeyHandler implements DeviceKeyHandler {
 
     private void notifyKey(int asusdeckey, int status) {
         notifyKey(asusdeckey, status, 0);
-    }
-
-    private static long getMetaFunctionKeys() {
-        return SystemProperties.getLong(KeyHandler.META_FUNCTION_KEYS_PROPERTY, 0);
     }
 
     /*

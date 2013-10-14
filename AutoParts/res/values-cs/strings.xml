@@ -18,37 +18,6 @@
            xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Pokročilé nastavení</string>
 
-    <string name="cpu_settings_title">CPU</string>
-    <string name="cpu_mode_title">Režim CPU</string>
-    <string name="cpu_settings_summary">Změnit režim CPU</string>
-    <string name="cpu_set_on_boot_title">Nastavit při startu</string>
-    <string name="cpu_set_on_boot_summary">Obnovit nastavení procesoru při restartu</string>
-
-    <string name="cpu_pwrsv">Úsporný</string>
-    <string name="cpu_bal">Vyvážený</string>
-    <string name="cpu_perf">Výkonný</string>
-
-    <string name="display_settings_title">Obrazovka</string>
-    <string name="display_msg_failed">Selhalo nastavování vlastností obrazovky</string>
-
-    <string name="display_smartdimmer_title">Chytrý stmívač</string>
-    <string name="display_smartdimmer_summary">Povolit technologii NVIDIA Smartdimmer (chytrý stmívač) pro ovládání podsvícení LCD.</string>
-
-    <string name="dock_settings_title">Dok</string>
-    <string name="dock_msg_failed">Selhalo nastavování vlastností doku</string>
-
-    <string name="dock_power_title">Napájení</string>
-    <string name="dock_ec_wakeup">Klávesnice umožní probudit zařízení</string>
-    <string name="dock_ec_wakeup_summary_on">Stiskem jakékoliv klávesy dojde k probuzení zařízení</string>
-    <string name="dock_ec_wakeup_summary_off">Zařízení se po stisku jakékoliv klávesy neprobudí</string>
-
-    <string name="dock_kp_title">Klávesnice</string>
-    <string name="dock_kp_function_keys">Funkční klávesy (Fn)</string>
-    <string name="dock_kp_function_keys_summary">Funkční klávesy jsou aktivovány stiskem kombinace kláves <xliff:g id="keys" example="CTRL+SHIFT">%1$s</xliff:g>.</string>
-    <string name="dock_kp_function_keys_summary_disabled">Funkční klávesy zakázány.</string>
-    <string name="dock_kp_notifications">Zobrazit upozornění o klávesnici</string>
-    <string name="dock_kp_notifications_summary_on">Upozornění bude zobrazeno ve stavovém řádku.</string>
-    <string name="dock_kp_notifications_summary_off">Upozornění nebude zobrazeno ve stavovém řádku.</string>
     <string name="kp_wifi_on">Wi-Fi ZAP</string>
     <string name="kp_wifi_off">Wi-Fi VYP</string>
     <string name="kp_bt_on">Bluetooth ZAP</string>
@@ -69,27 +38,4 @@
     <string name="kp_caps_lock_on">Caps-Lock ZAP</string>
     <string name="kp_caps_lock_off">Caps-Lock VYP</string>
 
-    <string name="gps_settings_title">GPS</string>
-
-    <string name="lto_download_title">Stahování dat LTO</string>
-    <string name="lto_download_enabled_title">Automatické stahování</string>
-    <string name="lto_download_enabled_summary">Pokud je dostupné síťové připojení, stahovat data automaticky</string>
-    <string name="lto_download_interval_title">Interval stahování</string>
-    <string name="lto_download_interval_12hours">12 hodin</string>
-    <string name="lto_download_interval_1day">1 den</string>
-    <string name="lto_download_interval_3days">3 dny</string>
-    <string name="lto_download_interval_1week">1 týden</string>
-    <string name="lto_download_interval_2weeks">2 týdny</string>
-    <string name="lto_download_interval_1month">1 měsíc</string>
-    <string name="lto_download_file_title">Typ stažení</string>
-    <string name="lto_download_file_7days">7 denní platnost</string>
-    <string name="lto_download_file_30days">30 denní platnost</string>
-    <string name="lto_download_wifi_only_title">Pouze Wi-Fi</string>
-    <string name="lto_download_wifi_only_summary">Stahovat pomocná data pouze přes připojení Wi-Fi</string>
-    <string name="lto_download_now">Stáhnout nyní</string>
-    <string name="lto_last_download_date">Poslední stažení: %1$s</string>
-    <string name="lto_last_download_date_failure">Poslední pokus o stažení: %1$s (neúspěšné)</string>
-    <string name="lto_last_download_date_never">Poslední stažení: nikdy</string>
-    <string name="lto_downloading_data">Stahování dat\u2026 (%1$s%%)</string>
-    <string name="lto_downloading_data_notification">Stahování dat LTO\u2026</string>
 </resources>
