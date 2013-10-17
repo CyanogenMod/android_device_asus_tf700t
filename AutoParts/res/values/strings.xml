@@ -19,44 +19,6 @@
 
     <string name="app_name">Advanced settings</string>
 
-    <!--CPU -->
-    <string name="cpu_settings_title">CPU</string>
-    <string name="cpu_mode_title">CPU Mode Switch</string>
-    <string name="cpu_settings_summary">Change CPU Power Mode</string>
-    <string name="cpu_set_on_boot_title">Set on boot</string>
-    <string name="cpu_set_on_boot_summary">Restore the processor settings on boot</string>
-
-    <!-- CPU Modes -->
-    <string name="cpu_pwrsv">Power Save</string>
-    <string name="cpu_bal">Balanced</string>
-    <string name="cpu_perf">Performance</string>
-
-    <!-- Display -->
-    <string name="display_settings_title">Display</string>
-    <string name="display_msg_failed">Failed to set the display property</string>
-
-    <!-- Display * Smartdimmer -->
-    <string name="display_smartdimmer_title">Smartdimmer</string>
-    <string name="display_smartdimmer_summary">Enable Nvidia Smartdimmer technology for controlling LCD brightness.</string>
-
-    <!-- Dock -->
-    <string name="dock_settings_title">Dock</string>
-    <string name="dock_msg_failed">Failed to set the dock property</string>
-
-    <!-- Dock * Power -->
-    <string name="dock_power_title">Power</string>
-    <string name="dock_ec_wakeup">Keyboard wakes the device up</string>
-    <string name="dock_ec_wakeup_summary_on">Pressing any key will wake the device up.</string>
-    <string name="dock_ec_wakeup_summary_off">The device will not wake up when pressing a key.</string>
-
-    <!-- Dock * Keypad -->
-    <string name="dock_kp_title">Keypad</string>
-    <string name="dock_kp_function_keys">Function keys (Fn)</string>
-    <string name="dock_kp_function_keys_summary">Function keys will be triggered by pressing the <xliff:g id="keys" example="CTRL+SHIFT">%1$s</xliff:g> key combination.</string>
-    <string name="dock_kp_function_keys_summary_disabled">Function keys are disabled.</string>
-    <string name="dock_kp_notifications">Display keypad notifications</string>
-    <string name="dock_kp_notifications_summary_on">Notifications will be displayed at status bar.</string>
-    <string name="dock_kp_notifications_summary_off">Notifications will not be displayed at status bar.</string>
     <string name="kp_wifi_on">Wi-Fi ON</string>
     <string name="kp_wifi_off">Wi-Fi OFF</string>
     <string name="kp_bt_on">Bluetooth ON</string>
@@ -76,31 +38,5 @@
     <string name="kp_settings">Launch settings</string>
     <string name="kp_caps_lock_on">Caps-Lock ON</string>
     <string name="kp_caps_lock_off">Caps-Lock OFF</string>
-
-    <!-- GPS -->
-    <string name="gps_settings_title">GPS</string>
-
-    <!-- LTO settings -->
-    <string name="lto_download_title">LTO Data Download</string>
-    <string name="lto_download_enabled_title">Automatic download</string>
-    <string name="lto_download_enabled_summary">Download data automatically if a network connection is available</string>
-    <string name="lto_download_interval_title">Download interval</string>
-    <string name="lto_download_interval_12hours">12 hours</string>
-    <string name="lto_download_interval_1day">1 day</string>
-    <string name="lto_download_interval_3days">3 days</string>
-    <string name="lto_download_interval_1week">1 week</string>
-    <string name="lto_download_interval_2weeks">2 weeks</string>
-    <string name="lto_download_interval_1month">1 month</string>
-    <string name="lto_download_file_title">Download file type</string>
-    <string name="lto_download_file_7days">7 days validity</string>
-    <string name="lto_download_file_30days">30 days validity</string>
-    <string name="lto_download_wifi_only_title">Wifi only</string>
-    <string name="lto_download_wifi_only_summary">Only download assistive data over Wifi connection</string>
-    <string name="lto_download_now">Download now</string>
-    <string name="lto_last_download_date">Last download: %1$s</string>
-    <string name="lto_last_download_date_failure">Last download attempt: %1$s (Unsuccessful)</string>
-    <string name="lto_last_download_date_never">Last download: Never</string>
-    <string name="lto_downloading_data">Downloading data\u2026 (%1$s%%)</string>
-    <string name="lto_downloading_data_notification">Downloading LTO data\u2026</string>
 
 </resources>
