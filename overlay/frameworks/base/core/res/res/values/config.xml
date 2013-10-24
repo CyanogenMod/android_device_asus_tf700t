@@ -215,4 +215,7 @@
 
     <!-- Set to true to add links to Cell Broadcast app from Settings and MMS app. -->
     <bool name="config_cellBroadcastAppLinks">false</bool>
+
+    <!-- Device supports LED flashlight -->
+    <bool name="config_enableTorch">true</bool>
 </resources>
