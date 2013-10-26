@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2013 The CyanogenMod Project
+<!--
+     Copyright (C) 2013 The CyanogenMod Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -12,12 +13,9 @@
      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
      See the License for the specific language governing permissions and
      limitations under the License.
- -->
-
-<resources xmlns:android="http://schemas.android.com/apk/res/android"
-           xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Pokročilé nastavení</string>
-
     <string name="kp_wifi_on">Wi-Fi ZAP</string>
     <string name="kp_wifi_off">Wi-Fi VYP</string>
     <string name="kp_bt_on">Bluetooth ZAP</string>
@@ -37,5 +35,4 @@
     <string name="kp_settings">Spustit nastavení</string>
     <string name="kp_caps_lock_on">Caps-Lock ZAP</string>
     <string name="kp_caps_lock_off">Caps-Lock VYP</string>
-
 </resources>
