@@ -7,6 +7,7 @@
 
     <uses-sdk android:minSdkVersion="18" android:targetSdkVersion="18"/>
 
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="com.cyanogenmod.asusdec.permission.KEYPAD_RECEIVER" />
 
     <application
@@ -17,6 +18,8 @@
             android:name=".DeviceBroadcastReceiver"
             android:exported="false">
             <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.DOCK_EVENT" />
                 <action android:name="com.cyanogenmod.asusdec.actions.ACTION_DOCK_KEYPAD_KEY_PRESSED" />
             </intent-filter>
         </receiver>

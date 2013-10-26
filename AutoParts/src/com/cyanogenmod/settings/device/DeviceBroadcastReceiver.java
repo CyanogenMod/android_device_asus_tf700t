@@ -24,10 +24,13 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Handler;
 import android.os.UserHandle;
+import android.util.Log;
 
+import com.cyanogenmod.asusdec.DockEmbeddedController;
 import com.cyanogenmod.asusdec.KeyHandler;
 
 public class DeviceBroadcastReceiver extends BroadcastReceiver {
+    private static final String TAG = "DeviceBroadcastReceiver";
 
     private static final int NOTIFICATION_ID = R.string.app_name;
 
@@ -57,6 +60,15 @@ public class DeviceBroadcastReceiver extends BroadcastReceiver {
         final String action = intent.getAction();
         if (KeyHandler.ACTION_DOCK_KEYPAD_KEY_PRESSED.equals(action)) {
             checkKeyPadKeyPressed(ctx, intent);
+        } else if (Intent.ACTION_BOOT_COMPLETED.equals(action)) {
+            setEcWakeMode(true);
+        } else if (Intent.ACTION_DOCK_EVENT.equals(action)) {
+            int state = intent.getIntExtra(Intent.EXTRA_DOCK_STATE,
+                    Intent.EXTRA_DOCK_STATE_UNDOCKED);
+            // On dock set ec_wakeup
+            if (state != Intent.EXTRA_DOCK_STATE_UNDOCKED) {
+                setEcWakeMode(true);
+            }
         }
     }
 
@@ -183,5 +195,17 @@ public class DeviceBroadcastReceiver extends BroadcastReceiver {
 
         // Post a delayed cancellation of the notification
         mHandler.postDelayed(mCancelKpNotifications, mNotificationTimeout);
+    }
+
+    private void setEcWakeMode(boolean on) {
+        try {
+            DockEmbeddedController dockEc = new DockEmbeddedController();
+            Log.i(TAG, "Set EcWakeUp: " + on);
+            if (!dockEc.setECWakeUp(on)) {
+                Log.w(TAG, "Set EcWakeUp failed.");
+            }
+        } catch (Exception ex) {
+            Log.e(TAG, "Set EcWakeUp failed", ex);
+        }
     }
 }
