@@ -59,6 +59,9 @@ on post-fs-data
 
 on boot
 
+# fs
+    write /sys/module/sync/parameters/fsync_enabled 1
+
 # bluetooth
     # change back to bluetooth from system
     chown bluetooth net_bt_stack /data/misc/bluetooth
