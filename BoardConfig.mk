@@ -101,13 +101,24 @@ RECOVERY_FSTAB_VERSION := 2
 BOARD_RECOVERY_SWIPE := true
 
 # SELINUX Defines
-BOARD_SEPOLICY_DIRS := \
-    device/asus/tf700t/selinux
+BOARD_SEPOLICY_DIRS += \
+    device/asus/grouper/sepolicy
 
-BOARD_SEPOLICY_UNION := \
+BOARD_SEPOLICY_UNION += \
     file_contexts \
-    file.te \
+    genfs_contexts \
+    app.te \
     device.te \
-    domain.te
+    drmserver.te \
+    init_shell.te \
+    file.te \
+    mediaserver.te \
+    rild.te \
+    sensors_config.te \
+    shell.te \
+    surfaceflinger.te \
+    system_app.te \
+    system_server.te \
+    ueventd.te
 
 BOARD_HARDWARE_CLASS := device/asus/tf700t/cmhw/
