@@ -102,12 +102,21 @@ BOARD_RECOVERY_SWIPE := true
 
 # SELINUX Defines
 BOARD_SEPOLICY_DIRS := \
-    device/asus/tf700t/selinux
+    device/asus/tf700t/sepolicy
 
 BOARD_SEPOLICY_UNION := \
-    file_contexts \
-    file.te \
+    app.te \
     device.te \
-    domain.te
+    drmserver.te \
+    file_context.te \
+    file.te \
+    genfs_context.te \
+    inti_shell.te \
+    mediaserver.te \
+    rild.te \
+    sensors_config.te \
+    surfaceflingler.te \
+    system_app.te \
+    system_server.te
 
 BOARD_HARDWARE_CLASS := device/asus/tf700t/cmhw/
