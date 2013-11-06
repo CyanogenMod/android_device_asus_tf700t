@@ -90,12 +90,9 @@ PRODUCT_PACKAGES += \
     audio.a2dp.default \
     libaudioutils \
     libinvensense_mpl \
-    AutoParts_tfp \
     blobpack_tfp \
     wifimacwriter \
-    mischelp \
-    com.cyanogenmod.asusdec \
-    libasusdec_jni
+    mischelp
 
 # Torch
 PRODUCT_PACKAGES += \
