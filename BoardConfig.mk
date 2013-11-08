@@ -50,6 +50,7 @@ BOARD_KERNEL_PAGESIZE :=
 # EGL settings
 BOARD_EGL_CFG := device/asus/tf700t/configs/egl.cfg
 USE_OPENGL_RENDERER := true
+BOARD_HAVE_PIXEL_FORMAT_INFO := true
 
 # Misc display settings
 BOARD_USE_SKIA_LCDTEXT := true
