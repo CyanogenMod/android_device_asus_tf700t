@@ -19,6 +19,7 @@ USE_PROPRIETARY_AUDIO_EXTENSIONS := true
 BOARD_USES_GENERIC_AUDIO := false
 BOARD_USES_ALSA_AUDIO := false
 BOARD_USES_TINY_AUDIO_HW := false
+BOARD_HAVE_PRE_KITKAT_AUDIO_BLOB := true
 
 # inherit from the proprietary version
 -include vendor/asus/tf700t/BoardConfigVendor.mk
