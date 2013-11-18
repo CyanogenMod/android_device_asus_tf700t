@@ -188,14 +188,10 @@
 
     <integer name="config_lidKeyboardAccessibility">1</integer>
 
-    <!-- <bool name="config_hasDockBattery">true</bool> -->
-
-    <!--<string name="config_deviceHandlersLib" translatable="false">
+    <string name="config_deviceKeyHandlerLib" translatable="false">
         /system/framework/com.cyanogenmod.asusdec.jar</string>
-    <string name="config_deviceDockBatteryHandlerClass" translatable="false">
-        com.cyanogenmod.asusdec.DockBatteryHandler</string>
     <string name="config_deviceKeyHandlerClass" translatable="false">
-        com.cyanogenmod.asusdec.KeyHandler</string>-->
+        com.cyanogenmod.asusdec.KeyHandler</string>
 
     <!-- Enable lockscreen rotation by default -->
     <bool name="config_enableLockScreenRotation">true</bool>
