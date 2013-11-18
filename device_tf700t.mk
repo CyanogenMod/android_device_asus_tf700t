@@ -72,7 +72,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
-    packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
+    packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml \
+    $(LOCAL_PATH)/asusdec/com.cyanogenmod.asusdec.xml:system/etc/permissions/com.cyanogenmod.asusdec.xml
 
 # Build characteristics setting 
 PRODUCT_CHARACTERISTICS := tablet
@@ -92,9 +93,12 @@ PRODUCT_PACKAGES += \
     audio.r_submix.default \
     libaudioutils \
     libinvensense_mpl \
+    AutoParts_tfp \
     blobpack_tfp \
     wifimacwriter \
-    mischelp
+    mischelp \
+    com.cyanogenmod.asusdec \
+    libasusdec_jni
 
 # Torch
 PRODUCT_PACKAGES += \
