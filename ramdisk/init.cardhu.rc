@@ -32,6 +32,7 @@ on fs
     setprop ro.crypto.tmpfs_options size=128m,mode=0771,uid=1000,gid=1000
     setprop ro.crypto.umount_sd false
     mount_all /fstab.cardhu
+    restorecon /dev/block/platform/sdhci-tegra.3/by-name/PER
 
 on post-fs-data
     mkdir /data/misc/wifi 0770 wifi wifi
@@ -45,6 +46,9 @@ on post-fs-data
     # we will remap this as /mnt/sdcard with the sdcard fuse tool
     mkdir /data/media 0770 media_rw media_rw
     chown media_rw media_rw /data/media
+
+    # bdaddwriter
+    mkdir /data/mac
 
     # Set indication (checked by vold) that we have finished this action
     setprop vold.post_fs_data_done 1
@@ -65,6 +69,8 @@ on boot
     write /sys/class/rfkill/rfkill0/state 0
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
+    restorecon /sys/class/rfkill/rfkill0/state
+    restorecon /sys/class/rfkill/rfkill0/type
 
     # bluetooth MAC address programming
     chown bluetooth net_bt_stack ro.bt.bdaddr_path
@@ -150,10 +156,27 @@ on boot
     chown system system /sys/devices/system/cpu/cpufreq/interactive/go_maxspeed_load
     chown system system /sys/devices/system/cpu/cpufreq/interactive/max_boost
 
+    restorecon /sys/devices/system/cpu
+    restorecon /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+    restorecon /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay
+    restorecon /sys/devices/system/cpu/cpufreq/interactive/boost
+    restorecon /sys/devices/system/cpu/cpufreq/interactive/boost_factor
+    restorecon /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load
+    restorecon /sys/devices/system/cpu/cpufreq/interactive/go_maxspeed_load
+    restorecon /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq
+    restorecon /sys/devices/system/cpu/cpufreq/interactive/input_boost
+    restorecon /sys/devices/system/cpu/cpufreq/interactive/io_is_busy
+    restorecon /sys/devices/system/cpu/cpufreq/interactive/max_boost
+    restorecon /sys/devices/system/cpu/cpufreq/interactive/min_sample_time
+    restorecon /sys/devices/system/cpu/cpufreq/interactive/sustain_load
+    restorecon /sys/devices/system/cpu/cpufreq/interactive/timer_rate
+    restorecon /sys/devices/tegradc.0/smartdimmer/aggressiveness
+    restorecon /sys/devices/tegradc.0/smartdimmer/enable
+
 # Set battery poll interval
     write /sys/module/bq27x00_battery/parameters/poll_interval 30
 
-# Setup CPU for "balanced" mode 
+# Setup CPU for "balanced" mode
     setprop sys.cpu.mode 1
 
 # We dont want to swap keys unless needed
