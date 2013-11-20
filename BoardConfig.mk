@@ -23,6 +23,9 @@ BOARD_USES_TINY_AUDIO_HW := false
 # Camera options
 COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
 
+# Dumpstate
+BOARD_HAL_STATIC_LIBRARIES := libdumpstate.cardhu
+
 # inherit from the proprietary version
 -include vendor/asus/tf700t/BoardConfigVendor.mk
 
