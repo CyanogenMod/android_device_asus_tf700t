@@ -20,6 +20,9 @@ BOARD_USES_GENERIC_AUDIO := false
 BOARD_USES_ALSA_AUDIO := false
 BOARD_USES_TINY_AUDIO_HW := false
 
+# Dumpstate
+BOARD_HAL_STATIC_LIBRARIES := libdumpstate.cardhu
+
 # inherit from the proprietary version
 -include vendor/asus/tf700t/BoardConfigVendor.mk
 
