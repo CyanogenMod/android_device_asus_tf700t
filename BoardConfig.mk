@@ -112,7 +112,7 @@ BOARD_SEPOLICY_UNION := \
     file_contexts \
     genfs_contexts \
     app.te \
-    btmacreader.te \
+    bdaddwriter.te \
     device.te \
     drmserver.te \
     init_shell.te \
