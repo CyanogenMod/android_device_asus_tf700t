@@ -20,6 +20,9 @@ BOARD_USES_GENERIC_AUDIO := false
 BOARD_USES_ALSA_AUDIO := false
 BOARD_USES_TINY_AUDIO_HW := false
 
+# Camera options
+COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
+
 # inherit from the proprietary version
 -include vendor/asus/tf700t/BoardConfigVendor.mk
 
@@ -39,7 +42,6 @@ TARGET_CPU_VARIANT := cortex-a9
 TARGET_CPU_SMP := true
 TARGET_ARCH := arm
 ARCH_ARM_HAVE_32_BYTE_CACHE_LINES := true
-
 NEED_WORKAROUND_CORTEX_A9_745320 := true
 
 # Boot/Recovery image settings
@@ -47,10 +49,11 @@ BOARD_KERNEL_CMDLINE :=
 BOARD_KERNEL_BASE := 0x10000000
 BOARD_KERNEL_PAGESIZE :=
 
-# EGL settings
+# Video settings
 BOARD_EGL_CFG := device/asus/tf700t/configs/egl.cfg
 USE_OPENGL_RENDERER := true
 BOARD_HAVE_PIXEL_FORMAT_INFO := true
+TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
 
 # Misc display settings
 BOARD_USE_SKIA_LCDTEXT := true
@@ -64,9 +67,6 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR ?= device/asus/tf700t/bluetooth
 
 # Support for dock battery
 TARGET_HAS_DOCK_BATTERY := true
-
-# Misc flags
-COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
 
 # Wifi related defines
 BOARD_WPA_SUPPLICANT_DRIVER := NL80211
@@ -124,4 +124,5 @@ BOARD_SEPOLICY_UNION := \
     system.te \
     zygote.te
 
+# CMHW
 BOARD_HARDWARE_CLASS := device/asus/tf700t/cmhw/
