@@ -89,6 +89,7 @@ PRODUCT_PACKAGES += \
     make_ext4fs \
     setup_fs \
     audio.a2dp.default \
+    audio.r_submix.default \
     libaudioutils \
     libinvensense_mpl \
     blobpack_tfp \
