@@ -8,3 +8,6 @@ ro.epad.model_id=04
 persist.tegra.nvmmlite=1
 persist.sys.fw.camera.status=1
 tf.enable=y
+
+# don't preload OpenGL in Zygote, the Tegra drivers do not like it
+ro.zygote.disable_gl_preload=true
