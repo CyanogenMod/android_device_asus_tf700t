@@ -229,4 +229,7 @@
          performance profiles  -->
     <!--<string name="config_perf_profile_default_entry" translatable="false">1</string>-->
 
+    <!-- Enable lockscreen translucent decor by default -->
+    <bool name="config_enableLockScreenTranslucentDecor">true</bool>
+
 </resources>
