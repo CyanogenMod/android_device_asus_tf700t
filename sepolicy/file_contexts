@@ -23,3 +23,6 @@
 /sys/devices/tegradc\.1(/.*)?                u:object_r:sysfs_devices_tegradc:s0
 /sys/devices/platform/bcm4330_rfkill/rfkill/rfkill0/state   --  u:object_r:sysfs_bluetooth_writable:s0
 /sys/devices/platform/bcm4330_rfkill/rfkill/rfkill0/type    --  u:object_r:sysfs_bluetooth_writable:s0
+
+# Hardware tunables
+/sys/class/graphics/fb0/device/smartdimmer/enable        u:object_r:sysfs_writable:s0
