@@ -21,7 +21,7 @@ on init
 
     # Enable secondary storage
     export SECONDARY_STORAGE /storage/sdcard1
- 
+
     # make the pathes for the external media mounts
     mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
     mkdir /mnt/media_rw/sdcard2 0700 media_rw media_rw
