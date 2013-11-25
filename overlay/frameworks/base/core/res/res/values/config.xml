@@ -193,8 +193,6 @@
     <string name="config_deviceKeyHandlerClass" translatable="false">
         com.cyanogenmod.asusdec.KeyHandler</string>-->
 
-    <bool name="config_screenOffAnimation">false</bool>
-
     <!-- Enable lockscreen rotation by default -->
     <bool name="config_enableLockScreenRotation">true</bool>
 
@@ -202,6 +200,9 @@
 
     <!-- If this is true, the screen will come on when you unplug usb/power/whatever. -->
     <bool name="config_unplugTurnsOnScreen">true</bool>
+
+    <!-- If this is true, the screen will fade off. -->
+    <bool name="config_animateScreenLights">false</bool>
 
     <!-- Maximum wallpaper width for devices with very high-res screen (1920x1200)
          the wallpaper width suggestion by the launcher may be too large for
