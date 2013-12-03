@@ -3,7 +3,6 @@ include $(CLEAR_VARS)
 
 LOCAL_SRC_FILES:= \
     com_cyanogenmod_asusdec_KeyHandler.cpp \
-    com_cyanogenmod_asusdec_DockBatteryHandler.cpp \
     com_cyanogenmod_asusdec_DockEmbeddedController.cpp \
     com_cyanogenmod_asusdec_AsusdecNative.cpp
 
