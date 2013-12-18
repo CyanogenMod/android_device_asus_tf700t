@@ -34,6 +34,7 @@ PRODUCT_COPY_FILES += \
 # Prebuilt configuration files
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gpsconfig.xml:system/etc/gps/gpsconfig.xml \
+    $(LOCAL_PATH)/configs/mixer_paths.xml:system/etc/mixer_paths.xml \
     $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
     $(LOCAL_PATH)/configs/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf \
     $(LOCAL_PATH)/configs/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
@@ -89,9 +90,14 @@ PRODUCT_PACKAGES += \
     com.android.future.usb.accessory \
     make_ext4fs \
     setup_fs \
+    audio.primary.cardhu \
     audio.a2dp.default \
+    audio.usb.default \
     audio.r_submix.default \
     libaudioutils \
+    tinymix \
+    tinyplay \
+    tinyrec \
     libinvensense_mpl \
     AutoParts_tfp \
     blobpack_tfp \
