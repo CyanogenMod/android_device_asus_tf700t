@@ -35,4 +35,7 @@
 
   <path name="headset-mic">
   </path>
+
+  <path name="hdmi" alsa_device="1">
+  </path>
 </mixer>
