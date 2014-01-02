@@ -1,5 +1,4 @@
 on init
-    mkdir /sdcard
     mkdir /staging
     mkdir /btmac
 
