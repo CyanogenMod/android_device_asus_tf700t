@@ -18,4 +18,4 @@ on property:ro.debuggable=1
     write /sys/class/android_usb/android0/idProduct 4D03
     write /sys/class/android_usb/android0/enable 1
     write /sys/class/android_usb/android0/iManufacturer Asus
-    write /sys/class/android_usb/android0/iProduct Transformer Prime
+    write /sys/class/android_usb/android0/iProduct Transformer Infinity
