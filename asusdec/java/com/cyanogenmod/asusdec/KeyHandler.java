@@ -317,7 +317,6 @@ public final class KeyHandler implements DeviceKeyHandler {
             case SCANCODE_MEDIA_PREVIOUS:
             case SCANCODE_MEDIA_NEXT:
             case SCANCODE_CAPS_LOCK:
-                return KeyEvent.ACTION_DOWN;
             default:
                 return KeyEvent.ACTION_UP;
         }
