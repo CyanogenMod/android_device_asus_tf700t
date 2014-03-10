@@ -309,8 +309,12 @@ public final class KeyHandler implements DeviceKeyHandler {
     private int getScanCodeAction(final KeyEvent event) {
         int scancode = event.getScanCode();
         switch (scancode) {
+            case SCANCODE_EXPLORER:
             case SCANCODE_VOLUME_DOWN:
             case SCANCODE_VOLUME_UP:
+            case SCANCODE_MEDIA_PLAY_PAUSE:
+            case SCANCODE_MEDIA_PREVIOUS:
+            case SCANCODE_MEDIA_NEXT:
                 return KeyEvent.ACTION_DOWN;
             default:
                 return KeyEvent.ACTION_UP;
