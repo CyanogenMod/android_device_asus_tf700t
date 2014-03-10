@@ -43,13 +43,13 @@ on post-fs-data
     mkdir /data/misc/wifi/sockets 0770 wifi wifi
     mkdir /data/misc/dhcp 0770 dhcp dhcp
     mkdir /data/nvcam 0700 media camera
-    chown dhcp dhcp /data/misc/dhcp
+    chown -h dhcp dhcp /data/misc/dhcp
 
     mkdir /data/misc/wminput 0776 system system
 
     # we will remap this as /mnt/sdcard with the sdcard fuse tool
     mkdir /data/media 0770 media_rw media_rw
-    chown media_rw media_rw /data/media
+    chown -h media_rw media_rw /data/media
 
     # bdaddwriter
     mkdir /data/mac
@@ -64,77 +64,77 @@ on boot
 
 # bluetooth
     # change back to bluetooth from system
-    chown bluetooth net_bt_stack /data/misc/bluetooth
+    chown -h bluetooth net_bt_stack /data/misc/bluetooth
 
     # UART device
-    chmod 0660 /dev/ttyHS2
-    chown bluetooth net_bt_stack /dev/ttyHS2
+    chmod -h 0660 /dev/ttyHS2
+    chown -h bluetooth net_bt_stack /dev/ttyHS2
 
     # power up/down interface
-    chmod 0660 /sys/class/rfkill/rfkill0/state
-    chmod 0660 /sys/class/rfkill/rfkill0/type
+    chmod -h 0660 /sys/class/rfkill/rfkill0/state
+    chmod -h 0660 /sys/class/rfkill/rfkill0/type
     write /sys/class/rfkill/rfkill0/state 0
-    chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
-    chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
+    chown -h bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
+    chown -h bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
     restorecon /sys/class/rfkill/rfkill0/state
     restorecon /sys/class/rfkill/rfkill0/type
 
     # bluetooth MAC address programming
-    chown bluetooth net_bt_stack ro.bt.bdaddr_path
-    chown bluetooth net_bt_stack /system/etc/bluetooth
-    chown bluetooth net_bt_stack /data/misc/bluetooth
+    chown -h bluetooth net_bt_stack ro.bt.bdaddr_path
+    chown -h bluetooth net_bt_stack /system/etc/bluetooth
+    chown -h bluetooth net_bt_stack /data/misc/bluetooth
     setprop ro.bt.bdaddr_path "/data/misc/bluetooth/mac.txt"
 
 # nvdps
-    chown system system /sys/class/graphics/fb0/device/nvdps
+    chown -h system system /sys/class/graphics/fb0/device/nvdps
 
 # backlight
-    chown system system /sys/class/backlight/pwm-backlight/brightness
-    chown system system /sys/class/backlight/pwm-backlight/brightness_overwrite
+    chown -h system system /sys/class/backlight/pwm-backlight/brightness
+    chown -h system system /sys/class/backlight/pwm-backlight/brightness_overwrite
 
 # didim
-    chown system system /sys/class/graphics/fb0/device/smartdimmer/enable
-    chown system system /sys/class/graphics/fb0/device/smartdimmer/aggressiveness
-    chown system system /sys/class/graphics/fb0/device/smartdimmer/phase_in_adjustments
+    chown -h system system /sys/class/graphics/fb0/device/smartdimmer/enable
+    chown -h system system /sys/class/graphics/fb0/device/smartdimmer/aggressiveness
+    chown -h system system /sys/class/graphics/fb0/device/smartdimmer/phase_in_adjustments
 
 # USB camera
-    chown media media sys/class/usb_camera/power
+    chown -h media media sys/class/usb_camera/power
 
 # power
-    chown system system /sys/kernel/tegra_cap/core_cap_level
-    chown system system /sys/kernel/tegra_cap/core_cap_state
-    chown system system /sys/module/cpu_tegra/parameters/cpu_user_cap
-    chown system system /sys/module/cpu_tegra3/parameters/mp_overhead
-    chown system system /sys/module/cpu_tegra/parameters/system_mode
-    chown system system /sys/module/cpu_tegra/parameters/pwr_cap_limit_1
-    chown system system /sys/module/cpu_tegra/parameters/pwr_cap_limit_2
-    chown system system /sys/module/cpu_tegra/parameters/pwr_cap_limit_3
-    chown system system /sys/module/cpu_tegra/parameters/pwr_cap_limit_4
+    chown -h system system /sys/kernel/tegra_cap/core_cap_level
+    chown -h system system /sys/kernel/tegra_cap/core_cap_state
+    chown -h system system /sys/module/cpu_tegra/parameters/cpu_user_cap
+    chown -h system system /sys/module/cpu_tegra3/parameters/mp_overhead
+    chown -h system system /sys/module/cpu_tegra/parameters/system_mode
+    chown -h system system /sys/module/cpu_tegra/parameters/pwr_cap_limit_1
+    chown -h system system /sys/module/cpu_tegra/parameters/pwr_cap_limit_2
+    chown -h system system /sys/module/cpu_tegra/parameters/pwr_cap_limit_3
+    chown -h system system /sys/module/cpu_tegra/parameters/pwr_cap_limit_4
 
 # Sensor
-    chown system system /sys/bus/iio/devices/device0/als_ir_mode
-    chown system system /sys/bus/iio/devices/device0/als_enable
-    chown system system /sys/bus/iio/devices/device0/als_high_threshold
-    chown system system /sys/bus/iio/devices/device0/als_low_threshold
+    chown -h system system /sys/bus/iio/devices/device0/als_ir_mode
+    chown -h system system /sys/bus/iio/devices/device0/als_enable
+    chown -h system system /sys/bus/iio/devices/device0/als_high_threshold
+    chown -h system system /sys/bus/iio/devices/device0/als_low_threshold
 
-    chown system system /sys/bus/iio/devices/device0/proximity_enable
-    chown system system /sys/bus/iio/devices/device0/proximity_high_threshold
-    chown system system /sys/bus/iio/devices/device0/proximity_low_threshold
-    chown system system /sys/devices/platform/tegra-i2c.2/i2c-2/2-000f/enable
-    chown system system /sys/devices/platform/tegra-i2c.2/i2c-2/2-000f/delay
-    chmod 0660 /sys/devices/platform/tegra-i2c.2/i2c-2/2-000f/enable
-    chmod 0660 /sys/devices/platform/tegra-i2c.2/i2c-2/2-000f/delay
+    chown -h system system /sys/bus/iio/devices/device0/proximity_enable
+    chown -h system system /sys/bus/iio/devices/device0/proximity_high_threshold
+    chown -h system system /sys/bus/iio/devices/device0/proximity_low_threshold
+    chown -h system system /sys/devices/platform/tegra-i2c.2/i2c-2/2-000f/enable
+    chown -h system system /sys/devices/platform/tegra-i2c.2/i2c-2/2-000f/delay
+    chmod -h 0660 /sys/devices/platform/tegra-i2c.2/i2c-2/2-000f/enable
+    chmod -h 0660 /sys/devices/platform/tegra-i2c.2/i2c-2/2-000f/delay
 
     # new nodes from linux kernel v3.4
-    chown system system /sys/bus/iio/devices/iio:device0/als_ir_mode
-    chown system system /sys/bus/iio/devices/iio:device0/als_enable
-    chown system system /sys/bus/iio/devices/iio:device0/proximity_enable
+    chown -h system system /sys/bus/iio/devices/iio:device0/als_ir_mode
+    chown -h system system /sys/bus/iio/devices/iio:device0/als_enable
+    chown -h system system /sys/bus/iio/devices/iio:device0/proximity_enable
     insmod /system/lib/modules/mpu3050.ko
     insmod /system/lib/modules/inv_mpu_kxtf9.ko
     insmod /system/lib/modules/inv_mpu_ak8975.ko
 
 # Power management settings
-    chown system system /sys/module/cpu_tegra3/parameters/no_lp
+    chown -h system system /sys/module/cpu_tegra3/parameters/no_lp
     write /sys/module/cpu_tegra3/parameters/no_lp 0
     #write /sys/module/tegra3_emc/parameters/emc_enable 0
     #write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 1000000
@@ -160,8 +160,8 @@ on boot
     write /sys/module/cpuidle/parameters/lp2_in_idle 0
 
 # Interactive governor settings
-    chown system system /sys/devices/system/cpu/cpufreq/interactive/go_maxspeed_load
-    chown system system /sys/devices/system/cpu/cpufreq/interactive/max_boost
+    chown -h system system /sys/devices/system/cpu/cpufreq/interactive/go_maxspeed_load
+    chown -h system system /sys/devices/system/cpu/cpufreq/interactive/max_boost
 
     restorecon /sys/devices/system/cpu
     restorecon /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
@@ -191,13 +191,13 @@ on boot
 
 on property:ro.debuggable=1
     # Touchscreen Config-UI interface
-    chmod 666 /sys/devices/platform/tegra-i2c.1/i2c-1/1-005a/mem_access
-    chmod 666 /sys/devices/platform/tegra-i2c.1/i2c-1/1-005a/debug_enable
-    chmod 666 /sys/devices/platform/tegra-i2c.1/i2c-1/1-005a/pause_driver
-    chmod 666 /sys/devices/platform/tegra-i2c.1/i2c-1/1-005a/slowscan_enable
+    chmod -h 666 /sys/devices/platform/tegra-i2c.1/i2c-1/1-005a/mem_access
+    chmod -h 666 /sys/devices/platform/tegra-i2c.1/i2c-1/1-005a/debug_enable
+    chmod -h 666 /sys/devices/platform/tegra-i2c.1/i2c-1/1-005a/pause_driver
+    chmod -h 666 /sys/devices/platform/tegra-i2c.1/i2c-1/1-005a/slowscan_enable
 
 # Fuse
-    chmod 444 /sys/firmware/fuse/odm_production_mode
+    chmod -h 444 /sys/firmware/fuse/odm_production_mode
 
 # Default Read Ahead value for sdcards
     write /sys/block/mmcblk0/bdi/read_ahead_kb   4096
@@ -207,29 +207,29 @@ on property:ro.debuggable=1
 
 # Wiimote connect status
     write /data/misc/wminput/connected 0
-    chmod 0666 /data/misc/wminput/connected
+    chmod -h 0666 /data/misc/wminput/connected
 
 # GPS
     mkdir /data/gps
-    chown system system /data/gps
-    chmod 770 /data/gps
-    chown system system /sys/module/cpu_tegra/parameters/gps_start
-    chmod 600 /sys/module/cpu_tegra/parameters/gps_start
+    chown -h system system /data/gps
+    chmod -h 770 /data/gps
+    chown -h system system /sys/module/cpu_tegra/parameters/gps_start
+    chmod -h 600 /sys/module/cpu_tegra/parameters/gps_start
 
 # GPS init
     write /sys/class/gpio/export 162
     write /sys/class/gpio/gpio162/value 0
     write /sys/class/gpio/gpio162/direction out
-    chown root system /sys/class/gpio/gpio162/value
-    chmod 0664 /sys/class/gpio/gpio162/value
+    chown -h root system /sys/class/gpio/gpio162/value
+    chmod -h 0664 /sys/class/gpio/gpio162/value
 
 # Touch
-    chown system system /proc/ektf_dbg
-    chmod 0660 /proc/ektf_dbg
+    chown -h system system /proc/ektf_dbg
+    chmod -h 0660 /proc/ektf_dbg
 
 # Hardware tunables
-    chown root system /sys/class/graphics/fb0/device/smartdimmer/enable
-    chmod 0664 /sys/class/graphics/fb0/device/smartdimmer/enable
+    chown -h root system /sys/class/graphics/fb0/device/smartdimmer/enable
+    chmod -h 0664 /sys/class/graphics/fb0/device/smartdimmer/enable
     restorecon /sys/class/graphics/fb0/device/smartdimmer/enable
 
 # BB mapping symbolic name to the logging ttyACM port
@@ -428,7 +428,7 @@ service ps3service /system/bin/ps3service
     oneshot
 
 on property:dev.bootcomplete=1
-    chown system system /sys/devices/platform/tegra_grhost/enable_3d_scaling
+    chown -h system system /sys/devices/platform/tegra_grhost/enable_3d_scaling
 
 # test mode for RIL: Should probably be removed from production phones
 service ril-daemon-test /system/bin/rild

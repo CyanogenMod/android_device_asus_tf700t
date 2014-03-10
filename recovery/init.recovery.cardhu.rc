@@ -3,8 +3,8 @@ on init
     mkdir /btmac
 
     mount ext4 /dev/block/mmcblk0p2 /cache wait nosuid nodev
-    chown system cache /cache
-    chmod 0770 /cache
+    chown -h system cache /cache
+    chmod -h 0770 /cache
 
 on boot
 
