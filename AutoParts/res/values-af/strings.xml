@@ -16,24 +16,24 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="app_name">Geavanceerde instellingen</string>
-  <string name="kp_wifi_on">Wifi AAN</string>
-  <string name="kp_wifi_off">Wifi UIT</string>
+  <string name="app_name">Gevorderde instellings</string>
+  <string name="kp_wifi_on">Wi-Fi AAN</string>
+  <string name="kp_wifi_off">Wi-Fi AF</string>
   <string name="kp_bt_on">Bluetooth AAN</string>
-  <string name="kp_bt_off">Bluetooth UIT</string>
+  <string name="kp_bt_off">Bluetooth AF</string>
   <string name="kp_tp_on">TouchPad AAN</string>
-  <string name="kp_tp_off">TouchPad UIT</string>
+  <string name="kp_tp_off">TouchPad AF</string>
   <string name="kp_brightness_manual">Helderheid <xliff:g id="brightness">%1$s</xliff:g></string>
-  <string name="kp_brightness_auto">Helderheid AUTOM.</string>
+  <string name="kp_brightness_auto">Helderheid OUTO</string>
   <string name="kp_volume">Volume <xliff:g id="volume">%1$s</xliff:g></string>
-  <string name="kp_volume_mute_on">Stil AAN</string>
-  <string name="kp_volume_mute_off">Stil UIT</string>
-  <string name="kp_media_play_pause">AFSPELEN/PAUZEREN</string>
-  <string name="kp_media_previous">VORIGE</string>
-  <string name="kp_media_next">VOLGENDE</string>
-  <string name="kp_screenshot">Screenshot</string>
-  <string name="kp_explorer">Browser openen</string>
-  <string name="kp_settings">Instellingen openen</string>
-  <string name="kp_caps_lock_on">Caps lock AAN</string>
-  <string name="kp_caps_lock_off">Caps lock UIT</string>
+  <string name="kp_volume_mute_on">Klank AAN</string>
+  <string name="kp_volume_mute_off">Klank AF</string>
+  <string name="kp_media_play_pause">Media SPEEL/POUSE</string>
+  <string name="kp_media_previous">Media VORIGE</string>
+  <string name="kp_media_next">Media VOLGENDE</string>
+  <string name="kp_screenshot">Neem skermfoto</string>
+  <string name="kp_explorer">Begin browser</string>
+  <string name="kp_settings">Begin instellings</string>
+  <string name="kp_caps_lock_on">Hoofletters AAN</string>
+  <string name="kp_caps_lock_off">Hoofletters AF</string>
 </resources>
