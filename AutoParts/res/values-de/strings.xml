@@ -21,8 +21,8 @@
   <string name="kp_wifi_off">WLAN AUS</string>
   <string name="kp_bt_on">Bluetooth AN</string>
   <string name="kp_bt_off">Bluetooth AUS</string>
-  <string name="kp_tp_on">TouchPad AN</string>
-  <string name="kp_tp_off">TouchPad AUS</string>
+  <string name="kp_tp_on">Touchpad AN</string>
+  <string name="kp_tp_off">Touchpad AUS</string>
   <string name="kp_brightness_manual">Helligkeit <xliff:g id="brightness">%1$s</xliff:g></string>
   <string name="kp_brightness_auto">Helligkeit AUTO</string>
   <string name="kp_volume">Lautstärke <xliff:g id="volume">%1$s</xliff:g></string>

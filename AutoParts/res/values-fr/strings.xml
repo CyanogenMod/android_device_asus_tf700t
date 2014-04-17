@@ -25,7 +25,6 @@
   <string name="kp_tp_off">TouchPad désactivé</string>
   <string name="kp_brightness_manual">Luminosité <xliff:g id="brightness">%1$s</xliff:g></string>
   <string name="kp_brightness_auto">Luminosité automatique</string>
-  <string name="kp_volume">Volume <xliff:g id="volume">%1$s</xliff:g></string>
   <string name="kp_volume_mute_on">Silencieux activé</string>
   <string name="kp_volume_mute_off">Silencieux désactivé</string>
   <string name="kp_media_play_pause">Média Lecture/Pause</string>
