@@ -25,7 +25,6 @@
   <string name="kp_tp_off">触摸板已禁用</string>
   <string name="kp_brightness_manual"><xliff:g id="brightness">%1$s</xliff:g> 亮度</string>
   <string name="kp_brightness_auto">自动亮度</string>
-  <string name="kp_volume">音量 <xliff:g id="volume"> %1$s </xliff:g></string>
   <string name="kp_volume_mute_on">禁音模式已开启</string>
   <string name="kp_volume_mute_off">禁音模式已关闭</string>
   <string name="kp_media_play_pause">媒体播放/暂停</string>

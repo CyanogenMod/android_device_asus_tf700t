@@ -25,7 +25,7 @@
   <string name="kp_tp_off">關閉觸控板</string>
   <string name="kp_brightness_manual">亮度 <xliff:g id="brightness">%1$s</xliff:g></string>
   <string name="kp_brightness_auto">自動亮度</string>
-  <string name="kp_volume">音量  <xliff:g id="volume">%1$s</xliff:g></string>
+  <string name="kp_volume">音量 <xliff:g id="volume">%1$s</xliff:g></string>
   <string name="kp_volume_mute_on">開啟靜音</string>
   <string name="kp_volume_mute_off">關閉靜音</string>
   <string name="kp_media_play_pause">媒體播放/暫停</string>
