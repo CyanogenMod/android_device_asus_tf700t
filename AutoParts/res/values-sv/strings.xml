@@ -16,5 +16,24 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="app_name">Avancerade inställningar</string>
+  <string name="kp_wifi_on">Wi-Fi PÅ</string>
+  <string name="kp_wifi_off">Wi-Fi AV</string>
+  <string name="kp_bt_on">Bluetooth PÅ</string>
+  <string name="kp_bt_off">Bluetooth AV</string>
+  <string name="kp_tp_on">Pekplatta PÅ</string>
+  <string name="kp_tp_off">Pekplatta AV</string>
+  <string name="kp_brightness_manual">Ljusstyrka <xliff:g id="brightness">%1$s</xliff:g></string>
+  <string name="kp_brightness_auto">Ljusstyrka AUTO</string>
+  <string name="kp_volume">Volym <xliff:g id="volume">%1$s</xliff:g></string>
+  <string name="kp_volume_mute_on">Tyst PÅ</string>
+  <string name="kp_volume_mute_off">Tyst AV</string>
+  <string name="kp_media_play_pause">Media SPELA/PAUSA</string>
+  <string name="kp_media_previous">Media FÖREGÅENDE</string>
+  <string name="kp_media_next">Media NÄSTA</string>
   <string name="kp_screenshot">Ta skärmdump</string>
+  <string name="kp_explorer">Öppna webbläsare</string>
+  <string name="kp_settings">Öppna inställningar</string>
+  <string name="kp_caps_lock_on">Caps-Lock PÅ</string>
+  <string name="kp_caps_lock_off">Caps-Lock AV</string>
 </resources>
