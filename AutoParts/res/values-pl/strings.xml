@@ -28,6 +28,9 @@
   <string name="kp_volume">Głośność <xliff:g id="volume">%1$s</xliff:g></string>
   <string name="kp_volume_mute_on">Wyciszenie wł.</string>
   <string name="kp_volume_mute_off">Wyciszenie wył.</string>
+  <string name="kp_media_play_pause">Media odtwórz/pauza</string>
+  <string name="kp_media_previous">Media poprzednie</string>
+  <string name="kp_media_next">Media następne</string>
   <string name="kp_screenshot">Zapisz zrzut ekranu</string>
   <string name="kp_explorer">Uruchom przeglądarkę</string>
   <string name="kp_settings">Uruchom ustawienia</string>
