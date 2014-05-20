@@ -18,7 +18,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="app_name">Дополнительные настройки</string>
   <string name="kp_wifi_on">Wi-Fi вкл.</string>
-  <string name="kp_wifi_off">Wi-Fi вкл.</string>
+  <string name="kp_wifi_off">Wi-Fi выкл.</string>
   <string name="kp_bt_on">Bluetooth вкл.</string>
   <string name="kp_bt_off">Bluetooth выкл.</string>
   <string name="kp_tp_on">Сенсорная панель вкл.</string>
