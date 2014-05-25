@@ -28,7 +28,7 @@
   <string name="kp_volume">音量 <xliff:g id="volume"> %1$s </xliff:g></string>
   <string name="kp_volume_mute_on">靜音開啟</string>
   <string name="kp_volume_mute_off">靜音關閉</string>
-  <string name="kp_media_play_pause">媒體播放／暫停</string>
+  <string name="kp_media_play_pause">媒體播放 / 暫停</string>
   <string name="kp_media_previous">上一個媒體</string>
   <string name="kp_media_next">下一個媒體</string>
   <string name="kp_screenshot">擷取螢幕截圖</string>
