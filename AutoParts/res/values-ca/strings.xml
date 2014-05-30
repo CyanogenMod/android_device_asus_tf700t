@@ -16,7 +16,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="app_name">Ajustaments avançats</string>
+  <string name="app_name">Configuració avançada</string>
   <string name="kp_wifi_on">Wi-Fi Actiu</string>
   <string name="kp_wifi_off">Wi-Fi Inactiu</string>
   <string name="kp_bt_on">Bluetooth Actiu</string>
@@ -33,7 +33,7 @@
   <string name="kp_media_next">Media SEGÜENT</string>
   <string name="kp_screenshot">Fes una captura de pantalla</string>
   <string name="kp_explorer">Obre el navegador</string>
-  <string name="kp_settings">Obre els ajustaments</string>
+  <string name="kp_settings">Obre la configuració</string>
   <string name="kp_caps_lock_on">Bloq Maj-Actiu</string>
   <string name="kp_caps_lock_off">Bloq-Maj Inactiu</string>
 </resources>
