@@ -17,23 +17,23 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="app_name">Напредна подешавања</string>
-  <string name="kp_wifi_on">Wi-Fi УКЉУЧЕН</string>
-  <string name="kp_wifi_off">Wi-Fi ИСКЉУЧЕН</string>
-  <string name="kp_bt_on">Bluetooth УКЉУЧЕН</string>
-  <string name="kp_bt_off">Bluetooth ИСКЉУЧЕН</string>
-  <string name="kp_tp_on">TouchPad УКЉУЧЕН</string>
-  <string name="kp_tp_off">TouchPad ИСКЉУЧЕН</string>
+  <string name="kp_wifi_on">Wi-Fi УКЉУЧЕНО</string>
+  <string name="kp_wifi_off">Wi-Fi ИСКЉУЧЕНО</string>
+  <string name="kp_bt_on">Bluetooth УКЉУЧЕНО</string>
+  <string name="kp_bt_off">Bluetooth ИСКЉУЧЕНО</string>
+  <string name="kp_tp_on">TouchPad УКЉУЧЕНО</string>
+  <string name="kp_tp_off">TouchPad ИСКЉУЧЕНО</string>
   <string name="kp_brightness_manual">Осветљење <xliff:g id="brightness">%1$s</xliff:g></string>
   <string name="kp_brightness_auto">Аутоматска осветљеност</string>
   <string name="kp_volume">Јачина <xliff:g id="volume">%1$s</xliff:g></string>
-  <string name="kp_volume_mute_on">Нечујно УКЉУЧЕН</string>
-  <string name="kp_volume_mute_off">Нечујно ИСКЉУЧЕН</string>
-  <string name="kp_media_play_pause">Meдија ПУСТИ/ПАУЗА</string>
+  <string name="kp_volume_mute_on">Нечујно УКЉУЧЕНО</string>
+  <string name="kp_volume_mute_off">Нечујно ИСКЉУЧЕНО</string>
+  <string name="kp_media_play_pause">Meдија ПУСТИ/ПАУЗИРАЈ</string>
   <string name="kp_media_previous">Mедија ПРЕТХОДНО</string>
   <string name="kp_media_next">Meдија СЛЕДЕЋЕ</string>
   <string name="kp_screenshot">Уради снимак екрана</string>
   <string name="kp_explorer">Покрени претраживач</string>
   <string name="kp_settings">Покрени подешавања</string>
-  <string name="kp_caps_lock_on">Caps-Lock УКЉУЧЕН</string>
-  <string name="kp_caps_lock_off">Caps-Lock ИСКЉУЧЕН</string>
+  <string name="kp_caps_lock_on">Caps-Lock УКЉУЧЕНО</string>
+  <string name="kp_caps_lock_off">Caps-Lock ИСКЉУЧЕНО</string>
 </resources>
