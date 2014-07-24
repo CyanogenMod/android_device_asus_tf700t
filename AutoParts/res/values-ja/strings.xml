@@ -21,17 +21,17 @@
   <string name="kp_wifi_off">Wi-Fi OFF</string>
   <string name="kp_bt_on">Bluetooth ON</string>
   <string name="kp_bt_off">Bluetooth OFF</string>
-  <string name="kp_tp_on">タッチパッド ON</string>
-  <string name="kp_tp_off">タッチパッド OFF</string>
-  <string name="kp_brightness_manual">明るさ <xliff:g id="brightness">%1$s</xliff:g></string>
-  <string name="kp_brightness_auto">明るさ 自動</string>
-  <string name="kp_volume">音量 <xliff:g id="volume">%1$s</xliff:g></string>
-  <string name="kp_volume_mute_on">ミュート ON</string>
-  <string name="kp_volume_mute_off">ミュート OFF</string>
-  <string name="kp_media_play_pause">メディア 再生/一時停止</string>
-  <string name="kp_media_previous">メディア 前へ</string>
-  <string name="kp_media_next">メディア 次へ</string>
-  <string name="kp_screenshot">スクリーンショットの撮影</string>
+  <string name="kp_tp_on">タッチパッドON</string>
+  <string name="kp_tp_off">タッチパッドOFF</string>
+  <string name="kp_brightness_manual">明るさ<xliff:g id="brightness">%1$s</xliff:g></string>
+  <string name="kp_brightness_auto">明るさ自動</string>
+  <string name="kp_volume">音量<xliff:g id="volume">%1$s</xliff:g></string>
+  <string name="kp_volume_mute_on">ミュートON</string>
+  <string name="kp_volume_mute_off">ミュートOFF</string>
+  <string name="kp_media_play_pause">メディア再生/一時停止</string>
+  <string name="kp_media_previous">メディア前へ</string>
+  <string name="kp_media_next">メディア次へ</string>
+  <string name="kp_screenshot">スクリーンショットを撮影</string>
   <string name="kp_explorer">ブラウザを起動</string>
   <string name="kp_settings">設定を起動</string>
   <string name="kp_caps_lock_on">Caps-Lock ON</string>

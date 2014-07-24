@@ -23,7 +23,7 @@
   <string name="kp_bt_off">Bluetooth Ki</string>
   <string name="kp_tp_on">TouchPad Be</string>
   <string name="kp_tp_off">TouchPad Ki</string>
-  <string name="kp_brightness_manual">Fényerő <xliff:g id="brightness">%1$s</xliff:g></string>
+  <string name="kp_brightness_manual"><xliff:g id="brightness">%1$s</xliff:g> fényerő</string>
   <string name="kp_brightness_auto">Automatikus fényerő</string>
   <string name="kp_volume">Hangerő <xliff:g id="volume">%1$s</xliff:g></string>
   <string name="kp_volume_mute_on">Némítás be</string>

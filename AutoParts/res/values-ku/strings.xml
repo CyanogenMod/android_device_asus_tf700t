@@ -21,8 +21,8 @@
   <string name="kp_wifi_off">کوژانه‌وه‌ی wi-fi</string>
   <string name="kp_bt_on">کردنه‌وه‌ی بلوتوس</string>
   <string name="kp_bt_off">کوژانه‌وه‌ی بلوتوس</string>
-  <string name="kp_tp_on">کردنه‌وه‌ی ساوین </string>
-  <string name="kp_tp_off">کوژانه‌وه‌ی ساوین</string>
+  <string name="kp_tp_on">کردنه‌وه‌ی بیسووە </string>
+  <string name="kp_tp_off">کوژانه‌وه‌ی بیسووە</string>
   <string name="kp_brightness_manual">ڕۆشنای <xliff:g id="ڕوشنای">%1$s</xliff:g></string>
   <string name="kp_brightness_auto">ڕوشنای خۆکارانه‌</string>
   <string name="kp_volume">
@@ -33,7 +33,7 @@
   <string name="kp_media_play_pause">وه‌ستان و لێدانی ده‌نگ</string>
   <string name="kp_media_previous">میدیای پێشوو</string>
   <string name="kp_media_next">ده‌نگی داهاتوو</string>
-  <string name="kp_screenshot">وێنه‌ی شاشه‌ بگره‌</string>
+  <string name="kp_screenshot">وێنەی ڕوونما بگرە</string>
   <string name="kp_explorer">دابه‌زاندنی وێبگه‌ر</string>
   <string name="kp_settings">کردنه‌وه‌ی ڕێکخستن</string>
   <string name="kp_caps_lock_on">کردنه‌وه‌ی وشه‌ی گه‌وره‌</string>

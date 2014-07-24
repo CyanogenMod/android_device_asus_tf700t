@@ -17,23 +17,23 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="app_name">고급 설정</string>
-  <string name="kp_wifi_on">Wi-Fi 켜기</string>
-  <string name="kp_wifi_off">Wi-fi 끄기</string>
-  <string name="kp_bt_on">블루투스 켜기</string>
-  <string name="kp_bt_off">블루투스 끄기</string>
-  <string name="kp_tp_on">터치패드 켜기</string>
-  <string name="kp_tp_off">터치패드 끄기</string>
+  <string name="kp_wifi_on">Wi-Fi ON</string>
+  <string name="kp_wifi_off">Wi-Fi OFF</string>
+  <string name="kp_bt_on">블루투스 ON</string>
+  <string name="kp_bt_off">블루투스 OFF</string>
+  <string name="kp_tp_on">터치패드 ON</string>
+  <string name="kp_tp_off">터치패드 OFF</string>
   <string name="kp_brightness_manual">밝기 <xliff:g id="brightness">%1$s</xliff:g></string>
   <string name="kp_brightness_auto">밝기 자동</string>
   <string name="kp_volume">볼륨 <xliff:g id="volume">%1$s</xliff:g></string>
-  <string name="kp_volume_mute_on">음소거 켜기</string>
-  <string name="kp_volume_mute_off">음소거 끄기</string>
+  <string name="kp_volume_mute_on">음소거 ON</string>
+  <string name="kp_volume_mute_off">음소거 OFF</string>
   <string name="kp_media_play_pause">미디어 재생/일시 정지</string>
   <string name="kp_media_previous">미디어 이전으로</string>
   <string name="kp_media_next">미디어 다음으로</string>
   <string name="kp_screenshot">화면 캡쳐</string>
   <string name="kp_explorer">브라우저 실행</string>
   <string name="kp_settings">설정 실행</string>
-  <string name="kp_caps_lock_on">Caps-Lock 켜기</string>
-  <string name="kp_caps_lock_off">Caps-Lock 끄기</string>
+  <string name="kp_caps_lock_on">Caps-Lock ON</string>
+  <string name="kp_caps_lock_off">Caps-Lock OFF</string>
 </resources>
