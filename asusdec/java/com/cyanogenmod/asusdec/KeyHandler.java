@@ -39,6 +39,7 @@ import android.util.Log;
 import android.util.Slog;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
+import android.os.UserHandle;
 
 import com.android.internal.os.DeviceKeyHandler;
 
@@ -612,7 +613,7 @@ public final class KeyHandler implements DeviceKeyHandler {
         intent.putExtra(EXTRA_ASUSDEC_KEY, asusdeckey);
         intent.putExtra(EXTRA_ASUSDEC_STATUS, status);
         intent.putExtra(EXTRA_ASUSDEC_VALUE, value);
-        mContext.sendBroadcast(intent, PERMISSION_KEYPAD_RECEIVER);
+        mContext.sendBroadcastAsUser(intent, UserHandle.CURRENT, PERMISSION_KEYPAD_RECEIVER);
     }
 
     private void notifyKey(int asusdeckey, int status) {
