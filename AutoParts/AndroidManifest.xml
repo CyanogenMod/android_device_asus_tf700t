@@ -9,7 +9,7 @@
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
-    <permission android:name="com.cyanogenmod.asusdec.permission.KEYPAD_RECEIVER" android:protectionLevel="signatureOrSystem" android:label="KEYPAD_RECEIVER for asuspec" />
+    <permission android:name="com.cyanogenmod.asusdec.permission.KEYPAD_RECEIVER" android:protectionLevel="signatureOrSystem" android:label="KEYPAD_RECEIVER for asusdec" />
 
     <uses-permission android:name="com.cyanogenmod.asusdec.permission.KEYPAD_RECEIVER" />
 
