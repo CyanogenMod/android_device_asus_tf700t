@@ -212,8 +212,8 @@ public final class KeyHandler implements DeviceKeyHandler {
         // Consume the event if we are going to handle it. We don't want other subsystem can
         // handle it)
         if (event.getAction() != getScanCodeAction(event) || event.getRepeatCount() != 0) {
-            // Then mark as consumed
-            return true;
+            // Then don't mark as consumed
+            return false;
         }
 
         // Now check every type of scancode that we are able to handle
