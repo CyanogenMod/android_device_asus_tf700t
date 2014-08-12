@@ -39,14 +39,11 @@ etc/firmware/touch/07-01-0006.ekt
 etc/firmware/touch/07-02-0004.ekt
 etc/firmware/touch/last_page.ekt
 etc/wifi/wpa_supplicant.conf
-lib/egl/libEGL_perfhud.so
 lib/egl/libEGL_tegra_impl.so
 lib/egl/libEGL_tegra.so
 lib/egl/libGLES_android.so
-lib/egl/libGLESv1_CM_perfhud.so
 lib/egl/libGLESv1_CM_tegra_impl.so
 lib/egl/libGLESv1_CM_tegra.so
-lib/egl/libGLESv2_perfhud.so
 lib/egl/libGLESv2_tegra_impl.so
 lib/egl/libGLESv2_tegra.so
 lib/hw/audio.primary.tegra.so
