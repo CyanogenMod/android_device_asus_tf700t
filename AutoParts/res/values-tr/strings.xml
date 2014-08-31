@@ -33,7 +33,7 @@
   <string name="kp_media_next">Ortam SONRAKİ</string>
   <string name="kp_screenshot">Ekran görüntüsü al</string>
   <string name="kp_explorer">Tarayıcıyı başlat</string>
-  <string name="kp_settings">Ayarları başlat</string>
-  <string name="kp_caps_lock_on">Caps-Lock AÇIK</string>
-  <string name="kp_caps_lock_off">Caps-Lock KAPALI</string>
+  <string name="kp_settings">Ayarları aç</string>
+  <string name="kp_caps_lock_on">Büyük-Harf AÇIK</string>
+  <string name="kp_caps_lock_off">Büyük-Harf KAPALI</string>
 </resources>
