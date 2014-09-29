@@ -18,24 +18,24 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="app_name">ڕێکخستنی پێشکه‌وتوو</string>
   <string name="kp_wifi_on">کردنه‌وه‌ی wi-fi</string>
-  <string name="kp_wifi_off">کوژانه‌وه‌ی wi-fi</string>
-  <string name="kp_bt_on">کردنه‌وه‌ی بلوتوس</string>
-  <string name="kp_bt_off">کوژانه‌وه‌ی بلوتوس</string>
-  <string name="kp_tp_on">کردنه‌وه‌ی بیسووە </string>
-  <string name="kp_tp_off">کوژانه‌وه‌ی بیسووە</string>
+  <string name="kp_wifi_off">داخستنەوەی Wi-Fi</string>
+  <string name="kp_bt_on">کردنه‌وه‌ی بلوتووس</string>
+  <string name="kp_bt_off">داخستنەوەی بلوتووس</string>
+  <string name="kp_tp_on">کردنه‌وه‌ی سوین پاد</string>
+  <string name="kp_tp_off">داخستنەوەی سوین پاد</string>
   <string name="kp_brightness_manual">ڕۆشنایی <xliff:g id="ڕوشنای">%1$s</xliff:g></string>
-  <string name="kp_brightness_auto">ڕوشنای خۆکارانه‌</string>
+  <string name="kp_brightness_auto">ڕۆشنایی خۆکارانه‌</string>
   <string name="kp_volume">
 ده‌نگ <xliff:g id="ده‌نگ">%1$s</xliff:g>
 </string>
-  <string name="kp_volume_mute_on">کردنه‌وی کپکردن</string>
+  <string name="kp_volume_mute_on">کردنه‌وه‌ی کپکردن</string>
   <string name="kp_volume_mute_off">کوژانه‌وه‌ی کپکردن</string>
-  <string name="kp_media_play_pause">وه‌ستان و لێدانی ده‌نگ</string>
+  <string name="kp_media_play_pause">لێدان و وه‌ستانی ده‌نگ</string>
   <string name="kp_media_previous">میدیای پێشوو</string>
   <string name="kp_media_next">ده‌نگی داهاتوو</string>
-  <string name="kp_screenshot">وێنەی ڕوونما بگرە</string>
-  <string name="kp_explorer">دابه‌زاندنی وێبگه‌ر</string>
-  <string name="kp_settings">کردنه‌وه‌ی ڕێکخستن</string>
-  <string name="kp_caps_lock_on">کردنه‌وه‌ی وشه‌ی گه‌وره‌</string>
-  <string name="kp_caps_lock_off">کوژانه‌وه‌ی وشه‌ی گه‌وره‌</string>
+  <string name="kp_screenshot">گرتنی وێنەی ڕوونما</string>
+  <string name="kp_explorer">کردنەوەی وێبگەڕ</string>
+  <string name="kp_settings">کردنەوەی ڕێکخستنەکان</string>
+  <string name="kp_caps_lock_on">چالاککردنی وشەی گەورە</string>
+  <string name="kp_caps_lock_off">ناچالاکردنی وشەی گەورە</string>
 </resources>

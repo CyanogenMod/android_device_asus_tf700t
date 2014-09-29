@@ -16,7 +16,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="app_name">Speciális beállítások</string>
+  <string name="app_name">Haladó beállítások</string>
   <string name="kp_wifi_on">Wi-Fi Be</string>
   <string name="kp_wifi_off">Wi-Fi Ki</string>
   <string name="kp_bt_on">Bluetooth Be</string>

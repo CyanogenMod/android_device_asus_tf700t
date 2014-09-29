@@ -28,9 +28,9 @@
   <string name="kp_volume">音量<xliff:g id="volume">%1$s</xliff:g></string>
   <string name="kp_volume_mute_on">ミュートON</string>
   <string name="kp_volume_mute_off">ミュートOFF</string>
-  <string name="kp_media_play_pause">メディア再生/一時停止</string>
-  <string name="kp_media_previous">メディア前へ</string>
-  <string name="kp_media_next">メディア次へ</string>
+  <string name="kp_media_play_pause">メディアを再生/一時停止</string>
+  <string name="kp_media_previous">前のメディアへ</string>
+  <string name="kp_media_next">次のメディアへ</string>
   <string name="kp_screenshot">スクリーンショットを撮影</string>
   <string name="kp_explorer">ブラウザを起動</string>
   <string name="kp_settings">設定を起動</string>

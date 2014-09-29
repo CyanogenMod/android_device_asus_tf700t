@@ -17,23 +17,23 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="app_name">Xüsüsi tənzimləmələr</string>
-  <string name="kp_wifi_on">Wi-Fi AÇIQ</string>
-  <string name="kp_wifi_off">Wi-Fi BAĞLI</string>
-  <string name="kp_bt_on">Bluetooth AÇIQ</string>
-  <string name="kp_bt_off">Bluetooth BAĞLI</string>
-  <string name="kp_tp_on">TouchPad AÇIQ</string>
-  <string name="kp_tp_off">TouchPad BAĞLI</string>
+  <string name="kp_wifi_on">Wi-Fi AÇIQDIR</string>
+  <string name="kp_wifi_off">Wi-Fi BAĞLIDIR</string>
+  <string name="kp_bt_on">Bluetooth AÇIQDIR</string>
+  <string name="kp_bt_off">Bluetooth BAĞLIDIR</string>
+  <string name="kp_tp_on">Sensor Səth AÇIQDIR</string>
+  <string name="kp_tp_off">Sensor Səth BAĞLIDIR</string>
   <string name="kp_brightness_manual">Parlaqlıq <xliff:g id="brightness">%1$s</xliff:g></string>
   <string name="kp_brightness_auto">Parlaqlıq AVTO</string>
   <string name="kp_volume">Səs <xliff:g id="volume">%1$s</xliff:g></string>
-  <string name="kp_volume_mute_on">Səssis AÇIQ</string>
-  <string name="kp_volume_mute_off">Səssis BAĞLI</string>
-  <string name="kp_media_play_pause">Media SƏSLƏNDİR/SAXLA</string>
+  <string name="kp_volume_mute_on">Səssis AÇIQDIR</string>
+  <string name="kp_volume_mute_off">Səssis BAĞLIDIR</string>
+  <string name="kp_media_play_pause">Media OYNAT/DAYANDIR</string>
   <string name="kp_media_previous">Media ƏVVƏLKİ</string>
   <string name="kp_media_next">Media SONRAKI</string>
   <string name="kp_screenshot">Ekran təsvirini çək</string>
   <string name="kp_explorer">Brauzeri aç</string>
   <string name="kp_settings">Tənzimləmələri aç</string>
-  <string name="kp_caps_lock_on">Caps-Lock AÇIQ</string>
-  <string name="kp_caps_lock_off">Caps-Lock BAĞLI</string>
+  <string name="kp_caps_lock_on">Caps-Lock AÇIQDIR</string>
+  <string name="kp_caps_lock_off">Caps-Lock BAĞLIDIR</string>
 </resources>
