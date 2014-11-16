@@ -9,7 +9,7 @@
 /dev/block/mmcblk0p8 /data   ext4 noatime,noauto_da_alloc,nosuid,nodev,nodiratime,barrier=0,errors=panic wait,encryptable=footer
 
 # VOLD mount points
-/devices/platform/sdhci-tegra.0/mmc_host/mmc2 auto auto defaults voldmanaged=sdcard1:auto
+/devices/platform/sdhci-tegra.0/mmc_host/mmc2* auto auto defaults voldmanaged=sdcard1:auto
 /devices/platform/tegra-ehci.2/usb1/1-1/1-1.2 auto auto defaults voldmanaged=usbdisk0:auto
 /devices/platform/tegra-ehci.2/usb2/2-1/2-1.2 auto auto defaults voldmanaged=usbdisk0:auto
 /devices/platform/tegra-ehci.2/usb1/1-1/1-1.1 auto auto defaults voldmanaged=usbdisk1:auto
@@ -22,6 +22,6 @@
 # Recovery only
 /dev/block/mmcblk1p1    /external_sd auto defaults recoveryonly
 /dev/block/mmcblk0p3    /misc        emmc defaults recoveryonly
-/dev/block/mmcblk0p4    /staging     ext3 defaults recoveryonly
+/dev/block/mmcblk0p4    /staging     emmc defaults recoveryonly
 /dev/block/mmcblk0p9    /recovery    emmc defaults recoveryonly
 /dev/block/mmcblk0p10   /boot        emmc defaults recoveryonly

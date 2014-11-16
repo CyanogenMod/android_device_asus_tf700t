@@ -3,5 +3,11 @@
    "repository": "android_kernel_asus_tf700t",
    "target_path": "kernel/asus/tf700t"
  }
+ {
+   "remote": "aosp",
+   "repository": "platform/prebuilts/gcc/linux-x86/arm/arm-eabi-4.7",
+   "target_path": "prebuilts/gcc/linux-x86/arm/arm-eabi-4.7",
+   "revision": "master"
+ }
 ]
 
