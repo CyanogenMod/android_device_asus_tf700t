@@ -19,16 +19,13 @@ USE_PROPRIETARY_AUDIO_EXTENSIONS := true
 BOARD_USES_GENERIC_AUDIO := false
 BOARD_USES_ALSA_AUDIO := false
 BOARD_USES_TINY_AUDIO_HW := false
-BOARD_HAVE_PRE_KITKAT_AUDIO_BLOB := true
-BOARD_HAVE_PRE_KITKAT_AUDIO_POLICY_BLOB := true
 
 # Camera options
 COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
 
 # Cardhu HAL libraries
 BOARD_HAL_STATIC_LIBRARIES := \
-    libdumpstate.cardhu \
-    libhealthd.cardhu
+    libdumpstate.cardhu
 
 # inherit from the proprietary version
 -include vendor/asus/tf700t/BoardConfigVendor.mk
@@ -89,7 +86,6 @@ BOARD_RECOVERYIMAGE_PARTITION_SIZE := 8388608
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 536870912
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 29850022707
 BOARD_FLASH_BLOCK_SIZE := 4096
-TARGET_USERIMAGES_SPARSE_EXT_DISABLED := true
 
 # Build kernel from source
 TARGET_KERNEL_SOURCE := kernel/asus/tf700t
@@ -112,21 +108,24 @@ BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
 BOARD_SEPOLICY_DIRS := \
     device/asus/tf700t/sepolicy
 
-BOARD_SEPOLICY_UNION := \
-    file_contexts \
-    genfs_contexts \
-    app.te \
-    bdaddwriter.te \
-    device.te \
-    drmserver.te \
-    init_shell.te \
-    file.te \
-    rild.te \
-    sensors_config.te \
-    shell.te \
-    surfaceflinger.te \
-    system.te \
-    zygote.te
-
-# CMHW
-BOARD_HARDWARE_CLASS := device/asus/tf700t/cmhw/
+BOARD_SEPOLICY_UNION += \
+        file_contexts \
+        genfs_contexts \
+        bluetooth.te \
+        device.te \
+        domain.te \
+        drmserver.te \
+        init_shell.te \
+        file.te \
+        gpsd.te \
+        keystore.te \
+        lmkd.te \
+        mediaserver.te \
+        recovery.te \
+        rild.te \
+        sensors_config.te \
+        surfaceflinger.te \
+        system_app.te \
+        system_server.te \
+        ueventd.te \
+        vold.te
