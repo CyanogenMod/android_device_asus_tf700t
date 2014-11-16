@@ -1,8 +1,0 @@
-<resources>
-
-<!-- Miscellaneous -->
-    <bool name="config_largeHeap">true</bool>
-    <bool name="is_tablet">true</bool>
-    <bool name="allow_rotation">true</bool>
-
-</resources>
