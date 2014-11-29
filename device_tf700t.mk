@@ -86,6 +86,7 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 
 # Extra packages to build for this device
 PRODUCT_PACKAGES += \
+    camera.tegra \
     librs_jni \
     com.android.future.usb.accessory \
     make_ext4fs \
