@@ -11,3 +11,5 @@ allow system_server gps_data_file:fifo_file { setattr rw_file_perms };
 # Access /data/sensors.
 allow system_server sensors_data_file:dir r_dir_perms;
 allow system_server sensors_data_file:file r_file_perms;
+
+allow system_server cache_file:file execute;

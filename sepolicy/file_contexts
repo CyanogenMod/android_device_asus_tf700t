@@ -1,17 +1,24 @@
 /dev/diag                         u:object_r:diag_device:s0
 /dev/elan-iap                     u:object_r:elan_ip_device:s0
 /dev/knvmap                       u:object_r:knv_device:s0
-/dev/lightsensor                  u:object_r:sensors_device:s0
 /dev/mi1040                       u:object_r:camera_device:s0
+/dev/i7002a                       u:object_r:camera_device:s0
 /dev/tegra_camera                 u:object_r:camera_device:s0
 /dev/nvhost.*                     u:object_r:nvhost_device:s0
 /dev/nvhost-ctrl                  u:object_r:gpu_device:s0
 /dev/nvhost-gr2d                  u:object_r:gpu_device:s0
 /dev/nvhost-gr3d                  u:object_r:gpu_device:s0
 /dev/nvmap                        u:object_r:gpu_device:s0
+/dev/tegra-throughput             u:object_r:gpu_device:s0
 /dev/ttyHS1                       u:object_r:gps_device:s0
 /dev/ttyHS2                       u:object_r:hci_attach_dev:s0
 /dev/ttyACM0                      u:object_r:radio_device:s0
+/dev/accelirq                     u:object_r:sensors_device:s0
+/dev/timerirq			  u:object_r:sensors_device:s0
+/dev/lightsensor                  u:object_r:sensors_device:s0
+/dev/dsp_fm34			  u:object_r:audio_device:s0
+/dev/wm8903                       u:object_r:audio_device:s0
+/dev/asusdec                      u:object_r:input_device:s0
 
 /data/amit(/.*)?                  u:object_r:sensors_data_file:s0
 /data/calibration(/.*)?           u:object_r:sensors_data_file:s0

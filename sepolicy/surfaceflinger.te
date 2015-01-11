@@ -7,3 +7,7 @@ allow surfaceflinger sysfs_devices_system_cpu:dir w_dir_perms;
 # Kernel bug for Linux < 3.3: sysfs inodes can lose their security context
 # and revert to the base sysfs type.
 allow surfaceflinger sysfs:file write;
+
+# should be more specific to only target /data/data/com.nvidia.cap
+allow surfaceflinger system_data_file:sock_file create_file_perms;
+allow surfaceflinger system_data_file:dir rw_dir_perms;

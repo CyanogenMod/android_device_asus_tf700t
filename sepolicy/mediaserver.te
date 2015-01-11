@@ -1,1 +1,6 @@
 allow mediaserver { gpu_device nvhost_device }:chr_file rw_file_perms;
+allow mediaserver sysfs_devices_tegradc:file r_file_perms;
+allow mediaserver sysfs_devices_tegradc:dir r_dir_perms;
+allow mediaserver sysfs_devices_tegradc:lnk_file read;
+
+allow mediaserver system_server:unix_stream_socket rw_stream_socket_perms;
