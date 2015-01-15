@@ -86,6 +86,10 @@ Usage:  ota_from_target_files [flags] input_target_files output_ota_package
   --override_device <device>
       Override device-specific asserts. Can be a comma-separated list.
 
+  --override_prop <boolean>
+      Override build.prop items with custom vendor init.
+      Enabled when TARGET_UNIFIED_DEVICE is defined in BoardConfig
+
 """
 
 import sys
@@ -105,6 +109,10 @@ import time
 import zipfile
 
 from hashlib import sha1 as sha1
+
+LOCAL_DIR = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
+RELEASETOOLS_DIR = os.path.abspath(os.path.join(LOCAL_DIR, '../../../build/tools/releasetools'))
+sys.path.append(RELEASETOOLS_DIR)
 
 import common
 import edify_generator
@@ -134,6 +142,7 @@ OPTIONS.oem_source = None
 OPTIONS.fallback_to_full = True
 OPTIONS.backuptool = False
 OPTIONS.override_device = 'auto'
+OPTIONS.override_prop = False
 
 LOCAL_DIR = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
 if os.environ.get('OUT_DIR') is None:
@@ -477,6 +486,16 @@ def GetImage(which, tmpdir, info_dict):
   return sparse_img.SparseImage(path, mappath)
 
 
+def CopyInstallTools(output_zip):
+  oldcwd = os.getcwd()
+  os.chdir(os.getenv('OUT'))
+  for root, subdirs, files in os.walk("install"):
+    for f in files:
+      p = os.path.join(root, f)
+      output_zip.write(p, p)
+  os.chdir(oldcwd)
+
+
 def WriteFullOTAPackage(input_zip, output_zip):
   # TODO: how to determine this?  We don't know what version it will
   # be installed on top of.  For now, we expect the API just won't
@@ -492,13 +511,19 @@ def WriteFullOTAPackage(input_zip, output_zip):
     script.Mount("/oem", recovery_mount_options)
     oem_dict = common.LoadDictionaryFromLines(open(OPTIONS.oem_source).readlines())
 
-  metadata = {"post-build": CalculateFingerprint(
-                               oem_props, oem_dict, OPTIONS.info_dict),
-              "pre-device": GetOemProperty("ro.product.device", oem_props, oem_dict,
-                                         OPTIONS.info_dict),
-              "post-timestamp": GetBuildProp("ro.build.date.utc",
+
+  if OPTIONS.override_prop:
+    metadata = {"post-timestamp": GetBuildProp("ro.build.date.utc",
+                                               OPTIONS.info_dict),
+                }
+  else:
+    metadata = {"post-build": CalculateFingerprint(
+                                 oem_props, oem_dict, OPTIONS.info_dict),
+                "pre-device": GetOemProperty("ro.product.device", oem_props, oem_dict,
+                                           OPTIONS.info_dict),
+                "post-timestamp": GetBuildProp("ro.build.date.utc",
                                              OPTIONS.info_dict),
-              }
+                }
 
   device_specific = common.DeviceSpecificParams(
       input_zip=input_zip,
@@ -509,11 +534,8 @@ def WriteFullOTAPackage(input_zip, output_zip):
       metadata=metadata,
       info_dict=OPTIONS.info_dict)
 
-  #TF700T
-  #has_recovery_patch = HasRecoveryPatch(input_zip)
-  #block_based = OPTIONS.block_based and has_recovery_patch
-  has_recovery_patch = False
-  block_based = False
+  has_recovery_patch = HasRecoveryPatch(input_zip)
+  block_based = OPTIONS.block_based and has_recovery_patch
 
   #if not OPTIONS.omit_prereq:
   #  ts = GetBuildProp("ro.build.date.utc", OPTIONS.info_dict)
@@ -542,9 +564,8 @@ def WriteFullOTAPackage(input_zip, output_zip):
   #       set up system to update recovery partition on first boot
   #    complete script normally (allow recovery to mark itself finished and reboot)
 
-  #TF700T
-  #recovery_img = common.GetBootableImage("recovery.img", "recovery.img",
-  #                                       OPTIONS.input_tmp, "RECOVERY")
+  recovery_img = common.GetBootableImage("recovery.img", "recovery.img",
+                                         OPTIONS.input_tmp, "RECOVERY")
   if OPTIONS.two_step:
     if not OPTIONS.info_dict.get("multistage_support", None):
       assert False, "two-step packages not supported by this build"
@@ -552,8 +573,7 @@ def WriteFullOTAPackage(input_zip, output_zip):
     assert fs.fs_type.upper() == "EMMC", \
         "two-step packages only supported on devices with EMMC /misc partitions"
     bcb_dev = {"bcb_dev": fs.device}
-    #TF700T
-    #common.ZipWriteStr(output_zip, "recovery.img", recovery_img.data)
+    common.ZipWriteStr(output_zip, "recovery.img", recovery_img.data)
     script.AppendExtra("""
 if get_stage("%(bcb_dev)s") == "2/3" then
 """ % bcb_dev)
@@ -564,14 +584,15 @@ reboot_now("%(bcb_dev)s", "recovery");
 else if get_stage("%(bcb_dev)s") == "3/3" then
 """ % bcb_dev)
 
+  script.AppendExtra("ifelse(is_mounted(\"/system\"), unmount(\"/system\"));")
   device_specific.FullOTA_InstallBegin()
 
+  CopyInstallTools(output_zip)
+  script.UnpackPackageDir("install", "/tmp/install")
+  script.SetPermissionsRecursive("/tmp/install", 0, 0, 0755, 0644, None, None)
+  script.SetPermissionsRecursive("/tmp/install/bin", 0, 0, 0755, 0755, None, None)
+
   if OPTIONS.backuptool:
-    if block_based:
-      common.ZipWriteStr(output_zip, "system/bin/backuptool.sh",
-                     ""+input_zip.read("SYSTEM/bin/backuptool.sh"))
-      common.ZipWriteStr(output_zip, "system/bin/backuptool.functions",
-                     ""+input_zip.read("SYSTEM/bin/backuptool.functions"))
     script.Mount("/system")
     script.RunBackup("backup")
     script.Unmount("/system")
@@ -583,13 +604,13 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   if HasVendorPartition(input_zip):
     system_progress -= 0.1
 
-  if block_based:
-    common.ZipWriteStr(output_zip, "system/bin/otasigcheck.sh",
-                   ""+input_zip.read("SYSTEM/bin/otasigcheck.sh"))
+  script.AppendExtra("if is_mounted(\"/data\") then")
+  script.ValidateSignatures("data")
+  script.AppendExtra("else")
   script.Mount("/data")
   script.ValidateSignatures("data")
-  #TF700T Don't unmount here. The resource is still busy. Just close later with UnmountAll()
-  #script.Unmount("/data")
+  script.Unmount("/data")
+  script.AppendExtra("endif;")
 
   if "selinux_fc" in OPTIONS.info_dict:
     WritePolicyConfig(OPTIONS.info_dict["selinux_fc"], output_zip)
@@ -610,25 +631,23 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   else:
     script.FormatPartition("/system")
     script.Mount("/system", recovery_mount_options)
-    #TF700T
-    #if not has_recovery_patch:
-    #  script.UnpackPackageDir("recovery", "/system")
+    if not has_recovery_patch:
+      script.UnpackPackageDir("recovery", "/system")
     script.UnpackPackageDir("system", "/system")
     symlinks = CopyPartitionFiles(system_items, input_zip, output_zip)
     script.MakeSymlinks(symlinks)
 
-  #TF700T
-  #boot_img = common.GetBootableImage("boot.img", "boot.img",
-  #                                   OPTIONS.input_tmp, "BOOT")
   prebuilt_path = os.path.join(DEV_OUT_DIR, "boot.img")
   blob = common.File.FromLocalFile("boot.img.blob", prebuilt_path)
+
+  #boot_img = common.GetBootableImage("boot.img", "boot.img",
+  #                                   OPTIONS.input_tmp, "BOOT")
 
   if not block_based:
     def output_sink(fn, data):
       common.ZipWriteStr(output_zip, "recovery/" + fn, data)
       system_items.Get("system/" + fn, dir=False)
 
-    #TF700T
     #common.MakeRecoveryPatch(OPTIONS.input_tmp, output_sink,
     #                         recovery_img, boot_img)
 
@@ -655,15 +674,10 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
       vendor_items.GetMetadata(input_zip)
       vendor_items.Get("vendor").SetPermissions(script)
 
-  #TF700T
-  #common.CheckSize(blob.data, "boot.blob", OPTIONS.info_dict)
+  common.CheckSize(blob.data, "boot.img", OPTIONS.info_dict)
   common.ZipWriteStr(output_zip, "boot.blob", blob.data)
 
-  if block_based:
-    script.Mount("/system")
-  script.ValidateSignatures("cleanup")
-  if block_based:
-    script.Unmount("/system")
+  device_specific.FullOTA_PostValidate()
 
   if OPTIONS.backuptool:
     script.ShowProgress(0.02, 10)
@@ -674,8 +688,6 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
       script.Unmount("/system")
 
   script.ShowProgress(0.05, 5)
-  #TF700T
-  #script.WriteRawImage("/boot", "boot.img")
   script.WriteRawImage("/staging", "boot.blob")
 
   script.ShowProgress(0.2, 10)
@@ -704,6 +716,9 @@ endif;
 """ % bcb_dev)
   script.AddToZip(input_zip, output_zip, input_path=OPTIONS.updater_binary)
   WriteMetadata(metadata, output_zip)
+
+  common.ZipWriteStr(output_zip, "system/build.prop",
+                     ""+input_zip.read("SYSTEM/build.prop"))
 
   common.ZipWriteStr(output_zip, "META-INF/org/cyanogenmod/releasekey",
                      ""+input_zip.read("META/releasekey.txt"))
@@ -764,11 +779,16 @@ def WriteBlockIncrementalOTAPackage(target_zip, source_zip, output_zip):
   script = edify_generator.EdifyGenerator(source_version,
                                           OPTIONS.target_info_dict)
 
-  metadata = {"pre-device": GetBuildProp("ro.product.device",
-                                         OPTIONS.source_info_dict),
-              "post-timestamp": GetBuildProp("ro.build.date.utc",
-                                             OPTIONS.target_info_dict),
-              }
+  if OPTIONS.override_prop:
+    metadata = {"post-timestamp": GetBuildProp("ro.build.date.utc",
+                                               OPTIONS.target_info_dict),
+                }
+  else:
+    metadata = {"pre-device": GetBuildProp("ro.product.device",
+                                           OPTIONS.source_info_dict),
+                "post-timestamp": GetBuildProp("ro.build.date.utc",
+                                               OPTIONS.target_info_dict),
+                }
 
   device_specific = common.DeviceSpecificParams(
       source_zip=source_zip,
@@ -1122,11 +1142,16 @@ def WriteIncrementalOTAPackage(target_zip, source_zip, output_zip):
     script.Mount("/oem", recovery_mount_options)
     oem_dict = common.LoadDictionaryFromLines(open(OPTIONS.oem_source).readlines())
 
-  metadata = {"pre-device": GetOemProperty("ro.product.device", oem_props, oem_dict,
-                                         OPTIONS.source_info_dict),
-              "post-timestamp": GetBuildProp("ro.build.date.utc",
-                                             OPTIONS.target_info_dict),
-              }
+  if OPTIONS.override_prop:
+    metadata = {"post-timestamp": GetBuildProp("ro.build.date.utc",
+                                               OPTIONS.target_info_dict),
+                }
+  else:
+    metadata = {"pre-device": GetOemProperty("ro.product.device", oem_props, oem_dict,
+                                           OPTIONS.source_info_dict),
+                "post-timestamp": GetBuildProp("ro.build.date.utc",
+                                               OPTIONS.target_info_dict),
+                }
 
   device_specific = common.DeviceSpecificParams(
       source_zip=source_zip,
@@ -1146,18 +1171,19 @@ def WriteIncrementalOTAPackage(target_zip, source_zip, output_zip):
   else:
     vendor_diff = None
 
-  target_fp = CalculateFingerprint(oem_props, oem_dict, OPTIONS.target_info_dict)
-  source_fp = CalculateFingerprint(oem_props, oem_dict, OPTIONS.source_info_dict)
+  if not OPTIONS.override_prop:
+    target_fp = CalculateFingerprint(oem_props, oem_dict, OPTIONS.target_info_dict)
+    source_fp = CalculateFingerprint(oem_props, oem_dict, OPTIONS.source_info_dict)
 
-  if oem_props is None:
-    script.AssertSomeFingerprint(source_fp, target_fp)
-  else:
-    script.AssertSomeThumbprint(
-        GetBuildProp("ro.build.thumbprint", OPTIONS.target_info_dict),
-        GetBuildProp("ro.build.thumbprint", OPTIONS.source_info_dict))
+    if oem_props is None:
+      script.AssertSomeFingerprint(source_fp, target_fp)
+    else:
+      script.AssertSomeThumbprint(
+          GetBuildProp("ro.build.thumbprint", OPTIONS.target_info_dict),
+          GetBuildProp("ro.build.thumbprint", OPTIONS.source_info_dict))
 
-  metadata["pre-build"] = source_fp
-  metadata["post-build"] = target_fp
+    metadata["pre-build"] = source_fp
+    metadata["post-build"] = target_fp
 
   source_boot = common.GetBootableImage(
       "/tmp/boot.img", "boot.img", OPTIONS.source_tmp, "BOOT",
@@ -1167,14 +1193,12 @@ def WriteIncrementalOTAPackage(target_zip, source_zip, output_zip):
   updating_boot = (not OPTIONS.two_step and
                    (source_boot.data != target_boot.data))
 
-  #TF700T
-  #source_recovery = common.GetBootableImage(
-  #    "/tmp/recovery.img", "recovery.img", OPTIONS.source_tmp, "RECOVERY",
-  #    OPTIONS.source_info_dict)
-  #target_recovery = common.GetBootableImage(
-  #    "/tmp/recovery.img", "recovery.img", OPTIONS.target_tmp, "RECOVERY")
-  #updating_recovery = (source_recovery.data != target_recovery.data)
-  updating_recovery = false
+  source_recovery = common.GetBootableImage(
+      "/tmp/recovery.img", "recovery.img", OPTIONS.source_tmp, "RECOVERY",
+      OPTIONS.source_info_dict)
+  target_recovery = common.GetBootableImage(
+      "/tmp/recovery.img", "recovery.img", OPTIONS.target_tmp, "RECOVERY")
+  updating_recovery = (source_recovery.data != target_recovery.data)
 
   # Here's how we divide up the progress bar:
   #  0.1 for verifying the start state (PatchCheck calls)
@@ -1317,28 +1341,28 @@ else
   if vendor_diff:
     vendor_items = ItemSet("vendor", "META/vendor_filesystem_config.txt")
 
-  if updating_recovery:
-    # Recovery is generated as a patch using both the boot image
-    # (which contains the same linux kernel as recovery) and the file
-    # /system/etc/recovery-resource.dat (which contains all the images
-    # used in the recovery UI) as sources.  This lets us minimize the
-    # size of the patch, which must be included in every OTA package.
-    #
-    # For older builds where recovery-resource.dat is not present, we
-    # use only the boot image as the source.
+  #if updating_recovery:
+  #  # Recovery is generated as a patch using both the boot image
+  #  # (which contains the same linux kernel as recovery) and the file
+  #  # /system/etc/recovery-resource.dat (which contains all the images
+  #  # used in the recovery UI) as sources.  This lets us minimize the
+  #  # size of the patch, which must be included in every OTA package.
+  #  #
+  #  # For older builds where recovery-resource.dat is not present, we
+  #  # use only the boot image as the source.
 
-    if not target_has_recovery_patch:
-      def output_sink(fn, data):
-        common.ZipWriteStr(output_zip, "recovery/" + fn, data)
-        system_items.Get("system/" + fn, dir=False)
-
-      common.MakeRecoveryPatch(OPTIONS.target_tmp, output_sink,
-                               target_recovery, target_boot)
-      script.DeleteFiles(["/system/recovery-from-boot.p",
-                          "/system/etc/install-recovery.sh"])
-    print "recovery image changed; including as patch from boot."
-  else:
-    print "recovery image unchanged; skipping."
+  #  if not target_has_recovery_patch:
+  #    def output_sink(fn, data):
+  #      common.ZipWriteStr(output_zip, "recovery/" + fn, data)
+  #      system_items.Get("system/" + fn, dir=False)
+  #
+  #    common.MakeRecoveryPatch(OPTIONS.target_tmp, output_sink,
+  #                             target_recovery, target_boot)
+  #    script.DeleteFiles(["/system/recovery-from-boot.p",
+  #                        "/system/etc/install-recovery.sh"])
+  #  print "recovery image changed; including as patch from boot."
+  #else:
+  #  print "recovery image unchanged; skipping."
 
   script.ShowProgress(0.1, 10)
 
@@ -1472,15 +1496,11 @@ def main(argv):
         raise ValueError("Cannot parse value %r for option %r - only "
                          "integers are allowed." % (a, o))
     elif o in ("-2", "--two_step"):
-      #TF700T Two steps is not supported in TF700T
-      #OPTIONS.two_step = True
-      OPTIONS.two_step = False
+      OPTIONS.two_step = True
     elif o == "--no_signing":
       OPTIONS.no_signing = True
     elif o in ("--verify"):
-      #TF700T Verify is not supported in TF700T
-      #OPTIONS.verify = True
-      OPTIONS.verify = False
+      OPTIONS.verify = True
     elif o == "--block":
       OPTIONS.block_based = True
     elif o in ("-b", "--binary"):
@@ -1491,6 +1511,8 @@ def main(argv):
       OPTIONS.backuptool = bool(a.lower() == 'true')
     elif o in ("--override_device"):
       OPTIONS.override_device = a
+    elif o in ("--override_prop"):
+      OPTIONS.override_prop = bool(a.lower() == 'true')
     else:
       return False
     return True
@@ -1513,7 +1535,8 @@ def main(argv):
                                               "verify",
                                               "no_fallback_to_full",
                                               "backup=",
-                                              "override_device="],
+                                              "override_device=",
+                                              "override_prop="],
                              extra_option_handler=option_handler)
 
   if len(args) != 2:
