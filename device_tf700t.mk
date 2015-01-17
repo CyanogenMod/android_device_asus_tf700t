@@ -81,9 +81,6 @@ PRODUCT_CHARACTERISTICS := tablet
 PRODUCT_AAPT_CONFIG := normal large xlarge hdpi
 PRODUCT_AAPT_PREF_CONFIG := hdpi
 
-# This device has enough space for precise dalvik
-PRODUCT_TAGS += dalvik.gc.type-precise
-
 # Extra packages to build for this device
 PRODUCT_PACKAGES += \
     camera.tegra \
@@ -130,7 +127,7 @@ PRODUCT_COPY_FILES += \
     device/asus/tf700t/configs/gps.conf:system/etc/gps.conf
 
 # Inherit tablet dalvik settings
-$(call inherit-product, frameworks/native/build/tablet-10in-xhdpi-2048-dalvik-heap.mk)
+$(call inherit-product, frameworks/native/build/tablet-7in-hdpi-1024-dalvik-heap.mk)
 
 # Broadcom wpa supplicant
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)
