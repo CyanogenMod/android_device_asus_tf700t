@@ -15,11 +15,10 @@
 #
 
 # Audio Options
-USE_PROPRIETARY_AUDIO_EXTENSIONS := true
 BOARD_USES_GENERIC_AUDIO := false
-BOARD_USES_ALSA_AUDIO := false
-BOARD_USES_TINY_AUDIO_HW := false
+BOARD_HAVE_PRE_KITKAT_AUDIO_BLOB := true
 BOARD_HAVE_PRE_KITKAT_AUDIO_POLICY_BLOB := true
+USE_LEGACY_AUDIO_POLICY := 1
 
 # defines to support legacy blobs
 COMMON_GLOBAL_CFLAGS += \
@@ -30,7 +29,8 @@ COMMON_GLOBAL_CFLAGS += \
 
 # Cardhu HAL libraries
 BOARD_HAL_STATIC_LIBRARIES := \
-    libdumpstate.cardhu
+    libdumpstate.cardhu \
+    libhealthd.cardhu
 
 # inherit from the proprietary version
 -include vendor/asus/tf700t/BoardConfigVendor.mk
@@ -46,10 +46,10 @@ TARGET_BOOTLOADER_BOARD_NAME := cardhu
 TARGET_NO_BOOTLOADER := true
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
-TARGET_ARCH_VARIANT := armv7-a-neon
-TARGET_CPU_VARIANT := cortex-a9
 TARGET_CPU_SMP := true
 TARGET_ARCH := arm
+TARGET_ARCH_VARIANT := armv7-a-neon
+TARGET_CPU_VARIANT := cortex-a9
 ARCH_ARM_HAVE_32_BYTE_CACHE_LINES := true
 NEED_WORKAROUND_CORTEX_A9_745320 := true
 
@@ -100,6 +100,9 @@ KERNEL_TOOLCHAIN=$(ANDROID_BUILD_TOP)/prebuilts/gcc/linux-x86/arm/arm-eabi-4.7/b
 
 # Custom Tools
 TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/asus/tf700t/releasetools/tf700t_ota_from_target_files
+
+# CMHW
+BOARD_HARDWARE_CLASS := device/asus/tf700t/cmhw/
 
 # Recovery Options
 BOARD_CUSTOM_BOOTIMG_MK := device/asus/tf700t/recovery/recovery.mk

@@ -63,6 +63,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.location.xml:system/etc/permissions/android.hardware.location.xml \
     frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
+    frameworks/native/data/etc/android.hardware.ethernet.xml:system/etc/permissions/android.hardware.ethernet.xml \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
     frameworks/native/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
     frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
@@ -93,13 +94,23 @@ PRODUCT_PACKAGES += \
     audio.r_submix.default \
     libaudioutils \
     libinvensense_mpl \
+    AutoParts_tfp \
     blobpack_tfp \
     wifimacwriter \
-    mischelp
+    mischelp \
+    com.cyanogenmod.asusdec \
+    libasusdec_jni
 
 # Torch
 PRODUCT_PACKAGES += \
     Torch
+
+# Wifi files
+PRODUCT_PACKAGES += \
+    hostapd \
+    dhcpcd.conf \
+    wpa_supplicant \
+    wpa_supplicant.conf
 
 # Infinity specific properties
 PRODUCT_PROPERTY_OVERRIDES := \
@@ -119,6 +130,9 @@ PRODUCT_COPY_FILES += \
 
 # Inherit tablet dalvik settings
 $(call inherit-product, frameworks/native/build/tablet-10in-xhdpi-2048-dalvik-heap.mk)
+
+# Broadcom wpa supplicant
+$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)
 
 # Device Naming
 PRODUCT_NAME := full_tf700t
