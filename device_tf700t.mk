@@ -121,7 +121,7 @@ PRODUCT_PROPERTY_OVERRIDES := \
 PRODUCT_COPY_FILES += \
     device/asus/tf700t/configs/media_codecs.xml:system/etc/media_codecs.xml \
     device/asus/tf700t/configs/media_profiles.xml:system/etc/media_profiles.xml \
-    device/asus/tf300t/configs/audio_policy.conf:system/etc/audio_policy.conf
+    device/asus/tf700t/configs/audio_policy.conf:system/etc/audio_policy.conf
 
 # GPS configuration
 PRODUCT_COPY_FILES += \
