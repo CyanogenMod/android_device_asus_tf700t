@@ -3,6 +3,7 @@
 /dev/knvmap                       u:object_r:knv_device:s0
 /dev/mi1040                       u:object_r:camera_device:s0
 /dev/i7002a                       u:object_r:camera_device:s0
+/dev/fjm6mo                       u:object_r:camera_device:s0
 /dev/tegra_camera                 u:object_r:camera_device:s0
 /dev/nvhost.*                     u:object_r:nvhost_device:s0
 /dev/nvhost-ctrl                  u:object_r:gpu_device:s0
@@ -14,10 +15,10 @@
 /dev/ttyHS2                       u:object_r:hci_attach_dev:s0
 /dev/ttyACM0                      u:object_r:radio_device:s0
 /dev/accelirq                     u:object_r:sensors_device:s0
-/dev/timerirq			  u:object_r:sensors_device:s0
+/dev/timerirq                     u:object_r:sensors_device:s0
 /dev/lightsensor                  u:object_r:sensors_device:s0
-/dev/dsp_fm34			  u:object_r:audio_device:s0
-/dev/wm8903                       u:object_r:audio_device:s0
+/dev/dsp_fm34                     u:object_r:audio_device:s0
+/dev/rt5631                       u:object_r:audio_device:s0
 /dev/asusdec                      u:object_r:input_device:s0
 
 /data/amit(/.*)?                  u:object_r:sensors_data_file:s0
@@ -36,4 +37,4 @@
 /sys/devices/platform/bcm4330_rfkill/rfkill/rfkill0/state   --  u:object_r:sysfs_bluetooth_writable:s0
 /sys/devices/platform/bcm4330_rfkill/rfkill/rfkill0/type    --  u:object_r:sysfs_bluetooth_writable:s0
 
-/sys/class/graphics/fb0/device/smartdimmer/enable        u:object_r:sysfs_writable:s0
+/sys/class/graphics/fb0/device/smartdimmer/enable        u:object_r:sysfs_smartdimmer:s0
