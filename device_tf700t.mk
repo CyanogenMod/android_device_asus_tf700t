@@ -83,7 +83,6 @@ PRODUCT_AAPT_PREF_CONFIG := hdpi
 
 # Extra packages to build for this device
 PRODUCT_PACKAGES += \
-    camera.tegra \
     librs_jni \
     com.android.future.usb.accessory \
     make_ext4fs \
@@ -126,6 +125,10 @@ PRODUCT_COPY_FILES += \
 # GPS configuration
 PRODUCT_COPY_FILES += \
     device/asus/tf700t/configs/gps.conf:system/etc/gps.conf
+
+# Camera
+PRODUCT_PROPERTY_OVERRIDES += \
+    camera2.portability.force_api=1
 
 # Inherit tablet dalvik settings
 $(call inherit-product, frameworks/native/build/tablet-10in-xhdpi-2048-dalvik-heap.mk)
