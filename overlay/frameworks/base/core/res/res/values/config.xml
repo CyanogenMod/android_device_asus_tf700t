@@ -160,8 +160,6 @@
 
     <bool name="config_lidControlsSleep">true</bool>
 
-    <integer name="config_lidOpenRotation">0</integer>
-
     <integer name="config_lidKeyboardAccessibility">1</integer>
 
     <string name="config_deviceKeyHandlerLib" translatable="false">
