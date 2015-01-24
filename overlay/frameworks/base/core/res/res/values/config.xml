@@ -164,6 +164,8 @@
 
     <integer name="config_lidKeyboardAccessibility">1</integer>
 
+    <bool name="config_hasRemovableLid">true</bool>
+
     <string name="config_deviceKeyHandlerLib" translatable="false">
         /system/framework/com.cyanogenmod.asusdec.jar</string>
     <string name="config_deviceKeyHandlerClass" translatable="false">
