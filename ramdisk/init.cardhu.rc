@@ -62,6 +62,10 @@ on boot
 # fs
     write /sys/module/sync/parameters/fsync_enabled 1
 
+# put device in full performance mode while booting.
+# Once the device booted settings app will change to the user's cpu mode preference
+    setprop sys.cpu.mode 2
+
 # bluetooth
     # change back to bluetooth from system
     chown bluetooth net_bt_stack /data/misc/bluetooth
@@ -182,9 +186,6 @@ on boot
 
 # Set battery poll interval
     write /sys/module/bq27x00_battery/parameters/poll_interval 30
-
-# Setup CPU for "balanced" mode
-    setprop sys.cpu.mode 1
 
 # We dont want to swap keys unless needed
     setprop sys.dockkeys.change 0
