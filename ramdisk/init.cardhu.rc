@@ -83,6 +83,14 @@ on boot
     restorecon /sys/class/rfkill/rfkill0/state
     restorecon /sys/class/rfkill/rfkill0/type
 
+    # bluetooth LPM
+    chmod 0664 /proc/bluetooth/sleep/btwake
+    chmod 0664 /proc/bluetooth/sleep/btwrite
+    chmod 0664 /proc/bluetooth/sleep/lpm
+    chmod 0664 /proc/bluetooth/sleep/proto
+    chown bluetooth net_bt_stack /proc/bluetooth/sleep/btwrite
+    chown bluetooth net_bt_stack /proc/bluetooth/sleep/lpm
+
     # bluetooth MAC address programming
     chown bluetooth net_bt_stack ro.bt.bdaddr_path
     chown bluetooth net_bt_stack /system/etc/bluetooth
