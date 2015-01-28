@@ -62,10 +62,6 @@ on boot
 # fs
     write /sys/module/sync/parameters/fsync_enabled 1
 
-# put device in full performance mode while booting.
-# Once the device booted settings app will change to the user's cpu mode preference
-    setprop sys.cpu.mode 2
-
 # bluetooth
     # change back to bluetooth from system
     chown bluetooth net_bt_stack /data/misc/bluetooth
@@ -197,6 +193,10 @@ on boot
 
 # We dont want to swap keys unless needed
     setprop sys.dockkeys.change 0
+
+# put device in full performance mode while booting.
+# Once the device booted settings app will change to the user's cpu mode preference
+    setprop sys.cpu.mode 2
 
 on property:ro.debuggable=1
     # Touchscreen Config-UI interface
