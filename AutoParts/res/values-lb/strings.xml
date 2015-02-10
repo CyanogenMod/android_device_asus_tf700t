@@ -26,8 +26,8 @@
   <string name="kp_brightness_manual">Hellegkeet <xliff:g id="brightness">%1$s</xliff:g></string>
   <string name="kp_brightness_auto">Hellegkeet AUTOMATESCH</string>
   <string name="kp_volume">Lautstäerkt <xliff:g id="volume">%1$s</xliff:g></string>
-  <string name="kp_volume_mute_on">Stomm UN</string>
-  <string name="kp_volume_mute_off">Stomm AUS</string>
+  <string name="kp_volume_mute_on">Roueg UN</string>
+  <string name="kp_volume_mute_off">Roueg AUS</string>
   <string name="kp_media_play_pause">Medien OFSPILLEN/PAUS</string>
   <string name="kp_media_previous">Medien ZRÉCK</string>
   <string name="kp_media_next">Medien WEIDER</string>
