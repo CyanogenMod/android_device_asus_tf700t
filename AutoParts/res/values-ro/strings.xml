@@ -17,23 +17,23 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="app_name">Setări avansate</string>
-  <string name="kp_wifi_on">Wi-Fi ON</string>
-  <string name="kp_wifi_off">Wi-Fi OFF</string>
-  <string name="kp_bt_on">Bluetooth ON</string>
-  <string name="kp_bt_off">Bluetooth OFF</string>
-  <string name="kp_tp_on">TouchPad ON</string>
-  <string name="kp_tp_off">TouchPad OFF</string>
+  <string name="kp_wifi_on">Wi-Fi pornit</string>
+  <string name="kp_wifi_off">Wi-Fi oprit</string>
+  <string name="kp_bt_on">Bluetooth pornit</string>
+  <string name="kp_bt_off">Bluetooth oprit</string>
+  <string name="kp_tp_on">TouchPad pornit</string>
+  <string name="kp_tp_off">TouchPad oprit</string>
   <string name="kp_brightness_manual">Luminozitate <xliff:g id="brightness">%1$s</xliff:g></string>
-  <string name="kp_brightness_auto">Luminozitate AUTO</string>
+  <string name="kp_brightness_auto">Luminozitate automată</string>
   <string name="kp_volume">Volum <xliff:g id="volume">%1$s</xliff:g></string>
-  <string name="kp_volume_mute_on">Mut ON</string>
-  <string name="kp_volume_mute_off">Mut OFF</string>
+  <string name="kp_volume_mute_on">Mut pornit</string>
+  <string name="kp_volume_mute_off">Mut oprit</string>
   <string name="kp_media_play_pause">Media REDĂ/PAUZĂ</string>
   <string name="kp_media_previous">Media ANTERIOR</string>
   <string name="kp_media_next">Media URMĂTOR</string>
   <string name="kp_screenshot">Captează ecran</string>
   <string name="kp_explorer">Deschide browser</string>
   <string name="kp_settings">Deschide setări</string>
-  <string name="kp_caps_lock_on">Caps-Lock ON</string>
-  <string name="kp_caps_lock_off">Caps-Lock OFF</string>
+  <string name="kp_caps_lock_on">Caps-Lock pornit</string>
+  <string name="kp_caps_lock_off">Caps-Lock oprit</string>
 </resources>

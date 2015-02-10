@@ -32,7 +32,7 @@
   <string name="kp_media_previous">Ankstesnis</string>
   <string name="kp_media_next">Kitas</string>
   <string name="kp_screenshot">Užfiksuoti ekranvaizdį</string>
-  <string name="kp_explorer">Įjungti naršyklę</string>
+  <string name="kp_explorer">Paleisti naršyklę</string>
   <string name="kp_settings">Paleidimo nustatymai</string>
   <string name="kp_caps_lock_on">„Caps-Lock“ įjungtas</string>
   <string name="kp_caps_lock_off">„Caps-Lock“ išjungtas</string>
