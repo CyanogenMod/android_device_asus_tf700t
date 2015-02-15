@@ -24,7 +24,7 @@
   <string name="kp_tp_on">TouchPad päällä</string>
   <string name="kp_tp_off">TouchPad pois päältä</string>
   <string name="kp_brightness_manual">Kirkkaus <xliff:g id="brightness">%1$s</xliff:g></string>
-  <string name="kp_brightness_auto">Kirkkaus automaattinen</string>
+  <string name="kp_brightness_auto">Automaattinen kirkkaus</string>
   <string name="kp_volume">Äänenvoimakkuus <xliff:g id="volume">%1$s</xliff:g></string>
   <string name="kp_volume_mute_on">Mykistys päällä</string>
   <string name="kp_volume_mute_off">Mykistys pois päältä</string>
