@@ -23,8 +23,8 @@
   <string name="kp_bt_off">„Bluetooth“ išjungtas</string>
   <string name="kp_tp_on">Jutiklinis kilimėlis įjungtas</string>
   <string name="kp_tp_off">Jutiklinis kilimėlis išjungtas</string>
-  <string name="kp_brightness_manual">Ryškumas <xliff:g id="brightness">%1$s</xliff:g></string>
-  <string name="kp_brightness_auto">Automatinis ryškumas</string>
+  <string name="kp_brightness_manual">Šviesumas <xliff:g id="brightness">%1$s</xliff:g></string>
+  <string name="kp_brightness_auto">Automatinis šviesumas</string>
   <string name="kp_volume">Garsumas <xliff:g id="volume">%1$s</xliff:g></string>
   <string name="kp_volume_mute_on">Nutildyti</string>
   <string name="kp_volume_mute_off">Įjungti garsą</string>
