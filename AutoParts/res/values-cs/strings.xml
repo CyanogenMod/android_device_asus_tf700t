@@ -16,15 +16,15 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="app_name">Pokročilá nastavení</string>
+  <string name="app_name">Pokročilé nastavení</string>
   <string name="kp_wifi_on">Wi-Fi ZAP</string>
   <string name="kp_wifi_off">Wi-Fi VYP</string>
   <string name="kp_bt_on">Bluetooth ZAP</string>
   <string name="kp_bt_off">Bluetooth VYP</string>
   <string name="kp_tp_on">TouchPad ZAP</string>
   <string name="kp_tp_off">TouchPad VYP</string>
-  <string name="kp_brightness_manual">Podsvícení <xliff:g id="brightness">%1$s</xliff:g></string>
-  <string name="kp_brightness_auto">Podsvícení AUTO</string>
+  <string name="kp_brightness_manual">Jas <xliff:g id="brightness">%1$s</xliff:g></string>
+  <string name="kp_brightness_auto">Jas AUTO</string>
   <string name="kp_volume">Hlasitost <xliff:g id="volume">%1$s</xliff:g></string>
   <string name="kp_volume_mute_on">Ztišení ZAP</string>
   <string name="kp_volume_mute_off">Ztišení VYP</string>
