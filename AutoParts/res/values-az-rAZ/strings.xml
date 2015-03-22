@@ -31,8 +31,8 @@
   <string name="kp_media_play_pause">Media OYNAT/DAYANDIR</string>
   <string name="kp_media_previous">Media ƏVVƏLKİ</string>
   <string name="kp_media_next">Media SONRAKI</string>
-  <string name="kp_screenshot">Ekran təsvirini çək</string>
-  <string name="kp_explorer">Brauzeri aç</string>
+  <string name="kp_screenshot">Ekran şəklini çək</string>
+  <string name="kp_explorer">Səyyahı aç</string>
   <string name="kp_settings">Tənzimləmələri aç</string>
   <string name="kp_caps_lock_on">Caps-Lock AÇIQDIR</string>
   <string name="kp_caps_lock_off">Caps-Lock BAĞLIDIR</string>

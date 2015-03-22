@@ -17,23 +17,23 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="app_name">הגדרות מתקדמות</string>
-  <string name="kp_wifi_on">Wi-Fi דלוק</string>
+  <string name="kp_wifi_on">Wi-Fi פעיל</string>
   <string name="kp_wifi_off">Wi-Fi כבוי</string>
-  <string name="kp_bt_on">בלוטוס דלוק</string>
-  <string name="kp_bt_off">בלוטוס כבוי</string>
+  <string name="kp_bt_on">Bluetooth פעיל</string>
+  <string name="kp_bt_off">Bluetooth כבוי</string>
   <string name="kp_tp_on">משטח מגע פועל</string>
   <string name="kp_tp_off">משטח מגע כבוי</string>
   <string name="kp_brightness_manual">בהירות <xliff:g id="brightness">%1$s</xliff:g></string>
   <string name="kp_brightness_auto">בהירות אוטומטית</string>
   <string name="kp_volume">עוצמת שמע <xliff:g id="volume">%1$s</xliff:g></string>
-  <string name="kp_volume_mute_on">על השתקה</string>
+  <string name="kp_volume_mute_on">מושתק</string>
   <string name="kp_volume_mute_off">לא מושתק</string>
-  <string name="kp_media_play_pause">מדיה המשך/השהה</string>
-  <string name="kp_media_previous">מדיה הקודם</string>
-  <string name="kp_media_next">מדיה הבא</string>
+  <string name="kp_media_play_pause">המשך/השהה מדיה</string>
+  <string name="kp_media_previous">נגן מדיה קודמת</string>
+  <string name="kp_media_next">נגן מדיה הבאה</string>
   <string name="kp_screenshot">צלם מסך</string>
   <string name="kp_explorer">הפעל דפדפן</string>
   <string name="kp_settings">הפעל הגדרות</string>
-  <string name="kp_caps_lock_on">Caps-Lock דלוק</string>
+  <string name="kp_caps_lock_on">Caps-Lock פעיל</string>
   <string name="kp_caps_lock_off">Caps-Lock כבוי</string>
 </resources>
