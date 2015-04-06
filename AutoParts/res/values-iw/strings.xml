@@ -21,13 +21,13 @@
   <string name="kp_wifi_off">Wi-Fi כבוי</string>
   <string name="kp_bt_on">Bluetooth פעיל</string>
   <string name="kp_bt_off">Bluetooth כבוי</string>
-  <string name="kp_tp_on">משטח מגע פועל</string>
+  <string name="kp_tp_on">משטח מגע פעיל</string>
   <string name="kp_tp_off">משטח מגע כבוי</string>
   <string name="kp_brightness_manual">בהירות <xliff:g id="brightness">%1$s</xliff:g></string>
   <string name="kp_brightness_auto">בהירות אוטומטית</string>
   <string name="kp_volume">עוצמת שמע <xliff:g id="volume">%1$s</xliff:g></string>
-  <string name="kp_volume_mute_on">מושתק</string>
-  <string name="kp_volume_mute_off">לא מושתק</string>
+  <string name="kp_volume_mute_on">השתקה פעילה</string>
+  <string name="kp_volume_mute_off">השתקה כבויה</string>
   <string name="kp_media_play_pause">המשך/השהה מדיה</string>
   <string name="kp_media_previous">נגן מדיה קודמת</string>
   <string name="kp_media_next">נגן מדיה הבאה</string>
