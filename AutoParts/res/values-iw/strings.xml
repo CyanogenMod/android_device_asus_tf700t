@@ -28,9 +28,9 @@
   <string name="kp_volume">עוצמת שמע <xliff:g id="volume">%1$s</xliff:g></string>
   <string name="kp_volume_mute_on">השתקה פעילה</string>
   <string name="kp_volume_mute_off">השתקה כבויה</string>
-  <string name="kp_media_play_pause">המשך/השהה מדיה</string>
-  <string name="kp_media_previous">נגן מדיה קודמת</string>
-  <string name="kp_media_next">נגן מדיה הבאה</string>
+  <string name="kp_media_play_pause">מדיה - נגן/השהה</string>
+  <string name="kp_media_previous">מדיה - הקודם</string>
+  <string name="kp_media_next">מדיה - הבא</string>
   <string name="kp_screenshot">צלם מסך</string>
   <string name="kp_explorer">הפעל דפדפן</string>
   <string name="kp_settings">הפעל הגדרות</string>

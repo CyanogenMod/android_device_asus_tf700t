@@ -23,8 +23,8 @@
   <string name="kp_bt_off">Bluetooth-a ezgaituta</string>
   <string name="kp_tp_on">TouchPad-a gaituta</string>
   <string name="kp_tp_off">TouchPad-a ezgaituta</string>
-  <string name="kp_brightness_manual">Diztira <xliff:g id="brightness">%1$s</xliff:g></string>
-  <string name="kp_brightness_auto">Diztira automatikoa</string>
+  <string name="kp_brightness_manual">Distira <xliff:g id="brightness">%1$s</xliff:g></string>
+  <string name="kp_brightness_auto">Distira automatikoa</string>
   <string name="kp_volume">Bolumena <xliff:g id="volume">%1$s</xliff:g></string>
   <string name="kp_volume_mute_on">Isiltasuna gaituta</string>
   <string name="kp_volume_mute_off">Isiltasuna ezgaituta</string>

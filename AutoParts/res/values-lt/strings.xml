@@ -17,23 +17,23 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="app_name">Papildomi nustatymai</string>
-  <string name="kp_wifi_on">„Wi-Fi“ Įjungtas</string>
-  <string name="kp_wifi_off">„Wi-Fi“ Išjungtas</string>
-  <string name="kp_bt_on">„Bluetooth“ įjungtas</string>
-  <string name="kp_bt_off">„Bluetooth“ išjungtas</string>
-  <string name="kp_tp_on">Jutiklinis kilimėlis įjungtas</string>
-  <string name="kp_tp_off">Jutiklinis kilimėlis išjungtas</string>
+  <string name="kp_wifi_on">„Wi-Fi“ ĮJUNGTAS</string>
+  <string name="kp_wifi_off">„Wi-Fi“ IŠJUNGTAS</string>
+  <string name="kp_bt_on">„Bluetooth“ ĮJUNGTAS</string>
+  <string name="kp_bt_off">„Bluetooth“ IŠJUNGTAS</string>
+  <string name="kp_tp_on">Jutiklinis kilimėlis ĮJUNGTAS</string>
+  <string name="kp_tp_off">Jutiklinis kilimėlis IŠJUNGTAS</string>
   <string name="kp_brightness_manual">Šviesumas <xliff:g id="brightness">%1$s</xliff:g></string>
-  <string name="kp_brightness_auto">Automatinis šviesumas</string>
+  <string name="kp_brightness_auto">AUTOMATINIS šviesumas</string>
   <string name="kp_volume">Garsumas <xliff:g id="volume">%1$s</xliff:g></string>
   <string name="kp_volume_mute_on">Nutildyti</string>
   <string name="kp_volume_mute_off">Įjungti garsą</string>
-  <string name="kp_media_play_pause">Paleisti / sustabdyti</string>
-  <string name="kp_media_previous">Ankstesnis</string>
-  <string name="kp_media_next">Kitas</string>
+  <string name="kp_media_play_pause">PALEISTI / SUSTABDYTI medija</string>
+  <string name="kp_media_previous">ANKSTESNĖ medija</string>
+  <string name="kp_media_next">KITA medija</string>
   <string name="kp_screenshot">Užfiksuoti ekranvaizdį</string>
   <string name="kp_explorer">Paleisti naršyklę</string>
   <string name="kp_settings">Paleidimo nustatymai</string>
-  <string name="kp_caps_lock_on">„Caps-Lock“ įjungtas</string>
-  <string name="kp_caps_lock_off">„Caps-Lock“ išjungtas</string>
+  <string name="kp_caps_lock_on">„Caps-Lock“ ĮJUNGTAS</string>
+  <string name="kp_caps_lock_off">„Caps-Lock“ IŠJUNGTAS</string>
 </resources>
