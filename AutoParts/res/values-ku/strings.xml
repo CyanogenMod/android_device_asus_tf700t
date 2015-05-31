@@ -23,17 +23,17 @@
   <string name="kp_bt_off">داخستنەوەی بلوتووس</string>
   <string name="kp_tp_on">کردنه‌وه‌ی سوین پاد</string>
   <string name="kp_tp_off">داخستنەوەی سوین پاد</string>
-  <string name="kp_brightness_manual">ڕۆشنایی <xliff:g id="ڕوشنای">%1$s</xliff:g></string>
+  <string name="kp_brightness_manual">ڕۆشنایی <xliff:g id="ڕوشنای">%١$s</xliff:g></string>
   <string name="kp_brightness_auto">ڕۆشنایی خۆکارانه‌</string>
   <string name="kp_volume">
-ده‌نگ <xliff:g id="ده‌نگ">%1$s</xliff:g>
+ده‌نگ <xliff:g id="ده‌نگ">%١$s</xliff:g>
 </string>
   <string name="kp_volume_mute_on">کردنه‌وه‌ی کپکردن</string>
   <string name="kp_volume_mute_off">کوژانه‌وه‌ی کپکردن</string>
   <string name="kp_media_play_pause">لێدان و وه‌ستانی ده‌نگ</string>
   <string name="kp_media_previous">میدیای پێشوو</string>
   <string name="kp_media_next">ده‌نگی داهاتوو</string>
-  <string name="kp_screenshot">گرتنی وێنەی ڕوونما</string>
+  <string name="kp_screenshot">گرتنی وێنەی ڕونما</string>
   <string name="kp_explorer">کردنەوەی وێبگەڕ</string>
   <string name="kp_settings">کردنەوەی ڕێکخستنەکان</string>
   <string name="kp_caps_lock_on">چالاککردنی وشەی گەورە</string>
