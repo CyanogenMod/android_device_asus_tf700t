@@ -28,7 +28,7 @@
   <string name="kp_volume">Bolumena <xliff:g id="volume">%1$s</xliff:g></string>
   <string name="kp_volume_mute_on">Mututu BAI</string>
   <string name="kp_volume_mute_off">Mututu EZ</string>
-  <string name="kp_media_play_pause">Media ERREPRODUZITU/GELDITU</string>
+  <string name="kp_media_play_pause">Multimedia ERREPRODUZITU/PAUSARAZI</string>
   <string name="kp_media_previous">Media AURREKOA</string>
   <string name="kp_media_next">Media HURRENGOA</string>
   <string name="kp_screenshot">Egin pantaila-argazkia</string>
