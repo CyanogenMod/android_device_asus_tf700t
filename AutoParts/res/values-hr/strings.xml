@@ -17,23 +17,23 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="app_name">Napredne postavke</string>
-  <string name="kp_wifi_on">Wi-Fi Uključen</string>
-  <string name="kp_wifi_off">Wi-Fi Isključen</string>
-  <string name="kp_bt_on">Bluetooth Uključen</string>
-  <string name="kp_bt_off">Bluetooth Isključen</string>
-  <string name="kp_tp_on">TouchPad Uključen</string>
-  <string name="kp_tp_off">TouchPad Isključen</string>
-  <string name="kp_brightness_manual">Svjetlost <xliff:g id="brightness">%1$s</xliff:g></string>
-  <string name="kp_brightness_auto">Automatska svjetlost</string>
+  <string name="kp_wifi_on">Wi-Fi je uključen</string>
+  <string name="kp_wifi_off">Wi-Fi je isključen</string>
+  <string name="kp_bt_on">Bluetooth je uključen</string>
+  <string name="kp_bt_off">Bluetooth je isključen</string>
+  <string name="kp_tp_on">TouchPad je uključen</string>
+  <string name="kp_tp_off">TouchPad je isključen</string>
+  <string name="kp_brightness_manual">Svjetlina <xliff:g id="brightness">%1$s</xliff:g></string>
+  <string name="kp_brightness_auto">Automatska svjetlina</string>
   <string name="kp_volume">Glasnoća <xliff:g id="volume">%1$s</xliff:g></string>
-  <string name="kp_volume_mute_on">Bešuman Način Uključen</string>
-  <string name="kp_volume_mute_off">Bešuman Način Isključen</string>
+  <string name="kp_volume_mute_on">Bešuman način je uključen</string>
+  <string name="kp_volume_mute_off">Bešuman način je isključen</string>
   <string name="kp_media_play_pause">Mediji REPRODUCIRAJ/PAUZIRAJ</string>
   <string name="kp_media_previous">Mediji PRETHODNO</string>
   <string name="kp_media_next">Mediji SLJEDEĆE</string>
   <string name="kp_screenshot">Snimi zaslon</string>
   <string name="kp_explorer">Pokreni preglednik</string>
   <string name="kp_settings">Pokreni postavke</string>
-  <string name="kp_caps_lock_on">Velika Slova Uključena</string>
-  <string name="kp_caps_lock_off">Velika Slova Isključena</string>
+  <string name="kp_caps_lock_on">Velika slova su uključena</string>
+  <string name="kp_caps_lock_off">Velika slova su isključena</string>
 </resources>

@@ -31,6 +31,7 @@
   <string name="kp_media_play_pause">پخش/توقف رسانه</string>
   <string name="kp_media_previous">رسانه قبلی</string>
   <string name="kp_media_next">رسانه بعدی</string>
+  <string name="kp_screenshot">گرفتن تصویر از صفحه</string>
   <string name="kp_explorer">اجرای مرورگر</string>
   <string name="kp_settings">اجرای تنظیمات</string>
 </resources>

@@ -28,10 +28,10 @@
   <string name="kp_volume">Volum <xliff:g id="volume">%1$s</xliff:g></string>
   <string name="kp_volume_mute_on">Mut pornit</string>
   <string name="kp_volume_mute_off">Mut oprit</string>
-  <string name="kp_media_play_pause">Media REDĂ/PAUZĂ</string>
+  <string name="kp_media_play_pause">Media REDARE/PAUZĂ</string>
   <string name="kp_media_previous">Media ANTERIOR</string>
   <string name="kp_media_next">Media URMĂTOR</string>
-  <string name="kp_screenshot">Captează ecran</string>
+  <string name="kp_screenshot">Captură ecran</string>
   <string name="kp_explorer">Deschide browser</string>
   <string name="kp_settings">Deschide setări</string>
   <string name="kp_caps_lock_on">Caps-Lock pornit</string>
